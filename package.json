@@ -1,0 +1,35 @@
+{
+  "name": "fan-control",
+  "version": "1.0.0",
+  "private": true,
+  "description": "fan-control",
+  "author": "Rem0o",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "gatsby": "^4.23.1",
+    "gatsby-plugin-google-analytics": "^4.23.0",
+    "gatsby-plugin-image": "^2.23.1",
+    "gatsby-plugin-sharp": "^4.23.1",
+    "gatsby-plugin-sitemap": "^5.23.1",
+    "gatsby-source-filesystem": "^4.23.0",
+    "gatsby-transformer-sharp": "^4.23.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.45",
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
+    "typescript": "^4.8.3"
+  }
+}
