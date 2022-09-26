@@ -21,6 +21,13 @@ const config: GatsbyConfig = {
       "path": "./src/images/"
     },
     __key: "images"
+  }, `gatsby-plugin-mdx`,
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `contents`,
+      path: `${__dirname}/src/contents`,
+    },
   }]
 };
 
