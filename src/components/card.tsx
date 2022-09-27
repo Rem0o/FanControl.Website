@@ -5,7 +5,7 @@ type CardProps = {
     children: React.ReactNode
 };
   
-const defaultClass = 'h-fit w-fit p-5 rounded-lg border border-gray-200 shadow-md';
+const defaultClass = 'h-fit w-fit p-3 rounded-lg border border-gray-200 shadow-md';
 
 const Card = ({background, children}: CardProps) => {
     return (
