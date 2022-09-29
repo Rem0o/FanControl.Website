@@ -11,15 +11,23 @@ const IndexPage = () => {
   return (
     <Layout pageTitle={pageTitle}>
       <div className="flex flex-col place-items-center text-center gap-5">
-        <div className="font-medium text-lg"><Description /></div>
+        <div className="font-medium text-lg">
+          <Description />
+        </div>
         <StaticImage
+        width={800}
           src="./../images/main.png"
           alt="Main interface"
         ></StaticImage>
-        <Card>As simple, or as complex as you want it to be.</Card>
-        <Card>Multiple type of fan curves to choose from </Card>
-        <Card>Save, edit and load multiple configurations</Card>
-        <Card>Customize the look of the software to fit your theme.</Card>
+
+        <div className="flex flex-row flex-wrap gap-5">
+          {[
+            "As simple, or as complex as you want it to be.",
+            "Multiple type of fan curves to choose from.",
+            "Save, edit and load multiple configurations.",
+            "Customize the look of the software to fit your theme."
+          ].map(t => <div className="max-w-xs"><Card>{t}</Card></div>)}
+        </div>
       </div>
     </Layout>
   );
