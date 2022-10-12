@@ -6,11 +6,11 @@ import TemperatureCard from "../components/demo/temperatureCard";
 import createTempSource, {
   TemperatureSource,
 } from "../components/demo/temperatureSource";
-import useInterval from "../hooks/useInterval";
 import { useState } from "react";
 import { FanCurve, LinearFanCurve } from "../components/demo/fanCurve";
 import FanCurveCard from "../components/demo/fanCurveCard"
 import icons from "./../contents/icons";
+import { useInterval } from "../hooks/customHooks";
 
 const pageTitle = "Demo";
 

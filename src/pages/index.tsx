@@ -6,6 +6,8 @@ import Description from "../contents/description.mdx";
 import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
 import consts from "../contents/consts";
+import { useEffect, useRef, useState } from "react";
+import { useTimeoutBooleanState } from "../hooks/customHooks";
 
 const pageTitle = "Home";
 
@@ -31,15 +33,15 @@ const IconButton = ({
   textColor,
   text,
   icon,
-  onClick
+  onClick,
 }: {
   background: string;
   textColor: string;
   text: string;
   icon: string;
-  onClick?: Function
+  onClick?: Function;
 }) => (
-  <button onClick={() => onClick ? onClick() : null}>
+  <button onClick={() => (onClick ? onClick() : null)}>
     <Card background={background}>
       <div className={`flex gap-2 w-36 ${textColor}`}>
         {Icon(icon)}
@@ -50,11 +52,18 @@ const IconButton = ({
 );
 
 const IndexPage = () => {
+  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
+
   return (
     <Layout pageTitle={pageTitle}>
       <div className="flex flex-col place-items-center text-center gap-12">
-        
-        <svg className="hover:animate-spin h-36 w-36" viewBox="0 0 24 24">
+        <svg
+          onMouseEnter={() => setIsSpinning(true)}
+          className={`${
+            isSpinning ? "animate-spin" : ""
+          } hover:animate-spin h-36 w-36`}
+          viewBox="0 0 24 24"
+        >
           <path fill="currentColor" d={icons.svgPaths.fan} />
         </svg>
         <h1 className="text-4xl max-w-lg font-semibold">
@@ -65,8 +74,20 @@ const IndexPage = () => {
         </div>
 
         <div className="flex gap-6">
-          <IconButton onClick={() => window.open(consts.urls.githubPageUrl)} background="bg-gray-300 hover:bg-gray-400" icon={icons.svgPaths.github} textColor="text-black" text="GitHub Page" />
-          <IconButton onClick={() => window.open(consts.urls.directDownloadUrl)} background="bg-teal-500 hover:bg-teal-600" icon={icons.svgPaths.download} textColor="text-white" text="Download"/>
+          <IconButton
+            onClick={() => window.open(consts.urls.githubPageUrl)}
+            background="bg-gray-300 hover:bg-gray-400"
+            icon={icons.svgPaths.github}
+            textColor="text-black"
+            text="GitHub Page"
+          />
+          <IconButton
+            onClick={() => window.open(consts.urls.directDownloadUrl)}
+            background="bg-blue-500 hover:bg-blue-600"
+            icon={icons.svgPaths.download}
+            textColor="text-white"
+            text="Download"
+          />
         </div>
 
         <StaticImage
@@ -75,36 +96,41 @@ const IndexPage = () => {
           alt="Main interface"
         ></StaticImage>
 
-        <div className="grid grid-cols-2 gap-5">
-          {[
-            "As simple, or as complex of a config you can create. Start simple, then go crazy.",
-            "Multiple type of fan curves and custom sensors to choose from. Mix multiple togethers for infinite possibilities.",
-            "Save, edit and load multiple configurations.",
-            "Customize the look of the software to fit your theme.",
-          ].map((t) => (
-            <div className="max-w-xs">
-              <Card>{t}</Card>
-            </div>
-          ))}
+        <div>
+          <div className="text-2xl font-semibold mb-4">Features rapid fire</div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 wrap">
+            {[
+              "Assisted setup will guide you through your initial config, so you can get to customizing curves right away.",
+              "As simple, or as complex of a config you can create. Start simple, then go crazy.",
+              "Multiple type of fan curves and custom sensors to choose from. Mix multiple togethers for infinite possibilities.",
+              "Save, edit and load multiple configurations.",
+              "Customize the look of the software to fit your theme.",
+              "Use the tray icon as a temperature display.",
+            ].map((t) => (
+              <div className="max-w-xs">
+                <Card>{t}</Card>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-row w-full text-left gap-12">
-          <div className="basis-1/2">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 wrap text-left justify-center">
+          <div className="max-w-sm">
             <NiceHeader
               text="It's all about the mix"
               icon={icons.svgPaths.mix}
             ></NiceHeader>
             <p>
               THE missing function that originates this whole project. Mix fan
-              curves take the possibilities to a whole other level. Combine any
+              curves take the possibilities to a whole new level. Combine any
               type of fan curves together and apply a function like maximum or
               average to create a whole new control logic. Different curves
-              bound to different temperature sensors, your case fans never asked
-              for better.
+              bound to different temperature sensors, mixed together, your case
+              fans never asked for better.
             </p>
           </div>
 
-          <div className="basis-1/2">
+          <div className="max-w-sm">
             <NiceHeader
               text="Tinkerers rejoice"
               icon={icons.svgPaths.parameters}
@@ -114,6 +140,20 @@ const IndexPage = () => {
               hysteresis direction, step up, step down... Fine tune to your
               hearth's desire. Control your fan's start and stopping logic, for
               smooth 0 RPM operation <i>(when supported)</i>.
+            </p>
+          </div>
+
+          <div className="max-w-sm">
+            <NiceHeader
+              text="Open through plugins"
+              icon={icons.svgPaths.plugin}
+            ></NiceHeader>
+            <p>
+              Want to add more sensors and controls from a third party? No
+              problem! Fan Control has a simple plugin system with .NET that
+              allow any third party developper to add any temperature, speed or
+              control sensor he wishes. Installing is as easy as dropping a dll
+              in the plugin folder, that's it.
             </p>
           </div>
         </div>

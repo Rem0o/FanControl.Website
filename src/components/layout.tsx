@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 import icons from "./../contents/icons"
+import { useTimeoutBooleanState } from '../hooks/customHooks';
 
 const links = [
   { url: "/", title: "Home" },
@@ -8,19 +9,20 @@ const links = [
   { url: "/about", title: "About" }
 ];
 
-const linkStyle = "";
-
 type Props = {
   pageTitle: string,
   children: React.ReactNode
 }
 
 const Layout = ({pageTitle, children}: Props) => {
+
+  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(false, 3000);
+  
   return (
     <div>
       <nav className='text-black bg-white flex shadow-md'>
         <div className='flex justify-center items-center m-1'>
-          <svg className='hover:animate-spin h-10 w-10' viewBox="0 0 24 24">
+          <svg onMouseEnter={() => setIsSpinning(true)} className={`${isSpinning ? "animate-spin" : ""} hover:animate-spin h-10 w-10`} viewBox="0 0 24 24">
             <path fill="currentColor" d={icons.svgPaths.fan} />
           </svg>
           <div className='ml-2'>
@@ -28,7 +30,7 @@ const Layout = ({pageTitle, children}: Props) => {
           </div>
         </div>
         <ul className='flex ml-auto justify-center items-center'>
-          {links.map(link => <li className='p-3'><Link className={linkStyle} to={link.url}>{link.title}</Link></li>)}
+          {links.map(link => <li className='p-3'><Link to={link.url}>{link.title}</Link></li>)}
         </ul>
       </nav>
 
