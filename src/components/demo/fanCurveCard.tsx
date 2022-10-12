@@ -2,19 +2,29 @@ import React from "react";
 import Card from "../card";
 import { FanCurve } from "./fanCurve";
 
-const icon = (path:string) => (
-    <svg className="w-12 h-12" viewBox="0 0 24 24">
-      <path
-        fill="currentColor"
-        d={path}
-      />
-    </svg>
-  );
-  
-// 
+const icon = (path: string) => (
+  <svg className="w-12 h-12" viewBox="0 0 24 24">
+    <path fill="currentColor" d={path} />
+  </svg>
+);
 
-export default function FanCurveCard(iconPath: string, fanCurve: FanCurve) {
-  const background = "bg-slate-400";
+type Props = {
+  iconPath: string;
+  fanCurve: FanCurve;
+  controlValueSuffix?: string;
+  children?: React.ReactNode;
+};
+
+export default function FanCurveCard({
+  iconPath,
+  fanCurve,
+  controlValueSuffix,
+  children,
+}: Props) {
+
+  const background = "bg-blue-500";
+  const value = fanCurve.getValue();
+  const isValid = (number:number) => number >= 0 && number <= 100;
 
   return (
     <Card background={background}>
@@ -25,8 +35,12 @@ export default function FanCurveCard(iconPath: string, fanCurve: FanCurve) {
             {fanCurve.name}
           </div>
         </div>
+        <div>{children}</div>
         <div className="mt-1 flex flex-row justify-between">
-          <div>{fanCurve.getValue()} %</div>
+          <div>
+            <span>{isValid(value) ? value.toFixed(1) : "-"} %</span>{" "}
+            <span>{controlValueSuffix}</span>
+          </div>
         </div>
       </div>
     </Card>

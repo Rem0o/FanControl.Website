@@ -1,6 +1,5 @@
 type FanCurve = {
   name: string;
-  selectedTemperature?: string;
   getValue: () => number;
 };
 

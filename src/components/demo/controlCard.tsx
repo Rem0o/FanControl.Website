@@ -3,6 +3,7 @@ import { useState } from "react";
 import Card from "../card";
 import Toggle from "../toggle";
 import { FanCurve } from "./fanCurve";
+import Select from "../select";
 
 const icon = (
   <svg className="w-12 h-12" viewBox="0 0 24 24">
@@ -13,8 +14,13 @@ const icon = (
   </svg>
 );
 
-
-const ControlCard = ({name, availableFanCurves} : {name: string, availableFanCurves: FanCurve[]}) => {
+const ControlCard = ({
+  name,
+  availableFanCurves,
+}: {
+  name: string;
+  availableFanCurves: FanCurve[];
+}) => {
   const enabledState = useState(false);
   const [enabled, _] = enabledState;
   const background = "bg-slate-400";
@@ -30,17 +36,34 @@ const ControlCard = ({name, availableFanCurves} : {name: string, availableFanCur
         <div className="mt-1 flex flex-row justify-between">
           <Toggle checkedState={enabledState} text=""></Toggle>
           <div className="w-full">
-            <label className="mb-2 text-sm font-medium">
-              Select a fan curve
-            </label>
-            <select value={selectedFanCurve} onChange={e => setSelectedFanCurve(availableFanCurves[e.target.options.selectedIndex - 1].name) }  disabled={!enabled} className="w-full bg-transparent border-white border-spacing-1 border rounded-md focus:bg-slate-500">
-            <option disabled selected={selectedFanCurve == ""}>{""}</option>
-                {availableFanCurves.map((fc, i) => <option>{fc.name}</option>)}
-            </select>
+            <Select
+              label="Select a fan curve"
+              value={selectedFanCurve}
+              onChange={(e) =>
+                setSelectedFanCurve(
+                  availableFanCurves[e.target.options.selectedIndex - 1].name
+                )
+              }
+              disabled={!enabled}
+            >
+              <option disabled selected={selectedFanCurve == ""}>
+                {""}
+              </option>
+              {availableFanCurves.map((fc, i) => (
+                <option>{fc.name}</option>
+              ))}
+            </Select>
           </div>
         </div>
         <div className="mt-1 flex flex-row justify-between">
-          <div>{enabled ? availableFanCurves.find(x => x.name == selectedFanCurve)?.getValue() ?? "-" : "-"} %</div>
+          <div>
+            {enabled
+              ? availableFanCurves
+                  .find((x) => x.name == selectedFanCurve)
+                  ?.getValue() ?? "-"
+              : "-"}{" "}
+            %
+          </div>
         </div>
       </div>
     </Card>

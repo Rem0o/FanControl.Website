@@ -8,6 +8,7 @@ import icons from "./../contents/icons";
 import consts from "../contents/consts";
 import { useEffect, useRef, useState } from "react";
 import { useTimeoutBooleanState } from "../hooks/customHooks";
+import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 
 const pageTitle = "Home";
 
@@ -53,6 +54,12 @@ const IconButton = ({
 
 const IndexPage = () => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
+
+  const mixFanCurves = [
+    { name: "CPU -> Case fans", getValue: () => 60 },
+    { name: "GPU -> Case fans", getValue: () => 50 },
+    { name: "SSD -> Case fans", getValue: () => 45 },
+  ];
 
   return (
     <Layout pageTitle={pageTitle}>
@@ -126,8 +133,16 @@ const IndexPage = () => {
               type of fan curves together and apply a function like maximum or
               average to create a whole new control logic. Different curves
               bound to different temperature sensors, mixed together, your case
-              fans never asked for better.
+              fans never asked for better. <br />
+              <br /> <b>Try it out on the demo card!</b>
             </p>
+          </div>
+          <div className="m-auto">
+            <MixFanCurveCard
+              name="Case fan mix"
+              fanCurves={mixFanCurves}
+              selectedFanCurvesDefault={mixFanCurves.slice(0, 2)}
+            ></MixFanCurveCard>
           </div>
 
           <div className="max-w-sm">

@@ -8,9 +8,10 @@ import createTempSource, {
 } from "../components/demo/temperatureSource";
 import { useState } from "react";
 import { FanCurve, LinearFanCurve } from "../components/demo/fanCurve";
-import FanCurveCard from "../components/demo/fanCurveCard"
+import FanCurveCard from "../components/demo/fanCurveCard";
 import icons from "./../contents/icons";
 import { useInterval } from "../hooks/customHooks";
+import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 
 const pageTitle = "Demo";
 
@@ -26,7 +27,7 @@ let linearFanCurve = (
   name: string,
   selectedTemperature: string,
   sources: TemperatureSource[]
-): FanCurve => {
+): LinearFanCurve => {
   const getValue = () => {
     let source = sources.find((x) => x.name == selectedTemperature);
     if (source) {
@@ -43,36 +44,36 @@ let linearFanCurve = (
   };
 };
 
-let mixFanCurve = ( name: string, fanCurves: FanCurve[]) : FanCurve => {
-
+let mixFanCurve = (name: string, fanCurves: FanCurve[]): FanCurve => {
   const max = fanCurves.reduce((a, b) => {
-    if ( b.getValue() >  a.getValue()){
+    if (b.getValue() > a.getValue()) {
       return b;
     }
 
     return a;
-  })
+  });
 
   return {
     name,
     getValue: () => {
       return max.getValue();
-    }
-  }
-}
+    },
+  };
+};
 
 const getLinearFanCurves = (sources: TemperatureSource[]): LinearFanCurve[] => [
   linearFanCurve("Linear CPU", "CPU", sources),
-  linearFanCurve("Linear GPU", "GPU", sources)
+  linearFanCurve("Linear GPU", "GPU", sources),
 ];
 
-const LinearFanCurveCard = (fanCurve:LinearFanCurve) => {
-  return FanCurveCard("M3.5,18.5L9.5,12.5L13.5,16.5L22,6.92L20.59,5.5L13.5,13.5L9.5,9.5L2,17L3.5,18.5Z", fanCurve);
-}
-
-const MixFanCurveCard = (fanCurve:FanCurve) => {
-  return FanCurveCard(icons.svgPaths.mix, fanCurve);
-}
+const LinearFanCurveCard = (fanCurve: LinearFanCurve) => {
+  return (
+    <FanCurveCard
+      iconPath={icons.svgPaths.linear}
+      fanCurve={fanCurve}
+    ></FanCurveCard>
+  );
+};
 
 const DemoPage = () => {
   const [sources, setSources] = useState(getSources());
@@ -95,9 +96,14 @@ const DemoPage = () => {
           <ControlCard name="Top Fan" availableFanCurves={fanCurves} />
         </div>
         Temperatures
-        <div className="flex gap-3 flex-wrap">{sources.map(TemperatureCard)}</div>
+        <div className="flex gap-3 flex-wrap">
+          {sources.map(TemperatureCard)}
+        </div>
         Fan Curves
-        <div className="flex gap-3 flex-wrap">{linears.map(LinearFanCurveCard)}{MixFanCurveCard(mix)}</div>
+        <div className="flex gap-3 flex-wrap">
+          {linears.map(LinearFanCurveCard)}
+          <MixFanCurveCard name="Mix" fanCurves={linears}></MixFanCurveCard>
+        </div>
       </div>
     </Layout>
   );
