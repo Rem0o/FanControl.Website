@@ -7,8 +7,10 @@ import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
 import consts from "../contents/consts";
 import { useEffect, useRef, useState } from "react";
-import { useTimeoutBooleanState } from "../hooks/customHooks";
+import { useInterval, useTimeoutBooleanState } from "../hooks/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
+import createTempSource, { TemperatureSource } from "../components/demo/temperatureSource";
+import { FanCurve } from "../components/demo/fanCurve";
 
 const pageTitle = "Home";
 
@@ -43,7 +45,7 @@ const IconButton = ({
   onClick?: Function;
 }) => (
   <button onClick={() => (onClick ? onClick() : null)}>
-    <Card background={background}>
+    <Card className={background}>
       <div className={`flex gap-2 w-36 ${textColor}`}>
         {Icon(icon)}
         <span className="m-auto">{text}</span>
@@ -55,10 +57,23 @@ const IconButton = ({
 const IndexPage = () => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
 
-  const mixFanCurves = [
-    { name: "CPU -> Case fans", getValue: () => 60 },
-    { name: "GPU -> Case fans", getValue: () => 50 },
-    { name: "SSD -> Case fans", getValue: () => 45 },
+  const getSources = () : [TemperatureSource, TemperatureSource, TemperatureSource] => [
+    createTempSource("a", 40, 60),
+    createTempSource("b", 30, 70),
+    createTempSource("c", 26, 65)
+  ];
+
+  const [sources, setSources] = useState(getSources());
+  
+  useInterval(1000, () => {
+    setSources(getSources());
+  });
+
+  // we mock random fan curves that outputs the temperature source as the %
+  const mockedFanCurves: FanCurve[] = [
+    { name: "CPU -> Case fans", getValue: () => sources[0].value },
+    { name: "GPU -> Case fans", getValue: () => sources[1].value },
+    { name: "SSD -> Case fans", getValue: () => sources[2].value },
   ];
 
   return (
@@ -113,8 +128,8 @@ const IndexPage = () => {
               "Save, edit and load multiple configurations.",
               "Customize the look of the software to fit your theme.",
               "Use the tray icon as a temperature display.",
-            ].map((t) => (
-              <div className="max-w-xs">
+            ].map((t, i) => (
+              <div key={i} className="max-w-xs">
                 <Card>{t}</Card>
               </div>
             ))}
@@ -139,9 +154,11 @@ const IndexPage = () => {
           </div>
           <div className="m-auto">
             <MixFanCurveCard
-              name="Case fan mix"
-              fanCurves={mixFanCurves}
-              selectedFanCurvesDefault={mixFanCurves.slice(0, 2)}
+              name="Demo Card"
+              fanCurves={mockedFanCurves}
+              selectedFanCurvesDefault={mockedFanCurves
+                .slice(0, 2)
+                .map((x) => x.name)}
             ></MixFanCurveCard>
           </div>
 

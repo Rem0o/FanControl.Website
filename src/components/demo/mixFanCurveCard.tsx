@@ -1,32 +1,8 @@
 import React, { useState } from "react";
 import icons from "../../contents/icons";
 import Select from "../select";
-import { FanCurve } from "./fanCurve";
+import { createMixFanCurve, FanCurve, MixFanCurve, MixFunction, mixFunctions } from "./fanCurve";
 import FanCurveCard from "./fanCurveCard";
-
-type MixFunction = {
-  name: string;
-  invoke: (fanCurves: FanCurve[]) => number;
-};
-
-const functions: MixFunction[] = [
-  {
-    name: "Max",
-    invoke: (fanCurves) =>
-      fanCurves.map((x) => x.getValue()).reduce((a, b) => (a > b ? a : b), -1),
-  },
-  {
-    name: "Min",
-    invoke: (fanCurves) =>
-      fanCurves.map((x) => x.getValue()).reduce((a, b) => (a < b ? a : b), 101),
-  },
-  {
-    name: "Average",
-    invoke: (fanCurves) =>
-      fanCurves.map((f) => f.getValue()).reduce((a, b) => a + b, 0) /
-      fanCurves.length,
-  },
-];
 
 export default function MixFanCurveCard({
   name,
@@ -35,27 +11,27 @@ export default function MixFanCurveCard({
 }: {
   name: string;
   fanCurves: FanCurve[];
-  selectedFanCurvesDefault?: FanCurve[];
+  selectedFanCurvesDefault?: string[];
 }) {
-  const [selectedFanCurves, setSelectedFanCurve] = useState(
-    selectedFanCurvesDefault ?? fanCurves
+  const [selectedFanCurveNames, setSelectedFanCurveNames] = useState(
+    selectedFanCurvesDefault ?? fanCurves.map(x => x.name)
   );
-  const [selectedFunction, setSelectedFunction] = useState(functions[0]);
+
+  const selectedFanCurves = fanCurves.filter(x => selectedFanCurveNames.includes(x.name))
+
+  const [selectedFunction, setSelectedFunction] = useState(mixFunctions[0]);
 
   const addFromIndex = (index: number) => {
     let fc = fanCurves[index - 1];
-    if (!selectedFanCurves.map((f) => f.name).includes(fc.name)) {
-      setSelectedFanCurve([...selectedFanCurves, fc]);
+    if (!selectedFanCurveNames.includes(fc.name)) {
+      setSelectedFanCurveNames([...selectedFanCurveNames, fc.name]);
     }
   };
 
-  const fanCurve: FanCurve = {
-    name: name,
-    getValue: () => selectedFunction.invoke(selectedFanCurves),
-  };
+  const fanCurve: MixFanCurve = createMixFanCurve(name, selectedFunction, selectedFanCurves);
 
   const suffix =
-    selectedFanCurves.length > 0
+    selectedFanCurveNames.length > 0
       ? selectedFanCurves.find((x) => x.getValue() == fanCurve.getValue())
           ?.name ?? "Average"
       : selectedFunction.name;
@@ -67,13 +43,13 @@ export default function MixFanCurveCard({
       controlValueSuffix={` (${suffix})`}
     >
       <Select
-        onChange={(e) => setSelectedFunction(functions[e.target.selectedIndex])}
-        value={selectedFunction.name}
+        onChange={(e) => setSelectedFunction(mixFunctions[e.target.selectedIndex])}
+        value={fanCurve.selectedMixFunction.name}
         label="Function"
       >
-        {functions.map((f) => {
+        {mixFunctions.map((f) => {
           return (
-            <option value={f.name} selected>
+            <option key={f.name} value={f.name}>
               {f.name}
             </option>
           );
@@ -85,22 +61,22 @@ export default function MixFanCurveCard({
         label=""
         className="mt-1"
       >
-        <option disabled value="default">
-          Select a fan curve...
+        <option key="-1" disabled value="default">
+          Add a fan curve...
         </option>
-        {fanCurves.map((fc) => (
-          <option>{fc.name}</option>
+        {fanCurves.map((fc, i) => (
+          <option key={i}>{fc.name}</option>
         ))}
       </Select>
 
-      {selectedFanCurves.map((x) => (
-        <div className="text-sm my-2 ml-2">
+      {selectedFanCurves.map((x, i) => (
+        <div key={i} className="text-sm my-2 ml-2">
           <span className="mr-1">○</span> <span>{x.name}</span>
           <span> ({x.getValue()} %)</span>
           <button
             onClick={() =>
-              setSelectedFanCurve(
-                selectedFanCurves.filter((f) => f.name != x.name)
+              setSelectedFanCurveNames(
+                selectedFanCurveNames.filter((f) => f != x.name)
               )
             }
             className="float-right border border-white px-1 rounded"

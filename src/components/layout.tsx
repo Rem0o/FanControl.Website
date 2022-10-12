@@ -30,7 +30,7 @@ const Layout = ({pageTitle, children}: Props) => {
           </div>
         </div>
         <ul className='flex ml-auto justify-center items-center'>
-          {links.map(link => <li className='p-3'><Link to={link.url}>{link.title}</Link></li>)}
+          {links.map(link => <li key={link.title} className='p-3'><Link to={link.url}>{link.title}</Link></li>)}
         </ul>
       </nav>
 

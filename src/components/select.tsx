@@ -16,7 +16,7 @@ export default function (
         text-base
         font-normal
       text-white w-full bg-transparent 
-      border-white border-spacing-1 border rounded 
+      border-white border-spacing-1 border-b 
       focus:text-gray-700 focus:bg-white`}
         {...restOfProps}
       ></select>

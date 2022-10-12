@@ -7,9 +7,10 @@ type CardProps = {
   
 const defaultClass = 'h-fit w-fit p-3 rounded-lg border border-gray-200 shadow-md';
 
-const Card = ({background, children}: CardProps) => {
+const Card = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
+    const {children, className, ...restOfProps} = props;
     return (
-      <div className={`${defaultClass} ${background ?? "bg-white"}`}>
+      <div {...restOfProps} className={`${defaultClass} ${className ?? ""}`}>
         {children}
       </div>
     )

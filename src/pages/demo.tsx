@@ -7,7 +7,7 @@ import createTempSource, {
   TemperatureSource,
 } from "../components/demo/temperatureSource";
 import { useState } from "react";
-import { FanCurve, LinearFanCurve } from "../components/demo/fanCurve";
+import { createlinearFanCurve, createMixFanCurve, FanCurve, LinearFanCurve, mixFunctions } from "../components/demo/fanCurve";
 import FanCurveCard from "../components/demo/fanCurveCard";
 import icons from "./../contents/icons";
 import { useInterval } from "../hooks/customHooks";
@@ -20,50 +20,9 @@ const getSources = (): TemperatureSource[] => [
   createTempSource("GPU", 35, 85),
 ];
 
-const clamp = (num: number, min: number, max: number) =>
-  Math.min(Math.max(num, min), max);
-
-let linearFanCurve = (
-  name: string,
-  selectedTemperature: string,
-  sources: TemperatureSource[]
-): LinearFanCurve => {
-  const getValue = () => {
-    let source = sources.find((x) => x.name == selectedTemperature);
-    if (source) {
-      return clamp((source.value - 30) * 3, 0, 100);
-    }
-
-    return -1;
-  };
-
-  return {
-    name,
-    selectedTemperature,
-    getValue,
-  };
-};
-
-let mixFanCurve = (name: string, fanCurves: FanCurve[]): FanCurve => {
-  const max = fanCurves.reduce((a, b) => {
-    if (b.getValue() > a.getValue()) {
-      return b;
-    }
-
-    return a;
-  });
-
-  return {
-    name,
-    getValue: () => {
-      return max.getValue();
-    },
-  };
-};
-
 const getLinearFanCurves = (sources: TemperatureSource[]): LinearFanCurve[] => [
-  linearFanCurve("Linear CPU", "CPU", sources),
-  linearFanCurve("Linear GPU", "GPU", sources),
+  createlinearFanCurve("Linear CPU", "CPU", sources),
+  createlinearFanCurve("Linear GPU", "GPU", sources),
 ];
 
 const LinearFanCurveCard = (fanCurve: LinearFanCurve) => {
@@ -84,7 +43,7 @@ const DemoPage = () => {
   });
 
   let linears = getLinearFanCurves(sources);
-  let mix = mixFanCurve("Mix", linears);
+  let mix = createMixFanCurve("Mix", mixFunctions[0], linears);
   let fanCurves = [...linears, mix];
 
   return (
@@ -97,11 +56,11 @@ const DemoPage = () => {
         </div>
         Temperatures
         <div className="flex gap-3 flex-wrap">
-          {sources.map(TemperatureCard)}
+          {sources.map( (x, i) => <div key={i}>{TemperatureCard(x)}</div>)}
         </div>
         Fan Curves
         <div className="flex gap-3 flex-wrap">
-          {linears.map(LinearFanCurveCard)}
+          {linears.map( (x, i) => <div key={i}>{LinearFanCurveCard(x)}</div>)}
           <MixFanCurveCard name="Mix" fanCurves={linears}></MixFanCurveCard>
         </div>
       </div>

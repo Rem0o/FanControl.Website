@@ -27,7 +27,7 @@ const ControlCard = ({
   const [selectedFanCurve, setSelectedFanCurve] = useState("");
 
   return (
-    <Card background={background}>
+    <Card className={background}>
       <div className="flex flex-col text-white w-52">
         <div className="flex flex-row justify-center items-center">
           {icon}
@@ -46,11 +46,11 @@ const ControlCard = ({
               }
               disabled={!enabled}
             >
-              <option disabled selected={selectedFanCurve == ""}>
+              <option key="" disabled>
                 {""}
               </option>
               {availableFanCurves.map((fc, i) => (
-                <option>{fc.name}</option>
+                <option key={i}>{fc.name}</option>
               ))}
             </Select>
           </div>

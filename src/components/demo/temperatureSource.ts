@@ -8,8 +8,6 @@ function createTempSource(
   min: number,
   max: number
 ): TemperatureSource {
-  let temperature = min;
-
   return {
     name: name,
     value: Math.round((Math.random() * (max - min)) + min),

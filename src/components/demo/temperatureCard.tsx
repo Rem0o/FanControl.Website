@@ -16,7 +16,7 @@ const TemperatureCard = (temperatureSource: TemperatureSource) => {
   const background = "bg-slate-400";
 
   return (
-    <Card background={background}>
+    <Card className={background}>
       <div className="flex flex-col text-white w-52">
         <div className="flex flex-row justify-center items-center">
           {icon}

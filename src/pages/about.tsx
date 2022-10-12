@@ -26,7 +26,7 @@ const AboutPage = () => {
             "https://github.com/falahati/NvAPIWrapper",
             "https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit",
           ].map((x) => (
-            <div>{x}</div>
+            <div><a href={x}>{x}</a></div>
           ))}
         </Card>
       </div>
