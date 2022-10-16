@@ -5,6 +5,7 @@ import Card from "../components/card";
 import Description from "../contents/description.mdx";
 import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
+import { Icon } from "./../components/icon"
 import consts from "../contents/consts";
 import { useEffect, useRef, useState } from "react";
 import { useInterval, useTimeoutBooleanState } from "../hooks/customHooks";
@@ -24,12 +25,6 @@ const NiceHeader = ({ icon, text }: { icon: string; text: string }) => {
     </h1>
   );
 };
-
-const Icon = (path: string) => (
-  <svg className="w-8 h-8" viewBox="0 0 24 24">
-    <path fill="currentColor" d={path} />
-  </svg>
-);
 
 const IconButton = ({
   background,
@@ -130,7 +125,7 @@ const IndexPage = () => {
               "Use the tray icon as a temperature display.",
             ].map((t, i) => (
               <div key={i} className="max-w-xs">
-                <Card>{t}</Card>
+                <Card className="bg-white">{t}</Card>
               </div>
             ))}
           </div>
@@ -183,8 +178,8 @@ const IndexPage = () => {
             <p>
               Want to add more sensors and controls from a third party? No
               problem! Fan Control has a simple plugin system with .NET that
-              allow any third party developper to add any temperature, speed or
-              control sensor he wishes. Installing is as easy as dropping a dll
+              allow any third party developper to add temperature, speed or
+              control sensors. Installing is as easy as dropping a dll
               in the plugin folder, that's it.
             </p>
           </div>

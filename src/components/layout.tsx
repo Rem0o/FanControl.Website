@@ -5,7 +5,7 @@ import { useTimeoutBooleanState } from '../hooks/customHooks';
 
 const links = [
   { url: "/", title: "Home" },
-  { url: "/demo", title: "Demo" },
+  //{ url: "/demo", title: "Demo" },
   { url: "/about", title: "About" }
 ];
 
@@ -20,7 +20,7 @@ const Layout = ({pageTitle, children}: Props) => {
   
   return (
     <div>
-      <nav className='text-black bg-white flex shadow-md'>
+      <nav className='bg-blue-900 text-slate-50 flex shadow-slate-800 shadow-sm'>
         <div className='flex justify-center items-center m-1'>
           <svg onMouseEnter={() => setIsSpinning(true)} className={`${isSpinning ? "animate-spin" : ""} hover:animate-spin h-10 w-10`} viewBox="0 0 24 24">
             <path fill="currentColor" d={icons.svgPaths.fan} />
@@ -34,7 +34,7 @@ const Layout = ({pageTitle, children}: Props) => {
         </ul>
       </nav>
 
-      <main className='p-5'>
+      <main className='p-5 bg-transparent'>
         {children}
       </main>
 
