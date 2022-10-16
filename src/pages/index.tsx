@@ -5,12 +5,14 @@ import Card from "../components/card";
 import Description from "../contents/description.mdx";
 import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
-import { Icon } from "./../components/icon"
+import { Icon } from "./../components/icon";
 import consts from "../contents/consts";
 import { useEffect, useRef, useState } from "react";
 import { useInterval, useTimeoutBooleanState } from "../hooks/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
-import createTempSource, { TemperatureSource } from "../components/demo/temperatureSource";
+import createTempSource, {
+  TemperatureSource,
+} from "../components/demo/temperatureSource";
 import { FanCurve } from "../components/demo/fanCurve";
 
 const pageTitle = "Home";
@@ -52,14 +54,18 @@ const IconButton = ({
 const IndexPage = () => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
 
-  const getSources = () : [TemperatureSource, TemperatureSource, TemperatureSource] => [
+  const getSources = (): [
+    TemperatureSource,
+    TemperatureSource,
+    TemperatureSource
+  ] => [
     createTempSource("a", 40, 60),
     createTempSource("b", 30, 70),
-    createTempSource("c", 26, 65)
+    createTempSource("c", 26, 65),
   ];
 
   const [sources, setSources] = useState(getSources());
-  
+
   useInterval(1000, () => {
     setSources(getSources());
   });
@@ -84,7 +90,7 @@ const IndexPage = () => {
           <path fill="currentColor" d={icons.svgPaths.fan} />
         </svg>
         <h1 className="text-4xl max-w-lg font-semibold">
-          Fan Control is a highly focused fan controlling software for windows.
+          Fan Control is a highly focused fan controlling software for Windows.
         </h1>
         <div className="text-lg">
           <Description />
@@ -117,15 +123,38 @@ const IndexPage = () => {
           <div className="text-2xl font-semibold mb-4">Features rapid fire</div>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 wrap">
             {[
-              "Assisted setup will guide you through your initial config, so you can get to customizing curves right away.",
-              "As simple, or as complex of a config you can create. Start simple, then go crazy.",
-              "Multiple type of fan curves and custom sensors to choose from. Mix multiple togethers for infinite possibilities.",
-              "Save, edit and load multiple configurations.",
-              "Customize the look of the software to fit your theme.",
-              "Use the tray icon as a temperature display.",
-            ].map((t, i) => (
+              [
+                icons.svgPaths.wrench,
+                "Assisted setup will guide you through your initial config.",
+              ],
+              [
+                icons.svgPaths.bulb,
+                "As simple, or as complex of a config you can create. Start simple, then go crazy.",
+              ],
+              [
+                icons.svgPaths.graph,
+                "Multiple type of fan curves and custom sensors to choose from.",
+              ],
+              [
+                icons.svgPaths.save,
+                "Save, edit and load multiple configurations.",
+              ],
+              [
+                icons.svgPaths.brush,
+                "Customize the look of the software to fit your theme.",
+              ],
+              [
+                icons.svgPaths.temperature,
+                "Use the tray icon as a temperature display.",
+              ],
+            ].map(([icon, text], i) => (
               <div key={i} className="max-w-xs">
-                <Card className="bg-white">{t}</Card>
+                <Card className="bg-white">
+                  <div className="flex text-left items-center align-middle">
+                    <div className="mr-3">{Icon(icon)}</div>
+                    <div>{text}</div>
+                  </div>
+                </Card>
               </div>
             ))}
           </div>
@@ -179,8 +208,8 @@ const IndexPage = () => {
               Want to add more sensors and controls from a third party? No
               problem! Fan Control has a simple plugin system with .NET that
               allow any third party developper to add temperature, speed or
-              control sensors. Installing is as easy as dropping a dll
-              in the plugin folder, that's it.
+              control sensors. Installing is as easy as dropping a dll in the
+              plugin folder, that's it.
             </p>
           </div>
         </div>
