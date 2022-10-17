@@ -20,7 +20,7 @@ const Layout = ({pageTitle, children}: Props) => {
   
   return (
     <div>
-      <nav className='bg-blue-900 text-slate-50 flex shadow-slate-800 shadow-sm'>
+      <nav className='bg-blue-500 text-slate-50 flex shadow-slate-800 shadow-sm'>
         <div className='flex justify-center items-center m-1'>
           <svg onMouseEnter={() => setIsSpinning(true)} className={`${isSpinning ? "animate-spin" : ""} hover:animate-spin h-10 w-10`} viewBox="0 0 24 24">
             <path fill="currentColor" d={icons.svgPaths.fan} />
