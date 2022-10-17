@@ -24,7 +24,7 @@ export default function MixFanCurveCard({
   const addFromIndex = (index: number) => {
     let fc = fanCurves[index - 1];
     if (!selectedFanCurveNames.includes(fc.name)) {
-      setSelectedFanCurveNames([...selectedFanCurveNames, fc.name]);
+      setSelectedFanCurveNames(current => [...current, fc.name]);
     }
   };
 
