@@ -7,7 +7,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
 import { Icon } from "./../components/icon";
 import consts from "../contents/consts";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useInterval, useTimeoutBooleanState } from "../hooks/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 import createTempSource, {
@@ -15,7 +15,7 @@ import createTempSource, {
 } from "../components/demo/temperatureSource";
 import { FanCurve } from "../components/demo/fanCurve";
 
-const pageTitle = "Home";
+const pageTitle = "Fan Control";
 
 const NiceHeader = ({ icon, text }: { icon: string; text: string }) => {
   return (

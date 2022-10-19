@@ -55,6 +55,18 @@ const config: GatsbyConfig = {
       sitemap: 'https://getfancontrol.com/sitemap.xml',
       policy: [{userAgent: '*', allow: '/'}]
     }
+  },
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `Fan Control`,
+      short_name: `Fan Control`,
+      start_url: `/`,
+      background_color: `#f8fafc`,
+      theme_color: `#2686f2`,
+      display: `standalone`,
+      icon: `src/images/favicon.svg`
+    }
   }]
 };
 
