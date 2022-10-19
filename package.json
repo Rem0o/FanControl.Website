@@ -8,6 +8,7 @@
     "gatsby"
   ],
   "scripts": {
+    "deploy": "gatsby build && gh-pages -d public",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -37,6 +38,7 @@
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.12",
     "gatsby-plugin-postcss": "^5.23.0",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.3"
