@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Fan Control`,
-    siteUrl: `https://www.getfancontrol.com`
+    siteUrl: `https://getfancontrol.com`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -45,8 +45,8 @@ const config: GatsbyConfig = {
   {
     resolve: 'gatsby-plugin-robots-txt',
     options: {
-      host: 'https://www.getfancontrol.com',
-      sitemap: 'https://www.getfancontrol.com/sitemap.xml',
+      host: 'https://getfancontrol.com',
+      sitemap: 'https://getfancontrol.com/sitemap.xml',
       policy: [{userAgent: '*', allow: '/'}]
     }
   }]
