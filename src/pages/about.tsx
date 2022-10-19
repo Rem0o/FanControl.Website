@@ -8,13 +8,13 @@ import icons from "../contents/icons";
 
 const pageTitle = "About";
 
-const cardStyle = "bg-white space-y-2";
+const cardStyle = "bg-white gap-y-2";
 const headerStyle = "text-xl font-medium";
 
 const AboutPage = () => {
   return (
     <Layout pageTitle={pageTitle}>
-      <div className="flex space-x-4">
+      <div className="flex gap-4 flex-wrap">
         <Card className={cardStyle}>
           <div className={headerStyle}>Created and designed by:</div>
           <div className="flex align-middle items-center">

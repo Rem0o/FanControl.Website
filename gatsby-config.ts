@@ -2,8 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `FanControl`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Fan Control`,
+    siteUrl: `https://www.getfancontrol.com`
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -14,7 +14,7 @@ const config: GatsbyConfig = {
     options: {
       "trackingId": "xxxxxxxx"
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-sitemap", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+  }, "gatsby-plugin-image", "gatsby-plugin-sitemap", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
@@ -41,7 +41,15 @@ const config: GatsbyConfig = {
         },
       ],
     },
-  },]
+  },
+  {
+    resolve: 'gatsby-plugin-robots-txt',
+    options: {
+      host: 'https://www.getfancontrol.com',
+      sitemap: 'https://www.getfancontrol.com/sitemap.xml',
+      policy: [{userAgent: '*', allow: '/'}]
+    }
+  }]
 };
 
 export default config;

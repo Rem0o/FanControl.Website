@@ -89,10 +89,10 @@ const IndexPage = () => {
         >
           <path fill="currentColor" d={icons.svgPaths.fan} />
         </svg>
-        <h1 className="text-4xl max-w-lg font-semibold">
+        <h1 className="text-4xl max-w-lg font-bold">
           Fan Control is a highly focused fan controlling software for Windows.
         </h1>
-        <div className="text-lg">
+        <div className="text-2xl">
           <Description />
         </div>
 
@@ -114,6 +114,7 @@ const IndexPage = () => {
         </div>
 
         <StaticImage
+          className="rounded"
           width={800}
           src="./../images/main.png"
           alt="Main interface"
@@ -178,7 +179,7 @@ const IndexPage = () => {
           </div>
           <div className="m-auto">
             <MixFanCurveCard
-              name="Demo Card"
+              name="Demo Case Fans"
               fanCurves={mockedFanCurves}
               selectedFanCurvesDefault={mockedFanCurves
                 .slice(0, 2)
