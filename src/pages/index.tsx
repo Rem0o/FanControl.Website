@@ -78,7 +78,7 @@ const IndexPage = () => {
   ];
 
   return (
-    <Layout pageTitle={pageTitle}>
+    <Layout>
       <div className="flex flex-col place-items-center text-center gap-12">
         <svg
           onMouseEnter={() => setIsSpinning(true)}
