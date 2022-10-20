@@ -14,6 +14,7 @@ import createTempSource, {
   TemperatureSource,
 } from "../components/demo/temperatureSource";
 import { FanCurve } from "../components/demo/fanCurve";
+import ExternalLink from "../components/externalLink";
 
 const pageTitle = "Fan Control";
 
@@ -161,7 +162,7 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 wrap text-left justify-center">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 wrap text-justify justify-center">
           <div className="max-w-sm">
             <NiceHeader
               text="It's all about the mix"
@@ -202,15 +203,34 @@ const IndexPage = () => {
 
           <div className="max-w-sm">
             <NiceHeader
-              text="Open through plugins"
+              text="Expansion through plugins"
               icon={icons.svgPaths.plugin}
             ></NiceHeader>
             <p>
               Want to add more sensors and controls from a third party? No
-              problem! Fan Control has a simple plugin system with .NET that
-              allow any third party developper to add temperature, speed or
-              control sensors. Installing is as easy as dropping a dll in the
-              plugin folder, that's it.
+              problem! Fan Control has a simple{" "}
+              <ExternalLink href={consts.urls.pluginUrl}>plugin</ExternalLink>{" "}
+              system with .NET that allow any third party developper to add
+              temperature, speed or control sensors. Installing is as easy as
+              dropping a dll in the plugin folder, that's it.
+            </p>
+          </div>
+
+          <div className="max-w-sm">
+            <NiceHeader
+              text="Open source backend"
+              icon={icons.svgPaths.backend}
+            ></NiceHeader>
+            <p>
+              Fan Control backend is mainly based on{" "}
+              <ExternalLink href={consts.urls.lhmGithubPageUrl}>
+                LibreHardwareMonitor
+              </ExternalLink>
+              , an open source fork of the original OpenHardwareMonitor. This
+              means that hardware compatiblity is entierely open for anyone to
+              contribute, and doesn't rely on a single developper which may stop
+              caring at some point. Combined with the plugin system, Fan Control
+              is unlocked for many generations of hardware to come.
             </p>
           </div>
         </div>
