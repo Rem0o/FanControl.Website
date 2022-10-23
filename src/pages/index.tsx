@@ -10,11 +10,14 @@ import consts from "../contents/consts";
 import { useEffect, useState } from "react";
 import { useInterval, useTimeoutBooleanState } from "../hooks/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
-import createTempSource, {
+import {
+  createTempSource,
+  createTempSourceRandom,
   TemperatureSource,
 } from "../components/demo/temperatureSource";
 import { FanCurve } from "../components/demo/fanCurve";
 import ExternalLink from "../components/externalLink";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const pageTitle = "Fan Control";
 
@@ -83,12 +86,17 @@ const DemoMixFanCurveCard = () => {
     TemperatureSource,
     TemperatureSource
   ] => [
-    createTempSource("a", 40, 60),
-    createTempSource("b", 30, 70),
-    createTempSource("c", 26, 65),
+    createTempSourceRandom("a", 40, 60),
+    createTempSourceRandom("b", 30, 70),
+    createTempSourceRandom("c", 26, 65),
   ];
 
-  const [sources, setSources] = useState(getSources());
+  const [sources, setSources] = useState([
+    createTempSource("a", 50),
+    createTempSource("b", 50),
+    createTempSource("c", 50),
+  ]);
+  
   useInterval(1000, () => {
     setSources(getSources());
   });

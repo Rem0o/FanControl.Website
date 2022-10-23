@@ -3,11 +3,18 @@ import type { HeadFC } from "gatsby";
 import Layout from "../components/layout";
 import ControlCard from "../components/demo/controlCard";
 import TemperatureCard from "../components/demo/temperatureCard";
-import createTempSource, {
+import {
+  createTempSourceRandom,
   TemperatureSource,
 } from "../components/demo/temperatureSource";
 import { useState } from "react";
-import { createlinearFanCurve, createMixFanCurve, FanCurve, LinearFanCurve, mixFunctions } from "../components/demo/fanCurve";
+import {
+  createlinearFanCurve,
+  createMixFanCurve,
+  FanCurve,
+  LinearFanCurve,
+  mixFunctions,
+} from "../components/demo/fanCurve";
 import FanCurveCard from "../components/demo/fanCurveCard";
 import icons from "./../contents/icons";
 import { useInterval } from "../hooks/customHooks";
@@ -16,8 +23,8 @@ import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 const pageTitle = "Demo";
 
 const getSources = (): TemperatureSource[] => [
-  createTempSource("CPU", 30, 60),
-  createTempSource("GPU", 35, 85),
+  createTempSourceRandom("CPU", 30, 60),
+  createTempSourceRandom("GPU", 35, 85),
 ];
 
 const getLinearFanCurves = (sources: TemperatureSource[]): LinearFanCurve[] => [
@@ -56,11 +63,15 @@ const DemoPage = () => {
         </div>
         Temperatures
         <div className="flex gap-3 flex-wrap">
-          {sources.map( (x, i) => <div key={i}>{TemperatureCard(x)}</div>)}
+          {sources.map((x, i) => (
+            <div key={i}>{TemperatureCard(x)}</div>
+          ))}
         </div>
         Fan Curves
         <div className="flex gap-3 flex-wrap">
-          {linears.map( (x, i) => <div key={i}>{LinearFanCurveCard(x)}</div>)}
+          {linears.map((x, i) => (
+            <div key={i}>{LinearFanCurveCard(x)}</div>
+          ))}
           <MixFanCurveCard name="Mix" fanCurves={linears}></MixFanCurveCard>
         </div>
       </div>
