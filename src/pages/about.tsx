@@ -15,7 +15,7 @@ const headerStyle = "text-xl font-medium";
 const AboutPage = () => {
   return (
     <Layout pageTitle={pageTitle}>
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex gap-4 flex-wrap p-5">
         <Card className={cardStyle}>
           <div className={headerStyle}>Created and designed by:</div>
           <div className="flex align-middle items-center">

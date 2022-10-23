@@ -6,6 +6,7 @@ import { useTimeoutBooleanState } from "../hooks/customHooks";
 const links = [
   { url: "/", title: "Home" },
   //{ url: "/demo", title: "Demo" },
+  { url: "/docs", title: "Docs" },
   { url: "/about", title: "About" },
 ];
 
@@ -44,14 +45,14 @@ const Layout = ({ pageTitle, children }: Props) => {
         </div>
         <ul className="flex ml-auto justify-center items-center">
           {links.map((link) => (
-            <li key={link.title} className="p-3">
+            <li key={link.title} className="p-3 hover:bg-blue-600">
               <Link to={link.url}>{link.title}</Link>
             </li>
           ))}
         </ul>
       </nav>
 
-      <main className="p-5 bg-transparent">{children}</main>
+      <main className="bg-transparent">{children}</main>
 
       <footer className="bg-slate-200 flex justify-center items-center"></footer>
     </div>
