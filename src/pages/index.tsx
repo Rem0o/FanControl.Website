@@ -7,7 +7,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
 import { Icon } from "./../components/icon";
 import consts from "../contents/consts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useInterval, useTimeoutBooleanState } from "../hooks/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 import createTempSource, {
@@ -44,7 +44,7 @@ const IconButton = ({
 }) => (
   <button onClick={() => (onClick ? onClick() : null)}>
     <Card className={background}>
-      <div className={`flex gap-2 w-36 ${textColor}`}>
+      <div className={`flex gap-2 w-40 ${textColor}`}>
         {Icon(icon)}
         <span className="m-auto">{text}</span>
       </div>
@@ -52,9 +52,32 @@ const IconButton = ({
   </button>
 );
 
-const IndexPage = () => {
-  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
+const DownloadButton = () => {
+  const [version, setVersion] = useState(0);
 
+  useEffect(() => {
+    fetch(consts.urls.versionJsonUrl)
+      .then((r) => r.json())
+      .then((json) => setVersion(json.Number));
+  }, []);
+
+  let text = "Download";
+  if (version > 0) {
+    text += " V" + version;
+  }
+
+  return (
+    <IconButton
+      onClick={() => window.open(consts.urls.directDownloadUrl)}
+      background="bg-blue-500 hover:bg-blue-600"
+      icon={icons.svgPaths.download}
+      textColor="text-white"
+      text={text}
+    />
+  );
+};
+
+const DemoMixFanCurveCard = () => {
   const getSources = (): [
     TemperatureSource,
     TemperatureSource,
@@ -66,7 +89,6 @@ const IndexPage = () => {
   ];
 
   const [sources, setSources] = useState(getSources());
-
   useInterval(1000, () => {
     setSources(getSources());
   });
@@ -79,8 +101,20 @@ const IndexPage = () => {
   ];
 
   return (
+    <MixFanCurveCard
+      name="Demo Case Fans"
+      fanCurves={mockedFanCurves}
+      selectedFanCurvesDefault={mockedFanCurves.slice(0, 2).map((x) => x.name)}
+    ></MixFanCurveCard>
+  );
+};
+
+const IndexPage = () => {
+  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
+
+  return (
     <Layout>
-      <div className="flex flex-col place-items-center text-center gap-12">
+      <div className="flex flex-col place-items-center text-center gap-12 p-5">
         <svg
           onMouseEnter={() => setIsSpinning(true)}
           className={`${
@@ -105,13 +139,7 @@ const IndexPage = () => {
             textColor="text-black"
             text="GitHub Page"
           />
-          <IconButton
-            onClick={() => window.open(consts.urls.directDownloadUrl)}
-            background="bg-blue-500 hover:bg-blue-600"
-            icon={icons.svgPaths.download}
-            textColor="text-white"
-            text="Download"
-          />
+          <DownloadButton />
         </div>
 
         <StaticImage
@@ -179,13 +207,7 @@ const IndexPage = () => {
             </p>
           </div>
           <div className="m-auto">
-            <MixFanCurveCard
-              name="Demo Case Fans"
-              fanCurves={mockedFanCurves}
-              selectedFanCurvesDefault={mockedFanCurves
-                .slice(0, 2)
-                .map((x) => x.name)}
-            ></MixFanCurveCard>
+            <DemoMixFanCurveCard />
           </div>
 
           <div className="max-w-sm">
