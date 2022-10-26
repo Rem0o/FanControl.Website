@@ -17,7 +17,7 @@ import {
 } from "../components/demo/fanCurve";
 import FanCurveCard from "../components/demo/fanCurveCard";
 import icons from "./../contents/icons";
-import { useInterval } from "../hooks/customHooks";
+import { useInterval } from "../utilities/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 
 const pageTitle = "Demo";

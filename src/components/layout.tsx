@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import icons from "./../contents/icons";
-import { useTimeoutBooleanState } from "../hooks/customHooks";
+import { useTimeoutBooleanState } from "../utilities/customHooks";
 
 const links = [
   { url: "/", title: "Home" },

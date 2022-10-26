@@ -8,7 +8,7 @@ import icons from "./../contents/icons";
 import { Icon } from "./../components/icon";
 import consts from "../contents/consts";
 import { useEffect, useState } from "react";
-import { useInterval, useTimeoutBooleanState } from "../hooks/customHooks";
+import { useInterval, useTimeoutBooleanState } from "../utilities/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 import {
   createTempSource,
@@ -23,7 +23,7 @@ const pageTitle = "Fan Control";
 
 const NiceHeader = ({ icon, text }: { icon: string; text: string }) => {
   return (
-    <h1 className="flex m-1">
+    <h1 className="flex m-1 text-left">
       <svg className="h-12 w-12" viewBox="0 0 24 24">
         <path fill="currentColor" d={icon} />
       </svg>
@@ -70,13 +70,27 @@ const DownloadButton = () => {
   }
 
   return (
-    <IconButton
-      onClick={() => window.open(consts.urls.directDownloadUrl)}
-      background="bg-blue-500 hover:bg-blue-600"
-      icon={icons.svgPaths.download}
-      textColor="text-white"
-      text={text}
-    />
+    <OutboundLink href={consts.urls.directDownloadUrl}>
+      <IconButton
+        background="bg-blue-500 hover:bg-blue-600"
+        icon={icons.svgPaths.download}
+        textColor="text-white"
+        text={text}
+      />
+    </OutboundLink>
+  );
+};
+
+const GithubButton = () => {
+  return (
+    <OutboundLink href={consts.urls.githubPageUrl}>
+      <IconButton
+        background="bg-gray-300 hover:bg-gray-400"
+        icon={icons.svgPaths.github}
+        textColor="text-black"
+        text="GitHub Page"
+      />
+    </OutboundLink>
   );
 };
 
@@ -96,7 +110,7 @@ const DemoMixFanCurveCard = () => {
     createTempSource("b", 50),
     createTempSource("c", 50),
   ]);
-  
+
   useInterval(1000, () => {
     setSources(getSources());
   });
@@ -140,22 +154,18 @@ const IndexPage = () => {
         </div>
 
         <div className="flex gap-6">
-          <IconButton
-            onClick={() => window.open(consts.urls.githubPageUrl)}
-            background="bg-gray-300 hover:bg-gray-400"
-            icon={icons.svgPaths.github}
-            textColor="text-black"
-            text="GitHub Page"
-          />
+          <GithubButton />
           <DownloadButton />
         </div>
 
-        <StaticImage
-          className="rounded"
-          width={800}
-          src="./../images/main.png"
-          alt="Main interface"
-        ></StaticImage>
+        <Card className="p-0">
+          <StaticImage
+            className="rounded"
+            width={800}
+            src="./../images/main.png"
+            alt="Main interface"
+          ></StaticImage>
+        </Card>
 
         <div>
           <div className="text-2xl font-semibold mb-4">Features rapid fire</div>
