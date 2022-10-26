@@ -31,7 +31,8 @@
     "gatsby-transformer-sharp": "^4.23.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "tailwind-merge": "^1.7.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",

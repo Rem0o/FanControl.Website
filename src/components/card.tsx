@@ -1,4 +1,5 @@
 import * as React from "react";
+import { twMerge } from "tailwind-merge";
 
 const defaultClass = "h-fit w-fit p-3 rounded-lg shadow-md shadow-slate-400";
 
@@ -10,7 +11,7 @@ const Card = (
 ) => {
   const { children, className, ...restOfProps } = props;
   return (
-    <div {...restOfProps} className={`${defaultClass} ${className ?? ""}`}>
+    <div {...restOfProps} className={twMerge(defaultClass, className)}>
       {children}
     </div>
   );
