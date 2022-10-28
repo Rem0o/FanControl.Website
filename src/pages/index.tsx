@@ -16,7 +16,7 @@ import {
   TemperatureSource,
 } from "../components/demo/temperatureSource";
 import { FanCurve } from "../components/demo/fanCurve";
-import ExternalLink from "../components/externalLink";
+import { ExternalLink, TrackedExternalLink } from "../components/externalLink";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 
 const pageTitle = "Fan Control";
@@ -126,7 +126,7 @@ const DemoMixFanCurveCard = () => {
     <MixFanCurveCard
       name="Demo Case Fans"
       fanCurves={mockedFanCurves}
-      selectedFanCurvesDefault={mockedFanCurves.slice(0, 2).map((x) => x.name)}
+      selectedFanCurvesDefault={mockedFanCurves.slice(0, 1).map((x) => x.name)}
     ></MixFanCurveCard>
   );
 };
@@ -249,7 +249,9 @@ const IndexPage = () => {
             <p>
               Want to add more sensors and controls from a third party? No
               problem! Fan Control has a simple{" "}
-              <ExternalLink href={consts.urls.pluginUrl}>plugin</ExternalLink>{" "}
+              <TrackedExternalLink href={consts.urls.pluginUrl}>
+                plugin
+              </TrackedExternalLink>{" "}
               system with .NET that allow any third party developper to add
               temperature, speed or control sensors. Installing is as easy as
               dropping a dll in the plugin folder, that's it.
