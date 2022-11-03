@@ -228,7 +228,7 @@ const IndexPage = () => {
             <p>
               Fan Control has ALL the parameters. Response time, hysteresis,
               hysteresis direction, step up, step down... Fine tune to your
-              hearth's desire. Control your fan's start and stopping logic, for
+              heart's desire. Control your fan's start and stopping logic, for
               smooth 0 RPM operation <i>(when supported)</i>.
             </p>
           </div>
@@ -244,7 +244,7 @@ const IndexPage = () => {
               <TrackedExternalLink href={consts.urls.pluginUrl}>
                 plugin
               </TrackedExternalLink>{" "}
-              system with .NET that allow any third party developper to add
+              system with .NET that allow any third party developer to add
               temperature, speed or control sensors. Installing is as easy as
               dropping a dll in the plugin folder, that's it.
             </p>
@@ -262,7 +262,7 @@ const IndexPage = () => {
               </ExternalLink>
               , an open source fork of the original OpenHardwareMonitor. This
               means that hardware compatiblity is entierely open for anyone to
-              contribute, and doesn't rely on a single developper which may stop
+              contribute, and doesn't rely on a single developer which may stop
               caring at some point. Combined with the plugin system, Fan Control
               is unlocked for many generations of hardware to come.
             </p>
