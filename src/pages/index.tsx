@@ -37,7 +37,7 @@ const IconButton = ({
 }) => (
   <button onClick={() => (onClick ? onClick() : null)}>
     <Card className={background}>
-      <div className={`flex gap-2 w-40 ${textColor}`}>
+      <div className={`flex w-40 gap-2 ${textColor}`}>
         {Icon(icon)}
         <span className="m-auto">{text}</span>
       </div>
@@ -126,17 +126,17 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col place-items-center text-center gap-12 p-5">
+      <div className="flex flex-col place-items-center gap-12 p-5 text-center">
         <svg
           onMouseEnter={() => setIsSpinning(true)}
           className={`${
             isSpinning ? "animate-spin" : ""
-          } hover:animate-spin h-36 w-36`}
+          } h-36 w-36 hover:animate-spin`}
           viewBox="0 0 24 24"
         >
           <path fill="currentColor" d={icons.svgPaths.fan} />
         </svg>
-        <h1 className="text-4xl max-w-lg font-bold">
+        <h1 className="max-w-lg text-4xl font-bold">
           Fan Control is a highly focused fan controlling software for Windows.
         </h1>
         <div className="text-2xl">
@@ -160,8 +160,8 @@ const IndexPage = () => {
         </Card>
 
         <div>
-          <div className="text-2xl font-semibold mb-4">Features rapid fire</div>
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 wrap">
+          <div className="mb-4 text-2xl font-semibold">Features rapid fire</div>
+          <div className="wrap grid gap-5 sm:grid-cols-1 md:grid-cols-2">
             {[
               [
                 icons.svgPaths.wrench,
@@ -190,7 +190,7 @@ const IndexPage = () => {
             ].map(([icon, text], i) => (
               <div key={i} className="max-w-xs">
                 <Card className="bg-white">
-                  <div className="flex text-left items-center align-middle">
+                  <div className="flex items-center text-left align-middle">
                     <div className="mr-3">{Icon(icon)}</div>
                     <div>{text}</div>
                   </div>
@@ -200,7 +200,7 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 wrap text-justify justify-center">
+        <div className="wrap grid justify-center gap-10 text-justify sm:grid-cols-1 md:grid-cols-2">
           <div className="max-w-sm">
             <NiceHeader
               text="It's all about the mix"

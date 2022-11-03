@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,13 +8,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
         primary: colors.blue,
         body: colors.slate,
-      }
-    }
+      },
+    },
   },
-  plugins: [
-    'gatsby-plugin-postcss'
-  ],
-}
+  plugins: ["gatsby-plugin-postcss"],
+};

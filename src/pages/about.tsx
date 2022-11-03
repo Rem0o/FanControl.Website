@@ -14,10 +14,10 @@ const cardStyle = "bg-white gap-y-2 max-w-sm sm:max-w-2xl";
 const AboutPage = () => {
   return (
     <Layout pageTitle={pageTitle}>
-      <div className="flex gap-4 flex-wrap p-5">
+      <div className="flex flex-wrap gap-4 p-5">
         <Card className={cardStyle}>
           <div className="text-xl font-medium">Powered by:</div>
-          <ul className="list-disc ml-5">
+          <ul className="ml-5 list-disc">
             {[
               consts.urls.lhmGithubPageUrl,
               "https://github.com/falahati/NvAPIWrapper",

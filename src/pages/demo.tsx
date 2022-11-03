@@ -55,20 +55,20 @@ const DemoPage = () => {
 
   return (
     <Layout pageTitle={pageTitle}>
-      <div className="flex gap-3 w-full flex-wrap flex-col ">
+      <div className="flex w-full flex-col flex-wrap gap-3 ">
         Controls
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-wrap gap-3">
           <ControlCard name="Front Fan" availableFanCurves={fanCurves} />
           <ControlCard name="Top Fan" availableFanCurves={fanCurves} />
         </div>
         Temperatures
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-wrap gap-3">
           {sources.map((x, i) => (
             <div key={i}>{TemperatureCard(x)}</div>
           ))}
         </div>
         Fan Curves
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-wrap gap-3">
           {linears.map((x, i) => (
             <div key={i}>{LinearFanCurveCard(x)}</div>
           ))}

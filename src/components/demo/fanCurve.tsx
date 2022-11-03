@@ -15,8 +15,8 @@ type MixFunction = {
 };
 
 type MixFanCurve = FanCurve & {
-  selectedMixFunction: MixFunction
-}
+  selectedMixFunction: MixFunction;
+};
 
 const mixFunctions: MixFunction[] = [
   {
@@ -36,7 +36,6 @@ const mixFunctions: MixFunction[] = [
       fanCurves.length,
   },
 ];
-
 
 const clamp = (num: number, min: number, max: number) =>
   Math.min(Math.max(num, min), max);
@@ -62,7 +61,11 @@ let createlinearFanCurve = (
   };
 };
 
-let createMixFanCurve = (name: string, mixFunction: MixFunction, fanCurves: FanCurve[]): MixFanCurve => {
+let createMixFanCurve = (
+  name: string,
+  mixFunction: MixFunction,
+  fanCurves: FanCurve[]
+): MixFanCurve => {
   return {
     name,
     selectedMixFunction: mixFunction,
@@ -74,4 +77,4 @@ let createMixFanCurve = (name: string, mixFunction: MixFunction, fanCurves: FanC
 
 export type { FanCurve, LinearFanCurve, MixFanCurve, MixFunction };
 
-export { mixFunctions, createlinearFanCurve, createMixFanCurve }
+export { mixFunctions, createlinearFanCurve, createMixFanCurve };

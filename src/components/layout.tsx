@@ -9,10 +9,10 @@ type Props = {
 
 const Layout = ({ pageTitle, children }: Props) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <NavBar pageTitle={pageTitle} />
 
-      <main className="bg-transparent grow">{children}</main>
+      <main className="grow bg-transparent">{children}</main>
 
       <Footer />
     </div>

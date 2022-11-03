@@ -17,11 +17,11 @@ const FooterButton = ({
 }) => {
   return (
     <OutboundLink href={href}>
-      <button className="hover:border-blue-500 hover:text-blue-500 border border-slate-600 rounded-2xl py-1 px-2 pr-3 flex text-sm">
+      <button className="flex rounded-2xl border border-slate-600 py-1 px-2 pr-3 text-sm hover:border-blue-500 hover:text-blue-500">
         <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
-        <span className="self-center ml-1">{text}</span>
+        <span className="ml-1 self-center">{text}</span>
       </button>
     </OutboundLink>
   );
@@ -29,13 +29,13 @@ const FooterButton = ({
 
 const Footer = () => {
   return (
-    <footer className="border border-t bg-slate-100 border-slate-300 flex min-h-sm text-slate-500 pt-2 mt-10 text-center">
-      <div className="flex flex-col space-y-0 min-w-sm m-auto">
+    <footer className="min-h-sm mt-10 flex border border-t border-slate-300 bg-slate-100 pt-2 text-center text-slate-500">
+      <div className="min-w-sm m-auto flex flex-col space-y-0">
         <div className="flex items-center justify-center ">
           <svg className="h-8 w-8" viewBox="0 0 24 24">
             <path fill="currentColor" d={icons.svgPaths.fan} />
           </svg>
-          <span className="text-xl self-center ml-1">Fan Control</span>
+          <span className="ml-1 self-center text-xl">Fan Control</span>
         </div>
         <div>Rémi Mercier</div>
         <ExternalLink
@@ -44,7 +44,7 @@ const Footer = () => {
         >
           {consts.urls.email}
         </ExternalLink>
-        <div className="flex space-x-3 py-3 items-center justify-center">
+        <div className="flex items-center justify-center space-x-3 py-3">
           <FooterButton
             iconSvgPath={icons.svgPaths.heart}
             href={consts.urls.sponsor}
@@ -60,6 +60,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-}
+};
 
 export { Footer };

@@ -2,9 +2,9 @@ import React from "react";
 
 const NiceHeader = ({ icon, text }: { icon?: string; text: string }) => {
   return (
-    <h1 className="flex text-left items-center mb-2">
+    <h1 className="mb-2 flex items-center text-left">
       {icon ? (
-        <svg className="h-12 w-12 mr-5" viewBox="0 0 24 24">
+        <svg className="mr-5 h-12 w-12" viewBox="0 0 24 24">
           <path fill="currentColor" d={icon} />
         </svg>
       ) : (

@@ -75,6 +75,7 @@ const config: GatsbyConfig = {
         icon: `src/images/favicon.svg`,
       },
     },
+    "gatsby-plugin-dts-css-modules",
   ],
 };
 

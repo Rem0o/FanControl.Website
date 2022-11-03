@@ -22,13 +22,13 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(false, 3000);
 
   return (
-    <nav className="bg-blue-500 text-slate-50 flex shadow-slate-400 shadow-md">
-      <div className="flex justify-center items-center m-1">
+    <nav className="flex bg-blue-500 text-slate-50 shadow-md shadow-slate-400">
+      <div className="m-1 flex items-center justify-center">
         <svg
           onMouseEnter={() => setIsSpinning(true)}
           className={`${
             isSpinning ? "animate-spin" : ""
-          } hover:animate-spin h-10 w-10`}
+          } h-10 w-10 hover:animate-spin`}
           viewBox="0 0 24 24"
         >
           <path fill="currentColor" d={icons.svgPaths.fan} />
@@ -37,7 +37,7 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
           <Link to={links[0].url}>Fan Control</Link> {getPageTitle(pageTitle)}
         </div>
       </div>
-      <ul className="flex ml-auto justify-center items-center">
+      <ul className="ml-auto flex items-center justify-center">
         {links.map((link) => (
           <li key={link.title} className="p-3 hover:bg-blue-600">
             <Link to={link.url}>{link.title}</Link>

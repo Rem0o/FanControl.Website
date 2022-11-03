@@ -5,7 +5,7 @@ import DocSection from "../components/docs/docSection";
 import { graph, linear } from "../components/docs/fanCurves";
 import Layout from "../components/layout";
 import NiceHeader from "../components/niceHeader";
-import * as styles from "./docs.module.css"
+import * as styles from "../styles/docs.module.css";
 
 const sections: DocSection[] = [linear, graph];
 
@@ -13,7 +13,7 @@ const DocSectionComponent = (section: DocSection, onClick: () => void) => {
   return (
     <li
       key={section.key}
-      className="cursor-pointer rounded hover:bg-slate-200 p-1"
+      className="cursor-pointer rounded p-1 hover:bg-slate-200"
       onClick={() => onClick()}
     >
       {section.key}
@@ -26,7 +26,7 @@ const DocsPage = () => {
 
   return (
     <Layout pageTitle="Docs">
-      <div className="flex max-w-5xl m-auto p-5">
+      <div className="m-auto flex max-w-5xl p-5">
         {/* Left columm with elements */}
         <div className="flex border-r-2 border-slate-200">
           <ul className=" mr-5">

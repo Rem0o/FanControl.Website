@@ -38,10 +38,13 @@
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.12",
+    "gatsby-plugin-dts-css-modules": "^3.0.0",
     "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-postcss": "^5.23.0",
     "gh-pages": "^4.0.0",
     "postcss": "^8.4.16",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.3"
   }

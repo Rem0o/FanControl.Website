@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import icons from "../../contents/icons";
 import Select from "../select";
-import { createMixFanCurve, FanCurve, MixFanCurve, MixFunction, mixFunctions } from "./fanCurve";
+import {
+  createMixFanCurve,
+  FanCurve,
+  MixFanCurve,
+  MixFunction,
+  mixFunctions,
+} from "./fanCurve";
 import FanCurveCard from "./fanCurveCard";
 
 export default function MixFanCurveCard({
@@ -14,21 +20,27 @@ export default function MixFanCurveCard({
   selectedFanCurvesDefault?: string[];
 }) {
   const [selectedFanCurveNames, setSelectedFanCurveNames] = useState(
-    selectedFanCurvesDefault ?? fanCurves.map(x => x.name)
+    selectedFanCurvesDefault ?? fanCurves.map((x) => x.name)
   );
 
-  const selectedFanCurves = fanCurves.filter(x => selectedFanCurveNames.includes(x.name))
+  const selectedFanCurves = fanCurves.filter((x) =>
+    selectedFanCurveNames.includes(x.name)
+  );
 
   const [selectedFunction, setSelectedFunction] = useState(mixFunctions[0]);
 
   const addFromIndex = (index: number) => {
     let fc = fanCurves[index - 1];
     if (!selectedFanCurveNames.includes(fc.name)) {
-      setSelectedFanCurveNames(current => [...current, fc.name]);
+      setSelectedFanCurveNames((current) => [...current, fc.name]);
     }
   };
 
-  const fanCurve: MixFanCurve = createMixFanCurve(name, selectedFunction, selectedFanCurves);
+  const fanCurve: MixFanCurve = createMixFanCurve(
+    name,
+    selectedFunction,
+    selectedFanCurves
+  );
 
   const suffix =
     selectedFanCurveNames.length > 0
@@ -43,7 +55,9 @@ export default function MixFanCurveCard({
       controlValueSuffix={` (${suffix})`}
     >
       <Select
-        onChange={(e) => setSelectedFunction(mixFunctions[e.target.selectedIndex])}
+        onChange={(e) =>
+          setSelectedFunction(mixFunctions[e.target.selectedIndex])
+        }
         value={fanCurve.selectedMixFunction.name}
         label="Function"
       >
@@ -70,7 +84,7 @@ export default function MixFanCurveCard({
       </Select>
 
       {selectedFanCurves.map((x, i) => (
-        <div key={i} className="text-sm my-2 ml-2">
+        <div key={i} className="my-2 ml-2 text-sm">
           <span className="mr-1">○</span> <span>{x.name}</span>
           <span> ({x.getValue()} %)</span>
           <button
@@ -79,7 +93,7 @@ export default function MixFanCurveCard({
                 selectedFanCurveNames.filter((f) => f != x.name)
               )
             }
-            className="float-right border border-white px-1 rounded"
+            className="float-right rounded border border-white px-1"
           >
             X
           </button>

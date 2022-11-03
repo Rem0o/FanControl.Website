@@ -3,7 +3,7 @@ import Card from "../card";
 import { FanCurve } from "./fanCurve";
 
 const icon = (path: string) => (
-  <svg className="w-12 h-12" viewBox="0 0 24 24">
+  <svg className="h-12 w-12" viewBox="0 0 24 24">
     <path fill="currentColor" d={path} />
   </svg>
 );
@@ -21,17 +21,16 @@ export default function FanCurveCard({
   controlValueSuffix,
   children,
 }: Props) {
-
   const background = "bg-blue-500";
   const value = fanCurve.getValue();
-  const isValid = (number:number) => number >= 0 && number <= 100;
+  const isValid = (number: number) => number >= 0 && number <= 100;
 
   return (
     <Card className={background}>
-      <div className="flex flex-col text-white w-52">
-        <div className="flex flex-row justify-center items-center">
+      <div className="flex w-52 flex-col text-white">
+        <div className="flex flex-row items-center justify-center">
           {icon(iconPath)}
-          <div className="border-b-2 ml-4 border-white w-full ">
+          <div className="ml-4 w-full border-b-2 border-white ">
             {fanCurve.name}
           </div>
         </div>
