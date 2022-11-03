@@ -32,7 +32,6 @@ const config: GatsbyConfig = {
       },
       __key: "images",
     },
-    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

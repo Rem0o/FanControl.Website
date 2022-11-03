@@ -18,19 +18,9 @@ import {
 import { FanCurve } from "../components/demo/fanCurve";
 import { ExternalLink, TrackedExternalLink } from "../components/externalLink";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
+import NiceHeader from "../components/niceHeader";
 
 const pageTitle = "Fan Control";
-
-const NiceHeader = ({ icon, text }: { icon: string; text: string }) => {
-  return (
-    <h1 className="flex m-1 text-left">
-      <svg className="h-12 w-12" viewBox="0 0 24 24">
-        <path fill="currentColor" d={icon} />
-      </svg>
-      <span className="ml-5 text-2xl font-semibold">{text}</span>
-    </h1>
-  );
-};
 
 const IconButton = ({
   background,
@@ -150,7 +140,9 @@ const IndexPage = () => {
           Fan Control is a highly focused fan controlling software for Windows.
         </h1>
         <div className="text-2xl">
-          <Description />
+          <p>No installation required.</p>
+          <br />
+          <p>Low on ressources, high on power.</p>
         </div>
 
         <div className="flex gap-6">

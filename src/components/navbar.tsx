@@ -6,7 +6,7 @@ import { useTimeoutBooleanState } from "../utilities/customHooks";
 const links = [
   { url: "/", title: "Home" },
   //{ url: "/demo", title: "Demo" },
-  //{ url: "/docs", title: "Docs" },
+  { url: "/docs", title: "Docs" },
   { url: "/about", title: "About" },
 ];
 
