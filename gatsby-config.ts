@@ -3,7 +3,10 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Fan Control`,
-    siteUrl: `https://getfancontrol.com`,
+    description: `Fan Control is a free software that allows the user to control his CPU, GPU and case fans using temperatures.`,
+    siteUrl: `https://getfancontrol.com/`,
+    twitterUsername: "",
+    image: ""
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

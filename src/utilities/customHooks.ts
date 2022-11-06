@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { graphql, useStaticQuery } from "gatsby"
 
 const useInterval = (delay: number, callback: () => void) => {
   const savedCallback = React.useRef(() => {});
@@ -37,4 +38,22 @@ const useTimeoutBooleanState = (
   return [state, setState];
 };
 
-export { useInterval, useTimeoutBooleanState };
+const useSiteMetadata = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+          twitterUsername
+          image
+          siteUrl
+        }
+      }
+    }
+  `)
+
+  return data.site.siteMetadata
+}
+
+export { useInterval, useTimeoutBooleanState, useSiteMetadata };

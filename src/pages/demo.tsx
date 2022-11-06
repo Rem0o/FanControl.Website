@@ -19,6 +19,7 @@ import FanCurveCard from "../components/demo/fanCurveCard";
 import icons from "./../contents/icons";
 import { useInterval } from "../utilities/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
+import { SEO } from "../components/seo";
 
 const pageTitle = "Demo";
 
@@ -81,4 +82,6 @@ const DemoPage = () => {
 
 export default DemoPage;
 
-export const Head: HeadFC = () => <title>{pageTitle}</title>;
+export const Head: HeadFC = () => (
+  <SEO pathname={pageTitle} title={pageTitle}></SEO>
+);

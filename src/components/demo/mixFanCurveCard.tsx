@@ -5,7 +5,6 @@ import {
   createMixFanCurve,
   FanCurve,
   MixFanCurve,
-  MixFunction,
   mixFunctions,
 } from "./fanCurve";
 import FanCurveCard from "./fanCurveCard";

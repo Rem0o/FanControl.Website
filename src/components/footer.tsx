@@ -27,7 +27,7 @@ const FooterButton = ({
   );
 };
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="min-h-sm mt-10 flex border border-t border-slate-300 bg-slate-100 pt-2 text-center text-slate-500">
       <div className="min-w-sm m-auto flex flex-col space-y-0">
@@ -61,5 +61,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export { Footer };

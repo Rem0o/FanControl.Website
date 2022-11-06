@@ -39,9 +39,13 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
       </div>
       <ul className="ml-auto flex items-center justify-center">
         {links.map((link) => (
-          <li key={link.title} className="p-3 hover:bg-blue-600">
-            <Link to={link.url}>{link.title}</Link>
-          </li>
+          <Link
+            key={link.title}
+            className="p-3 hover:bg-blue-600"
+            to={link.url}
+          >
+            {link.title}
+          </Link>
         ))}
       </ul>
     </nav>

@@ -19,6 +19,7 @@ import { FanCurve } from "../components/demo/fanCurve";
 import { ExternalLink, TrackedExternalLink } from "../components/externalLink";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import NiceHeader from "../components/niceHeader";
+import { SEO } from "../components/seo";
 
 const pageTitle = "Fan Control";
 
@@ -85,7 +86,7 @@ const GithubButton = () => {
 };
 
 const DemoMixFanCurveCard = () => {
-  const getSources = (): [
+  const updateSources = (): [
     TemperatureSource,
     TemperatureSource,
     TemperatureSource
@@ -102,7 +103,7 @@ const DemoMixFanCurveCard = () => {
   ]);
 
   useInterval(1000, () => {
-    setSources(getSources());
+    setSources(updateSources());
   });
 
   // we mock random fan curves that outputs the temperature source as the %
@@ -203,6 +204,34 @@ const IndexPage = () => {
         <div className="wrap grid justify-center gap-10 text-justify sm:grid-cols-1 md:grid-cols-2">
           <div className="max-w-sm">
             <NiceHeader
+              text="CPU, GPU, and case fans"
+              icon={icons.svgPaths.check}
+            ></NiceHeader>
+            <p>
+              Yup, that's covered. Fan Control has extensive support for a
+              variety of motherboards, GPUs, and other hardware, like AIOs. Say
+              goodbye to the "silo" approach of using multiple softwares to
+              control your different fans. Have all your them controlled by a
+              single smart entity, and start thinking about cooling and noise as
+              a system-wide concern.
+            </p>
+          </div>
+
+          <div className="max-w-sm">
+            <NiceHeader
+              text="Tinkerers rejoice"
+              icon={icons.svgPaths.parameters}
+            ></NiceHeader>
+            <p>
+              Fan Control has ALL the parameters. Response time, hysteresis,
+              hysteresis direction, step up, step down... Fine tune to your
+              heart's desire. Control your fan's start and stopping logic, for
+              smooth 0 RPM operation <i>(when supported)</i>.
+            </p>
+          </div>
+
+          <div className="max-w-sm">
+            <NiceHeader
               text="It's all about the mix"
               icon={icons.svgPaths.mix}
             ></NiceHeader>
@@ -218,19 +247,6 @@ const IndexPage = () => {
           </div>
           <div className="m-auto">
             <DemoMixFanCurveCard />
-          </div>
-
-          <div className="max-w-sm">
-            <NiceHeader
-              text="Tinkerers rejoice"
-              icon={icons.svgPaths.parameters}
-            ></NiceHeader>
-            <p>
-              Fan Control has ALL the parameters. Response time, hysteresis,
-              hysteresis direction, step up, step down... Fine tune to your
-              heart's desire. Control your fan's start and stopping logic, for
-              smooth 0 RPM operation <i>(when supported)</i>.
-            </p>
           </div>
 
           <div className="max-w-sm">
@@ -275,4 +291,6 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>{pageTitle}</title>;
+export const Head: HeadFC = () => (
+  <SEO pathname={pageTitle} title={pageTitle}></SEO>
+);
