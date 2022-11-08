@@ -30,7 +30,7 @@ export const SEO = ({
 
   return (
     <>
-      <title>{seo.title}</title>
+      <title>{seo.title} - Fan Control</title>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       <meta name="twitter:card" content="summary_large_image" />

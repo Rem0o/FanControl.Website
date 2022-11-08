@@ -40,7 +40,7 @@ export const Footer = () => {
         <div>Rémi Mercier</div>
         <ExternalLink
           className="text-slate-500 hover:text-blue-500"
-          href={consts.urls.email}
+          href={`mailto:${consts.urls.email}`}
         >
           {consts.urls.email}
         </ExternalLink>
