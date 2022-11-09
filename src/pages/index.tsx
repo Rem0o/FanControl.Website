@@ -154,15 +154,17 @@ const IndexPage = () => {
         <Card className="p-0">
           <StaticImage
             className="rounded"
-            width={800}
+            width={1037}
             src="./../images/main.png"
             alt="Main interface"
           ></StaticImage>
         </Card>
 
-        <div>
-          <div className="mb-4 text-2xl font-semibold">Features rapid fire</div>
-          <div className="wrap grid gap-5 sm:grid-cols-1 md:grid-cols-2">
+        <div className="my-8 ">
+          <div className="mb-16 text-4xl font-semibold">
+            Features rapid fire
+          </div>
+          <div className="wrap grid justify-center gap-x-16 gap-y-9 sm:grid-cols-1 md:grid-cols-2">
             {[
               [
                 icons.svgPaths.wrench,
@@ -189,8 +191,8 @@ const IndexPage = () => {
                 "Use the tray icon as a temperature display.",
               ],
             ].map(([icon, text], i) => (
-              <div key={i} className="max-w-xs">
-                <Card className="bg-white">
+              <div key={i} className="w-64">
+                <Card className="bg-slate-800 text-slate-100">
                   <div className="flex items-center text-left align-middle">
                     <div className="mr-3">{Icon(icon)}</div>
                     <div>{text}</div>
@@ -201,7 +203,7 @@ const IndexPage = () => {
           </div>
         </div>
 
-        <div className="wrap grid justify-center gap-10 text-justify sm:grid-cols-1 md:grid-cols-2">
+        <div className="wrap grid justify-center gap-20 text-left sm:grid-cols-1 md:grid-cols-2">
           <div className="max-w-sm">
             <NiceHeader
               text="CPU, GPU, and case fans"

@@ -2,12 +2,12 @@ import * as React from "react";
 import { Footer } from "./footer";
 import { NavBar } from "./navbar";
 
-type Props = {
+type LayoutProps = {
   pageTitle?: string;
   children: React.ReactNode;
 };
 
-const Layout = ({ pageTitle, children }: Props) => {
+const Layout = ({ pageTitle, children }: LayoutProps) => {
   return (
     <div className="flex min-h-screen flex-col">
       <NavBar pageTitle={pageTitle} />
