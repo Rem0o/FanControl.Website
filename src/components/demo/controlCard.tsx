@@ -23,7 +23,7 @@ const ControlCard = ({
 }) => {
   const enabledState = useState(false);
   const [enabled, _] = enabledState;
-  const background = "bg-slate-400";
+  const background = "bg-body-400";
   const [selectedFanCurve, setSelectedFanCurve] = useState("");
 
   return (

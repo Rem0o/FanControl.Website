@@ -46,7 +46,7 @@ const SideBarDocSection = (section: string, onClick: () => void) => {
   return (
     <li
       key={section}
-      className="cursor-pointer rounded p-1 hover:bg-slate-200"
+      className="cursor-pointer rounded p-1 hover:bg-body-200"
       onClick={() => onClick()}
     >
       {section}
@@ -77,7 +77,7 @@ const DocsPage = () => {
     <Layout pageTitle="Docs">
       <div className="m-auto flex max-w-5xl p-5">
         {/* Left columm with elements */}
-        <div className="flex flex-col border-r-2 border-slate-200 pr-5">
+        <div className="flex flex-col border-r-2 border-body-200 pr-5">
           <DocSidebarHeader text="Fan Curves" />
           <ul className="mr-5">
             {fanCurvesSections.map((s) =>

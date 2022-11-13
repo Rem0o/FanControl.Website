@@ -17,7 +17,7 @@ const FooterButton = ({
 }) => {
   return (
     <OutboundLink href={href}>
-      <button className="flex rounded-2xl border border-slate-600 py-1 px-2 pr-3 text-sm hover:border-blue-500 hover:text-blue-500">
+      <button className="flex rounded-2xl border border-body-600 py-1 px-2 pr-3 text-sm hover:border-primary-600 hover:text-primary-800">
         <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
@@ -29,7 +29,7 @@ const FooterButton = ({
 
 export const Footer = () => {
   return (
-    <footer className="min-h-sm mt-10 flex border border-t border-slate-300 bg-slate-100 pt-2 text-center text-slate-500">
+    <footer className="min-h-sm mt-10 flex border border-t border-body-300 bg-body-100 pt-2 text-center text-body-500">
       <div className="min-w-sm m-auto flex flex-col space-y-0">
         <div className="flex items-center justify-center ">
           <svg className="h-8 w-8" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@ export const Footer = () => {
         </div>
         <div>Rémi Mercier</div>
         <ExternalLink
-          className="text-slate-500 hover:text-blue-500"
+          className="text-body-500 hover:text-primary-800"
           href={`mailto:${consts.urls.email}`}
         >
           {consts.urls.email}

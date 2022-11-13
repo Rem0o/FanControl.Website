@@ -21,7 +21,7 @@ export default function FanCurveCard({
   controlValueSuffix,
   children,
 }: Props) {
-  const background = "bg-blue-500";
+  const background = "bg-primary-800";
   const value = fanCurve.getValue();
   const isValid = (number: number) => number >= 0 && number <= 100;
 

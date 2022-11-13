@@ -5,7 +5,7 @@ import Card from "../components/card";
 import Description from "../contents/description.mdx";
 import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
-import { Icon } from "./../components/icon";
+import { BigIcon, Icon } from "./../components/icon";
 import consts from "../contents/consts";
 import { useEffect, useState } from "react";
 import { useInterval, useTimeoutBooleanState } from "../utilities/customHooks";
@@ -20,6 +20,7 @@ import { ExternalLink, TrackedExternalLink } from "../components/externalLink";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import NiceHeader from "../components/niceHeader";
 import { SEO } from "../components/seo";
+import { useInView } from "react-intersection-observer";
 
 const pageTitle = "Fan Control";
 
@@ -63,7 +64,7 @@ const DownloadButton = () => {
   return (
     <OutboundLink href={consts.urls.directDownloadUrl}>
       <IconButton
-        background="bg-blue-500 hover:bg-blue-600"
+        background="bg-primary-800 hover:bg-primary-600"
         icon={icons.svgPaths.download}
         textColor="text-white"
         text={text}
@@ -124,15 +125,20 @@ const DemoMixFanCurveCard = () => {
 
 const IndexPage = () => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
+  const { ref: demoRef, inView: demoInView } = useInView({
+    threshold: 0,
+    rootMargin: "100px",
+    delay: 500,
+  });
 
   return (
     <Layout>
-      <div className="flex flex-col place-items-center gap-12 p-5 text-center">
+      <div className="flex flex-col place-items-center gap-12 text-center">
         <svg
           onMouseEnter={() => setIsSpinning(true)}
           className={`${
             isSpinning ? "animate-spin" : ""
-          } h-36 w-36 hover:animate-spin`}
+          } mt-10 h-36 w-36 hover:animate-spin`}
           viewBox="0 0 24 24"
         >
           <path fill="currentColor" d={icons.svgPaths.fan} />
@@ -151,7 +157,7 @@ const IndexPage = () => {
           <DownloadButton />
         </div>
 
-        <Card className="p-0">
+        <Card className="m-5 p-0">
           <StaticImage
             className="rounded"
             width={1037}
@@ -160,50 +166,38 @@ const IndexPage = () => {
           ></StaticImage>
         </Card>
 
-        <div className="my-8 ">
-          <div className="mb-16 text-4xl font-semibold">
-            Features rapid fire
-          </div>
-          <div className="wrap grid justify-center gap-x-16 gap-y-9 sm:grid-cols-1 md:grid-cols-2">
+        <section className="my-10 max-w-xl text-xl italic">
+          " No third-party software, at all, as much as they might want to tout
+          that they do, do not have this level of control. This is what happens
+          when someone that sees a problem, is an enthusiast, and is a
+          programmer, gets involved and says I'm gonna do something that nobody
+          has been doing a way I feel they should do it, and they did it right
+          in my opinion. " <br /> <br /> - <ExternalLink href={consts.urls.videoUrl}>JayzTwoCents</ExternalLink>
+        </section>
+
+        <section className="my-10 w-full bg-body-200 px-5 py-20">
+          <div className="wrap mx-auto flex max-w-5xl flex-wrap place-content-center content-evenly gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
             {[
-              [
-                icons.svgPaths.wrench,
-                "Assisted setup will guide you through your initial config.",
-              ],
-              [
-                icons.svgPaths.bulb,
-                "As simple, or as complex of a config you can create. Start simple, then go crazy.",
-              ],
-              [
-                icons.svgPaths.graph,
-                "Multiple type of fan curves and custom sensors to choose from.",
-              ],
-              [
-                icons.svgPaths.save,
-                "Save, edit and load multiple configurations.",
-              ],
-              [
-                icons.svgPaths.brush,
-                "Customize the look of the software to fit your theme.",
-              ],
-              [
-                icons.svgPaths.temperature,
-                "Use the tray icon as a temperature display.",
-              ],
+              [icons.svgPaths.bulb, "Flexible by design"],
+              [icons.svgPaths.graph, "7 Fan Curve types"],
+              [icons.svgPaths.save, "Create multiple configurations"],
+              [icons.svgPaths.brush, "UI Themes"],
+              [icons.svgPaths.wrench, "Assisted setup"],
+              [icons.svgPaths.temperature, "Temperature Tray Icon"],
             ].map(([icon, text], i) => (
-              <div key={i} className="w-64">
-                <Card className="bg-slate-800 text-slate-100">
-                  <div className="flex items-center text-left align-middle">
-                    <div className="mr-3">{Icon(icon)}</div>
-                    <div>{text}</div>
+              <div key={i} className="m-auto flex items-center">
+                <Card className=" bg-body-700 text-body-300">
+                  <div className="h-18 justify-left flex w-52 items-center text-center">
+                    <div className="mr-2">{BigIcon(icon)}</div>
+                    <div className="mx-auto">{text}</div>
                   </div>
                 </Card>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="wrap grid justify-center gap-20 text-left sm:grid-cols-1 md:grid-cols-2">
+        <section className="wrap my-10 mx-5 grid justify-center gap-20 text-left sm:grid-cols-1 md:grid-cols-2">
           <div className="max-w-sm">
             <NiceHeader
               text="CPU, GPU, and case fans"
@@ -247,7 +241,10 @@ const IndexPage = () => {
               <br /> <b>Try it out on the demo card!</b>
             </p>
           </div>
-          <div className="m-auto">
+          <div
+            className={"m-auto " + (demoInView ? "animate-wiggle" : "")}
+            ref={demoRef}
+          >
             <DemoMixFanCurveCard />
           </div>
 
@@ -285,7 +282,7 @@ const IndexPage = () => {
               is unlocked for many generations of hardware to come.
             </p>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );

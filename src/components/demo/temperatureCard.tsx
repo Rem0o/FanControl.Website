@@ -12,7 +12,7 @@ const icon = (
 );
 
 const TemperatureCard = (temperatureSource: TemperatureSource) => {
-  const background = "bg-slate-400";
+  const background = "bg-body-400";
 
   return (
     <Card className={background}>
