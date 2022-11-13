@@ -7,7 +7,7 @@ import { ExternalLink } from "../components/externalLink";
 import { SEO } from "../components/seo";
 
 const pageTitle = "About";
-const cardStyle = "bg-white gap-y-2 max-w-sm sm:max-w-2xl";
+const cardStyle = "bg-white gap-y-2 max-w-full";
 
 const AboutPage = () => {
   return (

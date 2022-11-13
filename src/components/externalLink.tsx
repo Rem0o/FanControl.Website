@@ -11,7 +11,7 @@ const ExternalLink = (
   const { children, className, href, ...restOfProps } = props;
   return (
     <a
-      className={twMerge("text-primary-600 underline", className)}
+      className={twMerge("hover:text-primary-600 underline", className)}
       href={href}
       {...restOfProps}
     >
@@ -26,7 +26,7 @@ const TrackedExternalLink = (
   const { children, className, href, ...restOfProps } = props;
   return (
     <OutboundLink
-      className={twMerge("text-primary-600 underline", className)}
+      className={twMerge("hover:text-primary-600 underline", className)}
       href={href}
       {...restOfProps}
     >

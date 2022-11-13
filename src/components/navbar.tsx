@@ -6,8 +6,8 @@ import { useTimeoutBooleanState } from "../utilities/customHooks";
 const links = [
   { url: "/", title: "Home" },
   //{ url: "/demo", title: "Demo" },
-  { url: "/docs", title: "Docs" },
-  { url: "/about", title: "About" },
+  { url: "/docs/", title: "Docs" },
+  { url: "/about/", title: "About" },
 ];
 
 const getPageTitle = (title?: string) => {
@@ -22,7 +22,7 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(false, 3000);
 
   return (
-    <nav className="flex bg-body-700 text-body-50 shadow-md shadow-body-400">
+    <nav className="flex bg-body-700 text-body-50 shadow-md shadow-body-400 sticky top-0 z-50">
       <div className="m-1 flex items-center justify-center">
         <svg
           onMouseEnter={() => setIsSpinning(true)}

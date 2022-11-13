@@ -5,7 +5,3 @@
 .doc ul > li{
     @apply list-disc ml-5;
 }
-
-.doc h2{
-    @apply text-lg font-medium;
-}

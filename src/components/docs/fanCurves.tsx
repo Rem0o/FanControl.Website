@@ -61,6 +61,14 @@ const graph: DocSection = {
         </p>
 
         <br />
+        
+        <p>
+          Press "Edit" to open up the editor. Left click to add a point, right
+          click to remove one. Hover your mouse over a point and use the
+          "Selected Point" input boxes to precisely change its location.
+        </p>
+
+        <br />
         <h2>Parameters:</h2>
 
         <ul>

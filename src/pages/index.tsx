@@ -39,9 +39,9 @@ const IconButton = ({
 }) => (
   <button onClick={() => (onClick ? onClick() : null)}>
     <Card className={background}>
-      <div className={`flex w-40 gap-2 ${textColor}`}>
+      <div className={`flex w-44 gap-2 ${textColor}`}>
         {Icon(icon)}
-        <span className="m-auto">{text}</span>
+        <span className="m-auto font-semibold">{text}</span>
       </div>
     </Card>
   </button>
@@ -126,9 +126,8 @@ const DemoMixFanCurveCard = () => {
 const IndexPage = () => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
   const { ref: demoRef, inView: demoInView } = useInView({
-    threshold: 0,
-    rootMargin: "100px",
-    delay: 500,
+    threshold: 1,
+    delay: 750,
   });
 
   return (
@@ -143,10 +142,10 @@ const IndexPage = () => {
         >
           <path fill="currentColor" d={icons.svgPaths.fan} />
         </svg>
-        <h1 className="max-w-lg text-4xl font-bold">
+        <h1 className="max-w-lg text-4xl font-extrabold mx-5">
           Fan Control is a highly focused fan controlling software for Windows.
         </h1>
-        <div className="text-2xl">
+        <div className="text-2xl mx-5 text-body-700 font-semibold">
           <p>No installation required.</p>
           <br />
           <p>Low on ressources, high on power.</p>
@@ -166,13 +165,14 @@ const IndexPage = () => {
           ></StaticImage>
         </Card>
 
-        <section className="my-10 max-w-xl text-xl italic">
+        <section className="my-10 max-w-xl text-xl italic mx-5">
           " No third-party software, at all, as much as they might want to tout
           that they do, do not have this level of control. This is what happens
           when someone that sees a problem, is an enthusiast, and is a
           programmer, gets involved and says I'm gonna do something that nobody
           has been doing a way I feel they should do it, and they did it right
-          in my opinion. " <br /> <br /> - <ExternalLink href={consts.urls.videoUrl}>JayzTwoCents</ExternalLink>
+          in my opinion. " <br /> <br /> -{" "}
+          <TrackedExternalLink href={consts.urls.videoUrl}>JayzTwoCents</TrackedExternalLink>
         </section>
 
         <section className="my-10 w-full bg-body-200 px-5 py-20">
@@ -186,8 +186,8 @@ const IndexPage = () => {
               [icons.svgPaths.temperature, "Temperature Tray Icon"],
             ].map(([icon, text], i) => (
               <div key={i} className="m-auto flex items-center">
-                <Card className=" bg-body-700 text-body-300">
-                  <div className="h-18 justify-left flex w-52 items-center text-center">
+                <Card className=" bg-body-700 text-body-100 hover:bg-primary-800 hover:animate-wiggle font-medium">
+                  <div className="h-18 justify-left flex w-52 items-center text-center text-xl">
                     <div className="mr-2">{BigIcon(icon)}</div>
                     <div className="mx-auto">{text}</div>
                   </div>

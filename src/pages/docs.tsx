@@ -68,6 +68,10 @@ const DocSidebarHeader = ({ text }: { text: string }) => (
   <h3 className="my-2 font-medium underline">{text}</h3>
 );
 
+const DocHeader = ({text}: {text:string}) => {
+  return <h2 className="text-4xl self-center mx-auto text-left font-semibold">{text}</h2>
+}
+
 const DocsPage = () => {
   const refs = useRef<Map<string, HTMLDivElement | null>>(
     new Map<string, HTMLDivElement | null>()
@@ -100,7 +104,9 @@ const DocsPage = () => {
 
         {/* Main section with actual documentation */}
         <div className={twMerge(styles.doc, "ml-5 space-y-12")}>
+          <DocHeader text="Fan Curves"/>
           {fanCurvesSections.map((s) => DocSectionComponent(s, refs))}
+          <DocHeader text="Command line arguments"/>
           {commandLineArgumentsSections.map((s) =>
             DocSectionComponent(s, refs)
           )}

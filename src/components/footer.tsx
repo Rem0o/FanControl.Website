@@ -29,7 +29,7 @@ const FooterButton = ({
 
 export const Footer = () => {
   return (
-    <footer className="min-h-sm mt-10 flex border border-t border-body-300 bg-body-100 pt-2 text-center text-body-500">
+    <footer className="min-h-sm mt-10 flex border border-t border-body-300 bg-body-100 pt-2 text-center text-body-800">
       <div className="min-w-sm m-auto flex flex-col space-y-0">
         <div className="flex items-center justify-center ">
           <svg className="h-8 w-8" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@ export const Footer = () => {
         </div>
         <div>Rémi Mercier</div>
         <ExternalLink
-          className="text-body-500 hover:text-primary-800"
+          className="text-body-800 hover:text-primary-800"
           href={`mailto:${consts.urls.email}`}
         >
           {consts.urls.email}

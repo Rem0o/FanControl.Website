@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
-    font-family: "Roboto";
+    font-family: "Poppins";
     @apply bg-body-50;
+    @apply text-slate-900
   }
