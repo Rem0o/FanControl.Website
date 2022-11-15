@@ -7,8 +7,12 @@ import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
 import { BigIcon, Icon } from "./../components/icon";
 import consts from "../contents/consts";
-import { useEffect, useState } from "react";
-import { useInterval, useTimeoutBooleanState } from "../utilities/customHooks";
+import { useEffect, useRef, useState } from "react";
+import {
+  useInterval,
+  useRefreshState,
+  useTimeoutBooleanState,
+} from "../utilities/customHooks";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
 import {
   createTempSource,
@@ -20,7 +24,7 @@ import { ExternalLink, TrackedExternalLink } from "../components/externalLink";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import NiceHeader from "../components/niceHeader";
 import { SEO } from "../components/seo";
-import { useInView } from "react-intersection-observer";
+import { InView, useInView } from "react-intersection-observer";
 
 const pageTitle = "Fan Control";
 
@@ -86,7 +90,23 @@ const GithubButton = () => {
   );
 };
 
-const DemoMixFanCurveCard = () => {
+const SpinningLogo = () => {
+  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
+
+  return (
+    <svg
+      onMouseEnter={() => setIsSpinning(true)}
+      className={`${
+        isSpinning ? "animate-spin" : ""
+      } mt-10 h-36 w-36 hover:animate-spin`}
+      viewBox="0 0 24 24"
+    >
+      <path fill="currentColor" d={icons.svgPaths.fan} />
+    </svg>
+  );
+};
+
+const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
   const updateSources = (): [
     TemperatureSource,
     TemperatureSource,
@@ -107,6 +127,18 @@ const DemoMixFanCurveCard = () => {
     setSources(updateSources());
   });
 
+  const [isWiggling, setIsWiggling] = useTimeoutBooleanState(false, 500);
+
+  useEffect(() => {
+    setIsWiggling(true);
+  }, [refresh]);
+
+  const onInViewChange = (inView: boolean, e: IntersectionObserverEntry) => {
+    if (inView) {
+      setIsWiggling(true);
+    }
+  };
+
   // we mock random fan curves that outputs the temperature source as the %
   const mockedFanCurves: FanCurve[] = [
     { name: "CPU -> Case fans", getValue: () => sources[0].value },
@@ -115,37 +147,48 @@ const DemoMixFanCurveCard = () => {
   ];
 
   return (
-    <MixFanCurveCard
-      name="Demo Case Fans"
-      fanCurves={mockedFanCurves}
-      selectedFanCurvesDefault={mockedFanCurves.slice(0, 1).map((x) => x.name)}
-    ></MixFanCurveCard>
+    <InView
+      className={isWiggling ? "animate-wiggle" : ""}
+      triggerOnce={true}
+      delay={500}
+      threshold={1}
+      onChange={onInViewChange}
+    >
+      <MixFanCurveCard
+        name="Demo Case Fans"
+        fanCurves={mockedFanCurves}
+        selectedFanCurvesDefault={mockedFanCurves
+          .slice(0, 1)
+          .map((x) => x.name)}
+      ></MixFanCurveCard>
+    </InView>
   );
 };
 
 const IndexPage = () => {
-  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
-  const { ref: demoRef, inView: demoInView } = useInView({
-    threshold: 1,
-    delay: 750,
-  });
+  const [animationRefreshId, animateDemoCard] = useRefreshState();
+  const demoRef = useRef<HTMLDivElement | null>(null);
+
+  const tryItOut = (click: boolean) => {
+    if (click && demoRef.current) {
+      demoRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+
+    animateDemoCard();
+  };
 
   return (
     <Layout>
       <div className="flex flex-col place-items-center gap-12 text-center">
-        <svg
-          onMouseEnter={() => setIsSpinning(true)}
-          className={`${
-            isSpinning ? "animate-spin" : ""
-          } mt-10 h-36 w-36 hover:animate-spin`}
-          viewBox="0 0 24 24"
-        >
-          <path fill="currentColor" d={icons.svgPaths.fan} />
-        </svg>
-        <h1 className="max-w-lg text-4xl font-extrabold mx-5">
+        <SpinningLogo />
+        <h1 className="mx-5 max-w-lg text-4xl font-extrabold">
           Fan Control is a highly focused fan controlling software for Windows.
         </h1>
-        <div className="text-2xl mx-5 text-body-700 font-semibold">
+        <div className="mx-5 text-2xl font-semibold text-body-700">
           <p>No installation required.</p>
           <br />
           <p>Low on ressources, high on power.</p>
@@ -165,14 +208,16 @@ const IndexPage = () => {
           ></StaticImage>
         </Card>
 
-        <section className="my-10 max-w-xl text-xl italic mx-5">
+        <section className="my-10 mx-5 max-w-xl text-xl italic">
           " No third-party software, at all, as much as they might want to tout
           that they do, do not have this level of control. This is what happens
           when someone that sees a problem, is an enthusiast, and is a
           programmer, gets involved and says I'm gonna do something that nobody
           has been doing a way I feel they should do it, and they did it right
           in my opinion. " <br /> <br /> -{" "}
-          <TrackedExternalLink href={consts.urls.videoUrl}>JayzTwoCents</TrackedExternalLink>
+          <TrackedExternalLink href={consts.urls.videoUrl}>
+            JayzTwoCents
+          </TrackedExternalLink>
         </section>
 
         <section className="my-10 w-full bg-body-200 px-5 py-20">
@@ -186,7 +231,7 @@ const IndexPage = () => {
               [icons.svgPaths.temperature, "Temperature Tray Icon"],
             ].map(([icon, text], i) => (
               <div key={i} className="m-auto flex items-center">
-                <Card className=" bg-body-700 text-body-100 hover:bg-primary-800 hover:animate-wiggle font-medium">
+                <Card className="bg-body-700 font-medium text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-800">
                   <div className="h-18 justify-left flex w-52 items-center text-center text-xl">
                     <div className="mr-2">{BigIcon(icon)}</div>
                     <div className="mx-auto">{text}</div>
@@ -238,14 +283,19 @@ const IndexPage = () => {
               average to create a whole new control logic. Different curves
               bound to different temperature sensors, mixed together, your case
               fans never asked for better. <br />
-              <br /> <b>Try it out on the demo card!</b>
+              <br />{" "}
+            </p>
+            <p
+              className="text-body-90 cursor-pointer rounded border border-body-900 p-1 text-center font-medium hover:border-primary-800 hover:text-primary-800"
+              onClick={() => tryItOut(true)}
+              onMouseEnter={() => tryItOut(false)}
+            >
+              Try it out on the demo card!
             </p>
           </div>
-          <div
-            className={"m-auto " + (demoInView ? "animate-wiggle" : "")}
-            ref={demoRef}
-          >
-            <DemoMixFanCurveCard />
+
+          <div className="m-auto w-fit" ref={demoRef}>
+            <DemoMixFanCurveCard refreshId={animationRefreshId} />
           </div>
 
           <div className="max-w-sm">

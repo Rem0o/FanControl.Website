@@ -1,7 +1,7 @@
 import * as React from "react";
 import { twMerge } from "tailwind-merge";
 
-const defaultClass = "h-fit w-fit p-3 rounded-lg shadow-md shadow-body-400";
+const defaultClass = "h-fit w-fit p-3 rounded-lg shadow-md shadow-body-500";
 
 const Card = (
   props: React.DetailedHTMLProps<

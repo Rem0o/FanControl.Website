@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby";
 
 const useInterval = (delay: number, callback: () => void) => {
   const savedCallback = React.useRef(() => {});
@@ -51,9 +51,19 @@ const useSiteMetadata = () => {
         }
       }
     }
-  `)
+  `);
 
-  return data.site.siteMetadata
-}
+  return data.site.siteMetadata;
+};
 
-export { useInterval, useTimeoutBooleanState, useSiteMetadata };
+const useRefreshState = (): [number, () => void] => {
+  const [refreshCount, setRefreshCount] = useState(0);
+  return [refreshCount, () => setRefreshCount(refreshCount + 1)];
+};
+
+export {
+  useInterval,
+  useTimeoutBooleanState,
+  useSiteMetadata,
+  useRefreshState,
+};
