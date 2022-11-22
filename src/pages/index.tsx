@@ -2,7 +2,6 @@ import * as React from "react";
 import type { HeadFC } from "gatsby";
 import Layout from "../components/layout";
 import Card from "../components/card";
-import Description from "../contents/description.mdx";
 import { StaticImage } from "gatsby-plugin-image";
 import icons from "./../contents/icons";
 import { BigIcon, Icon } from "./../components/icon";
@@ -24,7 +23,7 @@ import { ExternalLink, TrackedExternalLink } from "../components/externalLink";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import NiceHeader from "../components/niceHeader";
 import { SEO } from "../components/seo";
-import { InView, useInView } from "react-intersection-observer";
+import { InView } from "react-intersection-observer";
 
 const pageTitle = "Fan Control";
 

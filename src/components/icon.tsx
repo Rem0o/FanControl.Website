@@ -13,7 +13,7 @@ const Icon = (path: string) => (
 );
 
 const SmallIcon = (path: string) => (
-  <svg className="h-4 w-4" viewBox="0 0 18 18">
+  <svg className="h-5 w-5" viewBox="0 0 24 24">
     <path fill="currentColor" d={path} />
   </svg>
 );

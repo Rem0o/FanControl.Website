@@ -56,9 +56,11 @@ const useSiteMetadata = () => {
   return data.site.siteMetadata;
 };
 
+setInterval
+
 const useRefreshState = (): [number, () => void] => {
-  const [refreshCount, setRefreshCount] = useState(0);
-  return [refreshCount, () => setRefreshCount(refreshCount + 1)];
+  const [refreshId, setRefreshCount] = useState(0);
+  return [refreshId, () => setRefreshCount(refreshId + 1)];
 };
 
 export {

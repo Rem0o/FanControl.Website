@@ -1,7 +1,12 @@
-type DocSection = {
+export type DocSection = {
   key: string;
   icon?: string;
   render: () => JSX.Element;
 };
 
-export default DocSection;
+export const parameters = {
+  hysteresis: "Minimum temperature difference for a change to occur.",
+  responseTime: "Minimum time for a change to occur.",
+  tempSource: "Source to use as input.",
+  functions: "Choose between Max, Min, Average, Sum, Subtract."
+};
