@@ -1,7 +1,11 @@
 import { HeadFC } from "gatsby";
 import React, { useRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mixSensor, timeAverage, fileSensor } from "../components/docs/customSensors";
+import {
+  mixSensor,
+  timeAverage,
+  fileSensor,
+} from "../components/docs/customSensors";
 import { DocSection } from "../components/docs/docSection";
 import {
   graph,
@@ -60,7 +64,7 @@ const ScrollToSection = (
 ) => {
   const htmlItem = refs.current.get(section.key);
   if (htmlItem) {
-    const top = htmlItem.getBoundingClientRect().top - 50;
+    const top = htmlItem.getBoundingClientRect().top + window.pageYOffset - 75;
     window.scrollTo({ top: top, behavior: "smooth" });
   }
 };
@@ -73,7 +77,7 @@ const SideBarDocSection = (section: DocSection, onClick: () => void) => {
       onClick={() => onClick()}
     >
       <div className="flex items-center">
-        { section.icon ? SmallIcon(section.icon) : "" }
+        {section.icon ? SmallIcon(section.icon) : ""}
         <span className="ml-2 align-middle">{section.key}</span>
       </div>
     </li>
@@ -109,41 +113,46 @@ const DocsPage = () => {
 
   return (
     <Layout pageTitle="Docs">
-      <div className="m-auto flex max-w-6xl p-5">
+      <div className="flex px-5 pb-5">
         {/* Left columm with elements */}
-        <div className="flex flex-col border-r-2 border-body-200 pr-5">
-          <DocSidebarHeader text="Fan Curves" />
-          <ul className="mr-5 mb-5">
-            {fanCurveSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s))
-            )}
-          </ul>
+        <div className="w-fit border-r-2 border-body-200 pr-5">
+          <div className="sticky top-20 flex flex-col ">
+            <DocSidebarHeader text="Fan Curves" />
+            <ul className="mr-5 mb-5">
+              {fanCurveSections.map((s) =>
+                SideBarDocSection(s, () => ScrollToSection(refs, s))
+              )}
+            </ul>
 
-          <DocSidebarHeader text="Custom Sensors" />
-          <ul className="mr-5 mb-5">
-            {customSensorSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s))
-            )}
-          </ul>
+            <DocSidebarHeader text="Custom Sensors" />
+            <ul className="mr-5 mb-5">
+              {customSensorSections.map((s) =>
+                SideBarDocSection(s, () => ScrollToSection(refs, s))
+              )}
+            </ul>
 
-          <DocSidebarHeader text="Command Line Arguments" />
-          <ul className="mr-5 mb-5">
-            {commandLineArgumentSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s))
-            )}
-          </ul>
+            <DocSidebarHeader text="Command Line Arguments" />
+            <ul className="mr-5 mb-5">
+              {commandLineArgumentSections.map((s) =>
+                SideBarDocSection(s, () => ScrollToSection(refs, s))
+              )}
+            </ul>
+          </div>
         </div>
-
         {/* Main section with actual documentation */}
-        <div className={twMerge(styles.doc, "ml-5 max-w-2xl space-y-12")}>
-          <DocHeader text="Fan Curves" />
-          {fanCurveSections.map((s) => DocSectionComponent(s, refs))}
+        <div className={twMerge(styles.doc, "ml-5 ")}>
+          <div className="max-w-3xl space-y-16">
+            <DocHeader text="Fan Curves" />
+            {fanCurveSections.map((s) => DocSectionComponent(s, refs))}
 
-          <DocHeader text="Custom Sensors" />
-          {customSensorSections.map((s) => DocSectionComponent(s, refs))}
+            <DocHeader text="Custom Sensors" />
+            {customSensorSections.map((s) => DocSectionComponent(s, refs))}
 
-          <DocHeader text="Command Line Arguments" />
-          {commandLineArgumentSections.map((s) => DocSectionComponent(s, refs))}
+            <DocHeader text="Command Line Arguments" />
+            {commandLineArgumentSections.map((s) =>
+              DocSectionComponent(s, refs)
+            )}
+          </div>
         </div>
       </div>
     </Layout>

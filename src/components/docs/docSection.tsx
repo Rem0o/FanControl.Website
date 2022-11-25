@@ -1,3 +1,6 @@
+import React from "react";
+import Card from "../card";
+
 export type DocSection = {
   key: string;
   icon?: string;
@@ -9,4 +12,8 @@ export const parameters = {
   responseTime: "Minimum time for a change to occur.",
   tempSource: "Source to use as input.",
   functions: "Choose between Max, Min, Average, Sum, Subtract."
+};
+
+export const ParametersCard = ({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
 };

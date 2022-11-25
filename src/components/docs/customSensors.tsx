@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DocSection, parameters } from "./docSection";
+import { DocSection, parameters, ParametersCard } from "./docSection";
 import icons from "../../contents/icons";
 
 const timeAverage: DocSection = {
@@ -13,19 +13,22 @@ const timeAverage: DocSection = {
           ammount of time.
         </p>
         <br />
-        <h2>Parameters:</h2>
 
-        <ul>
-          <li>Temperature source: {parameters.tempSource}</li>
-          <li>Time: Averaging period of the selected temperature source.</li>
-        </ul>
+        <ParametersCard>
+          <h2>Parameters:</h2>
+
+          <ul>
+            <li>Temperature source: {parameters.tempSource}</li>
+            <li>Time: Averaging period of the selected temperature source.</li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },
 };
 
 const mixSensor: DocSection = {
-  key: "Mix",
+  key: "Mix Sensor",
   icon: icons.svgPaths.temperature,
   render: () => {
     return (
@@ -36,12 +39,16 @@ const mixSensor: DocSection = {
         </p>
         <br />
 
-        <h2>Parameters:</h2>
+        <ParametersCard>
+          <h2>Parameters:</h2>
 
-        <ul>
-          <li>Function: {parameters.functions}</li>
-          <li>Add sensor: Add any existing temperature sensor to the mix. </li>
-        </ul>
+          <ul>
+            <li>Function: {parameters.functions}</li>
+            <li>
+              Add sensor: Add any existing temperature sensor to the mix.{" "}
+            </li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },
@@ -55,16 +62,19 @@ const fileSensor: DocSection = {
       <>
         <p>
           The file custom sensor reads data from a given file. The temperature
-          must be written directly into the ".sensor" file as text in celcius on the first
-          line. Use this sensor as a way to inject a sensor from any other source that the software doesn't support natively.
+          must be written directly into the ".sensor" file as text in celcius on
+          the first line. Use this sensor as a way to inject a sensor from any
+          other source that the software doesn't support natively.
         </p>
         <br />
 
-        <h2>Parameters:</h2>
+        <ParametersCard>
+          <h2>Parameters:</h2>
 
-        <ul>
-          <li>Path: Path of the sensor file.</li>
-        </ul>
+          <ul>
+            <li>Path: Path of the sensor file.</li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DocSection, parameters } from "./docSection";
+import { DocSection, parameters, ParametersCard } from "./docSection";
 import icons from "../../contents/icons";
 import MixFanCurveCard from "../demo/mixFanCurveCard";
 import {
@@ -24,21 +24,24 @@ const linear: DocSection = {
       <p>Above the maximum temperature, maximum speed is applied.</p>
 
       <br />
-      <h2>Parameters:</h2>
 
-      <ul>
-        <li>
-          Min. and max. temperature : Temperature bounds between to interpolate
-          between.
-        </li>
-        <li>
-          Min. and max. speed : Fan speeds as % to be interpolated between the
-          min. and max. temperature.{" "}
-        </li>
-        <li>Temperature source: {parameters.tempSource}</li>
-        <li>Hysteresis: {parameters.hysteresis}</li>
-        <li>Response time: {parameters.responseTime}</li>
-      </ul>
+      <ParametersCard>
+        <h2>Parameters:</h2>
+
+        <ul>
+          <li>
+            Min. and max. temperature : Temperature bounds between to
+            interpolate between.
+          </li>
+          <li>
+            Min. and max. speed : Fan speeds as % to be interpolated between the
+            min. and max. temperature.{" "}
+          </li>
+          <li>Temperature source: {parameters.tempSource}</li>
+          <li>Hysteresis: {parameters.hysteresis}</li>
+          <li>Response time: {parameters.responseTime}</li>
+        </ul>
+      </ParametersCard>
     </>
   ),
 };
@@ -63,13 +66,15 @@ const graph: DocSection = {
         </p>
 
         <br />
-        <h2>Parameters:</h2>
+        <ParametersCard>
+          <h2>Parameters:</h2>
 
-        <ul>
-          <li>Temperature source: {parameters.tempSource}</li>
-          <li>Hysteresis: {parameters.hysteresis}</li>
-          <li>Response time: {parameters.responseTime}</li>
-        </ul>
+          <ul>
+            <li>Temperature source: {parameters.tempSource}</li>
+            <li>Hysteresis: {parameters.hysteresis}</li>
+            <li>Response time: {parameters.responseTime}</li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },
@@ -115,12 +120,15 @@ const flat: DocSection = {
           The flat fan curve simply applies a fixed %. Usefull if you want to
           set and change the % of multiple controls.
         </p>
-        <br/>
-        <h2>Parameters:</h2>
+        <br />
 
-        <ul>
-          <li>Fan speed %: Percent.</li>
-        </ul>
+        <ParametersCard>
+          <h2>Parameters:</h2>
+
+          <ul>
+            <li>Fan speed %: Percent.</li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },
@@ -138,13 +146,16 @@ const sync: DocSection = {
           apply to that control, all the synced fans will also follow that new
           fan curve.
         </p>
-        <br/>
-        <h2>Parameters:</h2>
+        <br />
 
-        <ul>
-          <li>Selected control: The control to sync with.</li>
-          <li>Offset: Offset in % to be applied to the selected control.</li>
-        </ul>
+        <ParametersCard>
+          <h2>Parameters:</h2>
+
+          <ul>
+            <li>Selected control: The control to sync with.</li>
+            <li>Offset: Offset in % to be applied to the selected control.</li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },
@@ -163,42 +174,47 @@ const trigger: DocSection = {
           temperature. Above the load temperature, load fan speed is applied
           until the temperature gets back down to the idle temperature.
         </p>
-        <br/>
-        <h2>Parameters:</h2>
+        <br />
 
-        <ul>
-          <li>Response Time: {parameters.responseTime}</li>
-        </ul>
+        <ParametersCard>
+          <h2>Parameters:</h2>
+
+          <ul>
+            <li>Response Time: {parameters.responseTime}</li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },
 };
 
 const mix: DocSection = {
-  key: "Mix",
+  key: "Mix Fan Curve",
   icon: icons.svgPaths.mix,
   render: () => {
     return (
       <>
+        <div className="my-5">
+          <DocDemoMixFanCurveCard />
+        </div>
+
         <p>
           The mix fan curve will combine multiple existing fan curves using a
           mix function, like max or average.
         </p>
 
-        <div className="my-5">
-          <DocDemoMixFanCurveCard />
-        </div>
+        <br />
+        <ParametersCard>
+          <h2>Parameters:</h2>
 
-        <h2>Parameters:</h2>
-
-        <ul>
-          <li>Function: Choose between Max, Min, Average, Sum, Subtract.</li>
-          <li>Fan curves: Add any existing fan curve to the mix. </li>
-        </ul>
+          <ul>
+            <li>Function: {parameters.functions}</li>
+            <li>Fan curves: Add any existing fan curve to the mix. </li>
+          </ul>
+        </ParametersCard>
       </>
     );
   },
 };
-
 
 export { linear, graph, mix, trigger, flat, sync };
