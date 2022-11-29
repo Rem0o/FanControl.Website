@@ -1,8 +1,6 @@
-import React from "react";
-import icons from "../contents/icons";
-import consts from "../contents/consts";
-import { ExternalLink } from "./externalLink";
-import { OutboundLink } from "gatsby-plugin-google-gtag";
+import consts from "../common/Consts";
+import icons from "../common/Icons";
+import { ExternalLink, TrackedAnchor } from "../components/links";
 
 const FooterButton = ({
   href,
@@ -16,14 +14,14 @@ const FooterButton = ({
   viewBox?: string;
 }) => {
   return (
-    <OutboundLink href={href}>
+    <TrackedAnchor href={href}>
       <button className="flex rounded-2xl border border-body-600 py-1 px-2 pr-3 text-sm hover:border-primary-600 hover:text-primary-800">
         <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
         <span className="ml-1 self-center">{text}</span>
       </button>
-    </OutboundLink>
+    </TrackedAnchor>
   );
 };
 

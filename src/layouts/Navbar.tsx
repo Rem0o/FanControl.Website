@@ -1,7 +1,5 @@
-import { Link } from "gatsby";
-import React from "react";
-import icons from "../contents/icons";
-import { useTimeoutBooleanState } from "../utilities/customHooks";
+import { useTimeoutBooleanState } from "../common/CustomHooks";
+import icons from "../common/Icons";
 
 const links = [
   { url: "/", title: "Home" },
@@ -34,18 +32,16 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
           <path fill="currentColor" d={icons.svgPaths.fan} />
         </svg>
         <div className="ml-2">
-          <Link to={links[0].url}>Fan Control</Link> {getPageTitle(pageTitle)}
+          <a href={links[0].url}>Fan Control</a> {getPageTitle(pageTitle)}
         </div>
       </div>
       <ul className="ml-auto flex items-center justify-center">
         {links.map((link) => (
-          <Link
-            key={link.title}
-            className="p-3 hover:bg-primary-600"
-            to={link.url}
-          >
-            {link.title}
-          </Link>
+          <li key={link.title}>
+            <a className="p-3 hover:bg-primary-600" href={link.url}>
+              {link.title}
+            </a>
+          </li>
         ))}
       </ul>
     </nav>

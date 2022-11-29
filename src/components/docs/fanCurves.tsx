@@ -1,14 +1,14 @@
-import React, { useState } from "react";
 import { DocSection, parameters, ParametersCard } from "./docSection";
-import icons from "../../contents/icons";
 import MixFanCurveCard from "../demo/mixFanCurveCard";
 import {
   createTempSource,
   createTempSourceRandom,
   TemperatureSource,
 } from "../demo/temperatureSource";
-import { useInterval } from "../../utilities/customHooks";
-import { FanCurve } from "../demo/fanCurve";
+import icons from "../../common/Icons";
+import { useState } from "react";
+import { useInterval } from "../../common/CustomHooks";
+import type { FanCurve } from "../demo/fanCurve";
 
 const linear: DocSection = {
   key: "Linear",

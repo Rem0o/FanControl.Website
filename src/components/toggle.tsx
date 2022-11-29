@@ -1,5 +1,3 @@
-import * as React from "react";
-
 type ToggleProps = {
   checkedState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
   text?: string;

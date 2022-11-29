@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "../card";
 
 export type DocSection = {
@@ -15,5 +14,5 @@ export const parameters = {
 };
 
 export const ParametersCard = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>;
+  return <Card className="bg-body-50">{children}</Card>;
 };

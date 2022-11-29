@@ -1,0 +1,33 @@
+---
+import { Footer } from "./Footer";
+import { NavBar } from "./Navbar";
+import SEO from "./SEO.astro";
+import GoogleAnalytics from "./GoogleAnalytics.astro";
+
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <GoogleAnalytics />
+    <!-- SEO -->
+    <SEO title={title} />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col">
+      <NavBar pageTitle={title} />
+      <main class="grow bg-transparent mt-5"><slot /></main>
+      <Footer />
+    </div>
+  </body>
+</html>

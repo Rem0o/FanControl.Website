@@ -1,6 +1,6 @@
 import * as React from "react";
 import Card from "../card";
-import { TemperatureSource } from "./temperatureSource";
+import type { TemperatureSource } from "./temperatureSource";
 
 const icon = (
   <svg className="h-12 w-12" viewBox="0 0 24 24">

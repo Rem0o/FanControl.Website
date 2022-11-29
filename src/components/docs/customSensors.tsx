@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import icons from "../../common/Icons";
 import { DocSection, parameters, ParametersCard } from "./docSection";
-import icons from "../../contents/icons";
 
 const timeAverage: DocSection = {
   key: "Time Average",

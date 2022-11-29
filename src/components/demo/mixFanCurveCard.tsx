@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import icons from "../../contents/icons";
+import icons from "../../common/Icons";
 import Select from "../select";
 import {
   createMixFanCurve,

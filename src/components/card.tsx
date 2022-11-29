@@ -1,4 +1,3 @@
-import * as React from "react";
 import { twMerge } from "tailwind-merge";
 
 const defaultClass = "h-fit w-fit p-3 rounded-lg shadow-md shadow-body-500";

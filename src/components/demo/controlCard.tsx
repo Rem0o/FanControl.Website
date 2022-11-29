@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import Card from "../card";
 import Toggle from "../toggle";
-import { FanCurve } from "./fanCurve";
+import type { FanCurve } from "./fanCurve";
 import Select from "../select";
 
 const icon = (

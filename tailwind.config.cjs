@@ -3,8 +3,7 @@ const colors = require("tailwindcss/colors");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,jsx,ts,tsx}",
-    "./src/components/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{astro,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -15,7 +14,7 @@ module.exports = {
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",
-        wiggle: "wiggle 1.5s ease-in",
+        "wiggle": "wiggle 1.5s ease-in",
         "scroll-in": "scroll-in 0.5s ease-in",
       },
       keyframes: {
@@ -35,5 +34,4 @@ module.exports = {
       },
     },
   },
-  plugins: ["gatsby-plugin-postcss"],
 };

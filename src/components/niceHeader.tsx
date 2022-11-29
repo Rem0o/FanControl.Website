@@ -1,4 +1,3 @@
-import React from "react";
 
 const NiceHeader = ({ icon, text }: { icon?: string; text: string }) => {
   return (

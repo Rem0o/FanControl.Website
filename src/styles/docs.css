@@ -1,7 +1,7 @@
-.doc ul{
+.docs ul{
     @apply my-3;
 }
 
-.doc ul > li{
+.docs ul > li{
     @apply list-disc ml-5;
 }

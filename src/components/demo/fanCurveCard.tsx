@@ -1,6 +1,5 @@
-import React from "react";
 import Card from "../card";
-import { FanCurve } from "./fanCurve";
+import type { FanCurve } from "./fanCurve";
 
 const icon = (path: string) => (
   <svg className="h-12 w-12" viewBox="0 0 24 24">

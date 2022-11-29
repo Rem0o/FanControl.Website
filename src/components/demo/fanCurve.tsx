@@ -1,4 +1,4 @@
-import { TemperatureSource } from "./temperatureSource";
+import type { TemperatureSource } from "./temperatureSource";
 
 type FanCurve = {
   name: string;

@@ -1,4 +1,4 @@
-const URLS = {
+const urls = {
   githubPageUrl: "https://github.com/Rem0o/FanControl.Releases",
   directDownloadUrl:
     "https://github.com/Rem0o/FanControl.Releases/blob/master/FanControl.zip?raw=true",
@@ -14,4 +14,4 @@ const URLS = {
   videoUrl: "https://www.youtube.com/watch?v=uDPKVKBMQU8"
 };
 
-export default { urls: URLS };
+export default { urls };
