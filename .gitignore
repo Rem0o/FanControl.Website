@@ -1,6 +1,5 @@
 node_modules/
 .cache/
 dist/
-public
 
 src/gatsby-types.d.ts
