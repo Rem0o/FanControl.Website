@@ -1,5 +1,5 @@
 import { HeadFC } from "gatsby";
-import React, { useRef } from "react";
+import React, { LegacyRef, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import {
   mixSensor,
@@ -59,10 +59,10 @@ const customSensorSections: DocSection[] = [timeAverage, mixSensor, fileSensor];
 const commandLineArgumentSections: DocSection[] = [c, w];
 
 const ScrollToSection = (
-  refs: React.MutableRefObject<Map<string, HTMLDivElement | null>>,
-  section: DocSection
+  refs: React.MutableRefObject<Map<string, HTMLElement | null>>,
+  key: string
 ) => {
-  const htmlItem = refs.current.get(section.key);
+  const htmlItem = refs.current.get(key);
   if (htmlItem) {
     const top = htmlItem.getBoundingClientRect().top + window.pageYOffset - 75;
     window.scrollTo({ top: top, behavior: "smooth" });
@@ -86,7 +86,7 @@ const SideBarDocSection = (section: DocSection, onClick: () => void) => {
 
 const DocSectionComponent = (
   sections: DocSection,
-  refs: React.MutableRefObject<Map<string, HTMLDivElement | null>>
+  refs: React.MutableRefObject<Map<string, HTMLElement | null>>
 ): JSX.Element => (
   <div key={sections.key} ref={(el) => refs.current.set(sections.key, el)}>
     <NiceHeader icon={sections.icon} text={sections.key}></NiceHeader>
@@ -94,21 +94,41 @@ const DocSectionComponent = (
   </div>
 );
 
-const DocSidebarHeader = ({ text }: { text: string }) => (
-  <h3 className="mb-2 font-medium underline">{text}</h3>
+const DocSidebarHeader = ({
+  text,
+  onClick,
+}: {
+  text: string;
+  onClick: Function;
+}) => (
+  <h3
+    onClick={() => onClick()}
+    className="mb-2 cursor-pointer rounded p-1 font-medium underline hover:bg-body-200"
+  >
+    {text}
+  </h3>
 );
 
-const DocHeader = ({ text }: { text: string }) => {
+const DocHeader = ({
+  text,
+  refs,
+}: {
+  refs: React.MutableRefObject<Map<string, HTMLElement | null>>;
+  text: string;
+}) => {
   return (
-    <h2 className="mx-auto self-center text-left text-4xl font-semibold">
+    <h2
+      ref={(el) => refs.current.set(text, el)}
+      className="mx-auto self-center text-left text-4xl font-semibold underline"
+    >
       {text}
     </h2>
   );
 };
 
 const DocsPage = () => {
-  const refs = useRef<Map<string, HTMLDivElement | null>>(
-    new Map<string, HTMLDivElement | null>()
+  const refs = useRef<Map<string, HTMLElement | null>>(
+    new Map<string, HTMLElement | null>()
   );
 
   return (
@@ -117,24 +137,34 @@ const DocsPage = () => {
         {/* Left columm with elements */}
         <div className="w-fit border-r-2 border-body-200 pr-5">
           <div className="sticky top-20 flex flex-col ">
-            <DocSidebarHeader text="Fan Curves" />
+            <DocSidebarHeader
+              text="Fan Curves"
+              onClick={() => ScrollToSection(refs, "Fan Curves")}
+            />
+            
             <ul className="mr-5 mb-5">
               {fanCurveSections.map((s) =>
-                SideBarDocSection(s, () => ScrollToSection(refs, s))
+                SideBarDocSection(s, () => ScrollToSection(refs, s.key))
               )}
             </ul>
 
-            <DocSidebarHeader text="Custom Sensors" />
+            <DocSidebarHeader
+              text="Custom Sensors"
+              onClick={() => ScrollToSection(refs, "Custom Sensors")}
+            />
             <ul className="mr-5 mb-5">
               {customSensorSections.map((s) =>
-                SideBarDocSection(s, () => ScrollToSection(refs, s))
+                SideBarDocSection(s, () => ScrollToSection(refs, s.key))
               )}
             </ul>
 
-            <DocSidebarHeader text="Command Line Arguments" />
+            <DocSidebarHeader
+              text="Command Line Arguments"
+              onClick={() => ScrollToSection(refs, "Command Line Arguments")}
+            />
             <ul className="mr-5 mb-5">
               {commandLineArgumentSections.map((s) =>
-                SideBarDocSection(s, () => ScrollToSection(refs, s))
+                SideBarDocSection(s, () => ScrollToSection(refs, s.key))
               )}
             </ul>
           </div>
@@ -142,13 +172,13 @@ const DocsPage = () => {
         {/* Main section with actual documentation */}
         <div className={twMerge(styles.doc, "ml-5 ")}>
           <div className="max-w-3xl space-y-16">
-            <DocHeader text="Fan Curves" />
+            <DocHeader text="Fan Curves" refs={refs} />
             {fanCurveSections.map((s) => DocSectionComponent(s, refs))}
 
-            <DocHeader text="Custom Sensors" />
+            <DocHeader text="Custom Sensors" refs={refs} />
             {customSensorSections.map((s) => DocSectionComponent(s, refs))}
 
-            <DocHeader text="Command Line Arguments" />
+            <DocHeader text="Command Line Arguments" refs={refs} />
             {commandLineArgumentSections.map((s) =>
               DocSectionComponent(s, refs)
             )}
