@@ -90,7 +90,9 @@ export default function MixFanCurveCard({
           key={i}
           className={twMerge(
             "my-2 ml-2 text-sm",
-            suffix == x.name || selectedFunction.name == "Average" ? "text-accent" : ""
+            suffix == x.name || selectedFunction.name == "Average"
+              ? "text-accent"
+              : ""
           )}
         >
           <span className="mr-1">○</span> <span>{x.name}</span>
@@ -101,7 +103,7 @@ export default function MixFanCurveCard({
                 selectedFanCurveNames.filter((f) => f != x.name)
               )
             }
-            className="float-right rounded border text-white border-white px-1"
+            className="float-right rounded border border-white px-1 text-white"
           >
             X
           </button>

@@ -58,7 +58,7 @@ module.exports = {
         "scroll-in": {
           "0%": { transform: "translateY(-20px)" },
           "100%": { transform: "translateY(0)" },
-        },
+        }
       },
     },
   },

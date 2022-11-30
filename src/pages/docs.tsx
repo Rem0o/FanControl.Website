@@ -15,7 +15,7 @@ import {
 } from "../components/docs/fanCurves";
 import { SmallIcon } from "../components/icon";
 import NiceHeader from "../components/niceHeader";
-import "./../styles/docs.css"
+import "./../styles/docs.css";
 
 const c: DocSection = {
   key: "-c --config",
@@ -67,7 +67,7 @@ const SideBarDocSection = (section: DocSection, onClick: () => void) => {
   return (
     <li
       key={section.key}
-      className="cursor-pointer rounded p-1 hover:bg-body-200"
+      className="hover:bg-body-200 cursor-pointer rounded p-1"
       onClick={() => onClick()}
     >
       <div className="flex items-center">
@@ -97,7 +97,7 @@ const DocSidebarHeader = ({
 }) => (
   <h3
     onClick={() => onClick()}
-    className="mb-2 cursor-pointer rounded p-1 font-medium underline hover:bg-body-200"
+    className="hover:bg-body-200 mb-2 cursor-pointer rounded p-1 font-medium underline"
   >
     {text}
   </h3>
@@ -128,7 +128,7 @@ export const DocsPage = () => {
   return (
     <div className="flex px-5 pb-5">
       {/* Left columm with elements */}
-      <div className="w-fit border-r-2 border-body-200 pr-5">
+      <div className="border-body-200 w-fit border-r-2 pr-5">
         <div className="sticky top-20 flex flex-col ">
           <DocSidebarHeader
             text="Fan Curves"

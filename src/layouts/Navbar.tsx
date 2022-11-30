@@ -1,5 +1,4 @@
-import { useTimeoutBooleanState } from "../common/CustomHooks";
-import icons from "../common/Icons";
+import { SpinningLogo } from "../components/spinningLogo";
 
 const links = [
   { url: "/", title: "Home" },
@@ -16,21 +15,11 @@ const getPageTitle = (title?: string) => {
   return "";
 };
 
-const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
-  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(false, 3000);
-
+const NavBar = ({ pageTitle }: { pageTitle?: string }) => {
   return (
-    <nav className="flex bg-primary-800 text-body-50 shadow-md shadow-body-400 sticky top-0 z-50">
+    <nav className="bg-primary-800 text-body-50 shadow-body-400 sticky top-0 z-50 flex shadow-sm">
       <div className="m-1 flex items-center justify-center">
-        <svg
-          onMouseEnter={() => setIsSpinning(true)}
-          className={`${
-            isSpinning ? "animate-spin" : ""
-          } h-10 w-10 hover:animate-spin`}
-          viewBox="0 0 24 24"
-        >
-          <path fill="currentColor" d={icons.svgPaths.fan} />
-        </svg>
+        <SpinningLogo />
         <div className="ml-2">
           <a href={links[0].url}>Fan Control</a> {getPageTitle(pageTitle)}
         </div>
@@ -38,7 +27,7 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
       <ul className="ml-auto flex items-center justify-center">
         {links.map((link) => (
           <li key={link.title}>
-            <a className="p-3 hover:bg-primary-700" href={link.url}>
+            <a className="hover:bg-primary-700 p-3" href={link.url}>
               {link.title}
             </a>
           </li>

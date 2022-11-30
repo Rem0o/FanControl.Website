@@ -20,7 +20,7 @@ export default function Toggle({ checkedState, text }: ToggleProps) {
       />
       <div
         onClick={onClick}
-        className="peer h-4 w-9 rounded-full bg-gray-200 after:absolute after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-body-500 peer-checked:after:tranbody-x-full peer-checked:after:border-white peer-focus:ring-primary-300"
+        className="peer-checked:bg-body-500 peer-checked:after:tranbody-x-full peer-focus:ring-primary-300 peer h-4 w-9 rounded-full bg-gray-200 after:absolute after:top-0.5 after:h-5 after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:border-white"
       ></div>
       <span onClick={onClick} className="ml-2 select-none text-sm font-medium">
         {text}

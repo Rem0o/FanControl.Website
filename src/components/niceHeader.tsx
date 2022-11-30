@@ -1,4 +1,3 @@
-
 const NiceHeader = ({ icon, text }: { icon?: string; text: string }) => {
   return (
     <h2 className="mb-2 flex items-center text-left">
