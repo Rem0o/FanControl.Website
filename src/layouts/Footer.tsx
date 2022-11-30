@@ -15,7 +15,7 @@ const FooterButton = ({
 }) => {
   return (
     <TrackedAnchor href={href}>
-      <button className="flex rounded-2xl border border-body-600 py-1 px-2 pr-3 text-sm hover:border-primary-600 hover:text-primary-800">
+      <button className="flex rounded-2xl border border-black py-1 px-2 pr-3 text-sm hover:border-primary-600 hover:text-primary-600">
         <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
@@ -36,10 +36,7 @@ export const Footer = () => {
           <span className="ml-1 self-center text-xl">Fan Control</span>
         </div>
         <div>Rémi Mercier</div>
-        <ExternalLink
-          className="text-body-800 hover:text-primary-800"
-          href={`mailto:${consts.urls.email}`}
-        >
+        <ExternalLink href={`mailto:${consts.urls.email}`}>
           {consts.urls.email}
         </ExternalLink>
         <div className="flex items-center justify-center space-x-3 py-3">

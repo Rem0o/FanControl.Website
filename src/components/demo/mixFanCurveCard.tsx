@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { twMerge } from "tailwind-merge";
 import icons from "../../common/Icons";
 import Select from "../select";
 import {
@@ -58,6 +59,8 @@ export default function MixFanCurveCard({
           setSelectedFunction(mixFunctions[e.target.selectedIndex])
         }
         value={fanCurve.selectedMixFunction.name}
+        className="text-accent"
+        labelClassList=""
         label="Function"
       >
         {mixFunctions.map((f) => {
@@ -83,16 +86,22 @@ export default function MixFanCurveCard({
       </Select>
 
       {selectedFanCurves.map((x, i) => (
-        <div key={i} className="my-2 ml-2 text-sm">
+        <div
+          key={i}
+          className={twMerge(
+            "my-2 ml-2 text-sm",
+            suffix == x.name || selectedFunction.name == "Average" ? "text-accent" : ""
+          )}
+        >
           <span className="mr-1">○</span> <span>{x.name}</span>
-          <span> ({x.getValue()} %)</span>
+          <span className=""> ({x.getValue()} %)</span>
           <button
             onClick={() =>
               setSelectedFanCurveNames(
                 selectedFanCurveNames.filter((f) => f != x.name)
               )
             }
-            className="float-right rounded border border-white px-1"
+            className="float-right rounded border text-white border-white px-1"
           >
             X
           </button>

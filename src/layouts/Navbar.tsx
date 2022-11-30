@@ -20,7 +20,7 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
   const [isSpinning, setIsSpinning] = useTimeoutBooleanState(false, 3000);
 
   return (
-    <nav className="flex bg-body-700 text-body-50 shadow-md shadow-body-400 sticky top-0 z-50">
+    <nav className="flex bg-primary-800 text-body-50 shadow-md shadow-body-400 sticky top-0 z-50">
       <div className="m-1 flex items-center justify-center">
         <svg
           onMouseEnter={() => setIsSpinning(true)}
@@ -38,7 +38,7 @@ const NavBar = ({ pageTitle }: { pageTitle: string | undefined }) => {
       <ul className="ml-auto flex items-center justify-center">
         {links.map((link) => (
           <li key={link.title}>
-            <a className="p-3 hover:bg-primary-600" href={link.url}>
+            <a className="p-3 hover:bg-primary-700" href={link.url}>
               {link.title}
             </a>
           </li>

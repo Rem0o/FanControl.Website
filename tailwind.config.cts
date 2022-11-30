@@ -1,20 +1,48 @@
-const colors = require("tailwindcss/colors");
+import colors from "tailwindcss/colors";
+
+const toryBlue = {
+  DEFAULT: "#0C47AD",
+  50: "#A1C1F8",
+  100: "#8EB4F7",
+  200: "#689BF5",
+  300: "#4282F2",
+  400: "#1B69EF",
+  500: "#0F57D3",
+  600: "#0C47AD",
+  700: "#083179",
+  800: "#051C44",
+  900: "#010610",
+};
+
+const chartreuse = {
+  DEFAULT: "#89EA00",
+  50: "#D9FFA3",
+  100: "#D0FF8E",
+  200: "#BFFF65",
+  300: "#AEFF3D",
+  400: "#9EFF14",
+  500: "#89EA00",
+  600: "#68B200",
+  700: "#477A00",
+  800: "#264200",
+  900: "#060A00",
+};
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{astro,ts,tsx}",
-  ],
+  content: ["./src/**/*.{astro,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary: colors.blue,
-        body: colors.slate,
-        background: colors.gray,
+        primary: toryBlue,
+        accent: chartreuse["500"],
+        body: colors.zinc,
+        "tory-blue": toryBlue,
+        chartreuse: chartreuse
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",
-        "wiggle": "wiggle 1.5s ease-in",
+        wiggle: "wiggle 1.5s ease-in",
         "scroll-in": "scroll-in 0.5s ease-in",
       },
       keyframes: {
