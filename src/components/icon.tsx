@@ -18,5 +18,4 @@ const SmallIcon = (path: string) => (
   </svg>
 );
 
-
 export { BigIcon, Icon, SmallIcon };

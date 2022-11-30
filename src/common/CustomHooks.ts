@@ -42,8 +42,4 @@ const useRefreshState = (): [number, () => void] => {
   return [refreshId, () => setRefreshCount(refreshId + 1)];
 };
 
-export {
-  useInterval,
-  useTimeoutBooleanState,
-  useRefreshState,
-};
+export { useInterval, useTimeoutBooleanState, useRefreshState };

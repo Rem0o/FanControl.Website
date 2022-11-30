@@ -17,24 +17,27 @@ import {
 } from "../components/demo/temperatureSource";
 import type { FanCurve } from "../components/demo/fanCurve";
 import MixFanCurveCard from "../components/demo/mixFanCurveCard";
-import { ExternalLink, TrackedAnchor, TrackedExternalLink } from "../components/links";
+import {
+  ExternalLink,
+  TrackedAnchor,
+  TrackedExternalLink,
+} from "../components/links";
+import { SpinningLogo } from "../components/spinningLogo";
 
 const IconButton = ({
-  background,
-  textColor,
+  classList,
   text,
   icon,
   onClick,
 }: {
-  background: string;
-  textColor: string;
+  classList: string;
   text: string;
   icon: string;
   onClick?: Function;
 }) => (
   <button onClick={() => (onClick ? onClick() : null)}>
-    <Card className={background}>
-      <div className={`flex w-44 gap-2 ${textColor}`}>
+    <Card className={classList}>
+      <div className="flex w-44 gap-2">
         {Icon(icon)}
         <span className="m-auto font-semibold">{text}</span>
       </div>
@@ -59,9 +62,8 @@ const DownloadButton = () => {
   return (
     <TrackedAnchor href={consts.urls.directDownloadUrl}>
       <IconButton
-        background="bg-primary-800 hover:bg-primary-600"
+        classList="bg-primary-600 hover:text-accent hover:bg-primary-700 text-white"
         icon={icons.svgPaths.download}
-        textColor="text-white"
         text={text}
       />
     </TrackedAnchor>
@@ -72,28 +74,11 @@ const GithubButton = () => {
   return (
     <TrackedAnchor href={consts.urls.githubPageUrl}>
       <IconButton
-        background="bg-gray-300 hover:bg-gray-400"
+        classList="bg-gray-300 hover:bg-gray-400"
         icon={icons.svgPaths.github}
-        textColor="text-black"
         text="GitHub Page"
       />
     </TrackedAnchor>
-  );
-};
-
-const SpinningLogo = () => {
-  const [isSpinning, setIsSpinning] = useTimeoutBooleanState(true, 3000);
-
-  return (
-    <svg
-      onMouseEnter={() => setIsSpinning(true)}
-      className={`${
-        isSpinning ? "animate-spin" : ""
-      } mt-10 h-36 w-36 hover:animate-spin`}
-      viewBox="0 0 24 24"
-    >
-      <path fill="currentColor" d={icons.svgPaths.fan} />
-    </svg>
   );
 };
 
@@ -149,7 +134,7 @@ const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
         name="Demo Case Fans"
         fanCurves={mockedFanCurves}
         selectedFanCurvesDefault={mockedFanCurves
-          .slice(0, 1)
+          .slice(0, 2)
           .map((x) => x.name)}
       ></MixFanCurveCard>
     </InView>
@@ -174,11 +159,11 @@ export const IndexPage = () => {
 
   return (
     <div className="flex flex-col place-items-center gap-12 text-center">
-      <SpinningLogo />
+      <SpinningLogo className="mt-10 h-36 w-36" spinInitially={true} />
       <h1 className="mx-5 max-w-lg text-4xl font-extrabold">
         Fan Control is a highly focused fan controlling software for Windows.
       </h1>
-      <div className="mx-5 text-2xl font-semibold text-body-700">
+      <div className="text-body-700 mx-5 text-2xl font-semibold">
         <p>No installation required.</p>
         <br />
         <p>Low on ressources, high on power.</p>
@@ -189,7 +174,7 @@ export const IndexPage = () => {
         <DownloadButton />
       </div>
 
-      <Card className="m-5 p-0">
+      <Card className="shadow-body-600 m-5 p-0 shadow-xl">
         <img
           className="rounded"
           width={1037}
@@ -203,15 +188,15 @@ export const IndexPage = () => {
         that they do, do not have this level of control. This is what happens
         when someone that sees a problem, is an enthusiast, and is a programmer,
         gets involved and says I'm gonna do something that nobody has been doing
-        a way I feel they should do it, and they did it right in my opinion. "{" "}
-        <br /> <br /> -{" "}
+        a way I feel they should do it, and they did it right in my opinion. "
+        <br /> <br /> -
         <TrackedExternalLink href={consts.urls.videoUrl}>
           JayzTwoCents
         </TrackedExternalLink>
       </section>
 
-      <section className="my-10 w-full bg-body-200 px-5 py-20">
-        <div className="wrap mx-auto flex max-w-5xl flex-wrap place-content-center content-evenly gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+      <section className="bg-body-200 my-10 w-full px-5 py-20">
+        <div className=" wrap mx-auto flex max-w-5xl flex-wrap place-content-center content-evenly gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {[
             [icons.svgPaths.bulb, "Flexible by design"],
             [icons.svgPaths.graph, "7 Fan Curve types"],
@@ -219,9 +204,9 @@ export const IndexPage = () => {
             [icons.svgPaths.brush, "UI Themes"],
             [icons.svgPaths.wrench, "Assisted setup"],
             [icons.svgPaths.temperature, "Temperature Tray Icon"],
-          ].map(([icon, text], i) => (
+          ].map(([icon, text, onClick], i) => (
             <div key={i} className="m-auto flex items-center">
-              <Card className="bg-body-700 font-medium text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-800">
+              <Card className="bg-body-700 text-body-100 shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent font-medium shadow-lg">
                 <div className="h-18 justify-left flex w-52 items-center text-center text-xl">
                   <div className="mr-2">{BigIcon(icon)}</div>
                   <div className="mx-auto">{text}</div>
@@ -276,7 +261,7 @@ export const IndexPage = () => {
             <br />{" "}
           </p>
           <p
-            className="text-body-90 cursor-pointer rounded border border-body-900 p-1 text-center font-medium hover:border-primary-800 hover:text-primary-800"
+            className="text-body-90 border-body-900 hover:border-primary-600 hover:text-primary-600 cursor-pointer rounded border p-1 text-center font-medium"
             onClick={() => tryItOut(true)}
             onMouseEnter={() => tryItOut(false)}
           >

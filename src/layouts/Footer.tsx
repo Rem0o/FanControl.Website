@@ -1,6 +1,7 @@
 import consts from "../common/Consts";
 import icons from "../common/Icons";
 import { ExternalLink, TrackedAnchor } from "../components/links";
+import { SpinningLogo } from "../components/spinningLogo";
 
 const FooterButton = ({
   href,
@@ -15,7 +16,7 @@ const FooterButton = ({
 }) => {
   return (
     <TrackedAnchor href={href}>
-      <button className="flex rounded-2xl border border-body-600 py-1 px-2 pr-3 text-sm hover:border-primary-600 hover:text-primary-800">
+      <button className="hover:border-primary-600 hover:text-primary-600 flex rounded-2xl border border-black py-1 px-2 pr-3 text-sm">
         <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
@@ -27,19 +28,14 @@ const FooterButton = ({
 
 export const Footer = () => {
   return (
-    <footer className="min-h-sm mt-10 flex border border-t border-body-300 bg-body-100 pt-2 text-center text-body-800">
+    <footer className="min-h-sm border-body-300 bg-body-100 text-body-800 mt-10 flex border border-t pt-2 text-center">
       <div className="min-w-sm m-auto flex flex-col space-y-0">
         <div className="flex items-center justify-center ">
-          <svg className="h-8 w-8" viewBox="0 0 24 24">
-            <path fill="currentColor" d={icons.svgPaths.fan} />
-          </svg>
+          <SpinningLogo className="h-8 w-8" />
           <span className="ml-1 self-center text-xl">Fan Control</span>
         </div>
         <div>Rémi Mercier</div>
-        <ExternalLink
-          className="text-body-800 hover:text-primary-800"
-          href={`mailto:${consts.urls.email}`}
-        >
+        <ExternalLink href={`mailto:${consts.urls.email}`}>
           {consts.urls.email}
         </ExternalLink>
         <div className="flex items-center justify-center space-x-3 py-3">

@@ -20,14 +20,14 @@ export default function FanCurveCard({
   controlValueSuffix,
   children,
 }: Props) {
-  const background = "bg-primary-800";
+  const background = "bg-primary-700";
   const value = fanCurve.getValue();
   const isValid = (number: number) => number >= 0 && number <= 100;
 
   return (
     <Card className={background}>
       <div className="flex w-56 flex-col text-white">
-        <div className="flex flex-row items-center justify-center">
+        <div className="flex flex-row items-center justify-center text-white">
           {icon(iconPath)}
           <div className="ml-4 w-full border-b-2 border-white ">
             {fanCurve.name}
