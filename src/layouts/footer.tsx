@@ -1,5 +1,5 @@
-import consts from "../common/Consts";
-import icons from "../common/Icons";
+import consts from "../common/consts";
+import icons from "../common/icons";
 import { ExternalLink, TrackedAnchor } from "../components/links";
 import { SpinningLogo } from "../components/spinningLogo";
 
@@ -16,7 +16,7 @@ const FooterButton = ({
 }) => {
   return (
     <TrackedAnchor href={href}>
-      <button className="hover:border-primary-600 hover:text-primary-600 flex rounded-2xl border border-black py-1 px-2 pr-3 text-sm">
+      <button className="flex rounded-2xl border border-black py-1 px-2 pr-3 text-sm hover:border-primary-600 hover:text-primary-600">
         <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
@@ -28,7 +28,7 @@ const FooterButton = ({
 
 export const Footer = () => {
   return (
-    <footer className="min-h-sm border-body-300 bg-body-100 text-body-800 mt-10 flex border border-t pt-2 text-center">
+    <footer className="min-h-sm mt-10 flex border border-t border-body-300 bg-body-100 pt-2 text-center text-body-800">
       <div className="min-w-sm m-auto flex flex-col space-y-0">
         <div className="flex items-center justify-center ">
           <SpinningLogo className="h-8 w-8" />

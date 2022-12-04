@@ -17,7 +17,7 @@ const getPageTitle = (title?: string) => {
 
 const NavBar = ({ pageTitle }: { pageTitle?: string }) => {
   return (
-    <nav className="bg-primary-800 text-body-50 shadow-body-400 sticky top-0 z-50 flex shadow-sm">
+    <nav className="sticky top-0 z-50 flex bg-primary-800 text-body-50 shadow-sm shadow-body-400">
       <div className="m-1 flex items-center justify-center">
         <SpinningLogo />
         <div className="ml-2">
@@ -27,7 +27,7 @@ const NavBar = ({ pageTitle }: { pageTitle?: string }) => {
       <ul className="ml-auto flex items-center justify-center">
         {links.map((link) => (
           <li key={link.title}>
-            <a className="hover:bg-primary-700 p-3" href={link.url}>
+            <a className="p-3 hover:bg-primary-700" href={link.url}>
               {link.title}
             </a>
           </li>

@@ -1,9 +1,8 @@
 ---
-import { Footer } from "./Footer";
-import { NavBar } from "./Navbar";
-import SEO from "./SEO.astro";
-import GoogleAnalytics from "./GoogleAnalytics.astro";
-
+import { Footer } from "./footer";
+import { NavBar } from "./navbar";
+import SEO from "./seo.astro";
+import GoogleAnalytics from "./googleAnalytics.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -29,7 +28,7 @@ const defaultTitle: string = "Home";
   <body>
     <div class="flex min-h-screen flex-col">
       <NavBar pageTitle={title === defaultTitle ? "" : title} client:load />
-      <main class="grow bg-transparent mt-5"><slot /></main>
+      <main class="mt-5 grow bg-transparent"><slot /></main>
       <Footer client:load />
     </div>
   </body>

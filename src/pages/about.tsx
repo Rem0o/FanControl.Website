@@ -1,6 +1,6 @@
 import Card from "../components/card";
 import { ExternalLink } from "../components/links";
-import consts from "./../common/Consts";
+import consts from "../common/consts";
 
 const cardStyle = "bg-white gap-y-2 max-w-full";
 

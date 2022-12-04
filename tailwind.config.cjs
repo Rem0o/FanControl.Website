@@ -1,4 +1,4 @@
-import colors from "tailwindcss/colors";
+const colors = require("tailwindcss/colors");
 
 const toryBlue = {
   DEFAULT: "#0C47AD",
@@ -38,7 +38,7 @@ module.exports = {
         accent: chartreuse["500"],
         body: colors.zinc,
         "tory-blue": toryBlue,
-        chartreuse: chartreuse
+        chartreuse: chartreuse,
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",
@@ -58,7 +58,7 @@ module.exports = {
         "scroll-in": {
           "0%": { transform: "translateY(-20px)" },
           "100%": { transform: "translateY(0)" },
-        }
+        },
       },
     },
   },

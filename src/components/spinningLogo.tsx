@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
-import { useTimeoutBooleanState } from "../common/CustomHooks";
-import icons from "./../common/Icons";
+import { useTimeoutBooleanState } from "../common/hooks";
+import icons from "../common/icons";
 
 interface Props {
   spinInitially?: boolean;

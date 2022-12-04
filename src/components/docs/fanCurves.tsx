@@ -5,9 +5,9 @@ import {
   createTempSourceRandom,
   TemperatureSource,
 } from "../demo/temperatureSource";
-import icons from "../../common/Icons";
+import icons from "../../common/icons";
 import { useState } from "react";
-import { useInterval } from "../../common/CustomHooks";
+import { useInterval } from "../../common/hooks";
 import type { FanCurve } from "../demo/fanCurve";
 
 const linear: DocSection = {

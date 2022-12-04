@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
-import consts from "../common/Consts";
-import icons from "../common/Icons";
+import consts from "../common/consts";
+import icons from "../common/icons";
 import NiceHeader from "../components/niceHeader";
 import Card from "../components/card";
 import { BigIcon, Icon } from "../components/icon";
@@ -9,7 +9,7 @@ import {
   useInterval,
   useRefreshState,
   useTimeoutBooleanState,
-} from "../common/CustomHooks";
+} from "../common/hooks";
 import {
   createTempSource,
   createTempSourceRandom,
@@ -163,7 +163,7 @@ export const IndexPage = () => {
       <h1 className="mx-5 max-w-lg text-4xl font-extrabold">
         Fan Control is a highly focused fan controlling software for Windows.
       </h1>
-      <div className="text-body-700 mx-5 text-2xl font-semibold">
+      <div className="mx-5 text-2xl font-semibold text-body-700">
         <p>No installation required.</p>
         <br />
         <p>Low on ressources, high on power.</p>
@@ -174,7 +174,7 @@ export const IndexPage = () => {
         <DownloadButton />
       </div>
 
-      <Card className="shadow-body-600 m-5 p-0 shadow-xl">
+      <Card className="m-5 p-0 shadow-xl shadow-body-600">
         <img
           className="rounded"
           width={1037}
@@ -195,7 +195,7 @@ export const IndexPage = () => {
         </TrackedExternalLink>
       </section>
 
-      <section className="bg-body-200 my-10 w-full px-5 py-20">
+      <section className="my-10 w-full bg-body-200 px-5 py-20">
         <div className=" wrap mx-auto flex max-w-5xl flex-wrap place-content-center content-evenly gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {[
             [icons.svgPaths.bulb, "Flexible by design"],
@@ -206,7 +206,7 @@ export const IndexPage = () => {
             [icons.svgPaths.temperature, "Temperature Tray Icon"],
           ].map(([icon, text, onClick], i) => (
             <div key={i} className="m-auto flex items-center">
-              <Card className="bg-body-700 text-body-100 shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent font-medium shadow-lg">
+              <Card className="bg-body-700 font-medium text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">
                 <div className="h-18 justify-left flex w-52 items-center text-center text-xl">
                   <div className="mr-2">{BigIcon(icon)}</div>
                   <div className="mx-auto">{text}</div>
@@ -261,7 +261,7 @@ export const IndexPage = () => {
             <br />{" "}
           </p>
           <p
-            className="text-body-90 border-body-900 hover:border-primary-600 hover:text-primary-600 cursor-pointer rounded border p-1 text-center font-medium"
+            className="text-body-90 cursor-pointer rounded border border-body-900 p-1 text-center font-medium hover:border-primary-600 hover:text-primary-600"
             onClick={() => tryItOut(true)}
             onMouseEnter={() => tryItOut(false)}
           >

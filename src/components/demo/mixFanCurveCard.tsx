@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import icons from "../../common/Icons";
+import icons from "../../common/icons";
 import Select from "../select";
 import {
   createMixFanCurve,

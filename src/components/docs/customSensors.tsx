@@ -1,4 +1,4 @@
-import icons from "../../common/Icons";
+import icons from "../../common/icons";
 import { DocSection, parameters, ParametersCard } from "./docSection";
 
 const timeAverage: DocSection = {
