@@ -30,8 +30,8 @@ const linear: DocSection = {
 
         <ul>
           <li>
-            Min. and max. temperature : Temperature bounds between to
-            interpolate between.
+            Min. and max. temperature : Temperature bounds to be
+            interpolated between.
           </li>
           <li>
             Min. and max. speed : Fan speeds as % to be interpolated between the
@@ -53,7 +53,7 @@ const graph: DocSection = {
     return (
       <>
         <p>
-          The graph fan curve applies a custom drawn function based on a
+          The graph fan curve applies a custom function based on a
           temperature source.
         </p>
 

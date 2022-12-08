@@ -17,7 +17,7 @@ const getPageTitle = (title?: string) => {
 
 const NavBar = ({ pageTitle }: { pageTitle?: string }) => {
   return (
-    <nav className="sticky top-0 z-50 flex bg-primary-800 text-body-50 shadow-sm shadow-body-400">
+    <nav className="w-screen sticky top-0 z-50 flex bg-primary-800 text-body-50 shadow-sm shadow-body-400">
       <div className="m-1 flex items-center justify-center">
         <SpinningLogo />
         <div className="ml-2">

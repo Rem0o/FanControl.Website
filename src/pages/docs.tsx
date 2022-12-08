@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import Card from "../components/card";
 import {
   mixSensor,
   timeAverage,

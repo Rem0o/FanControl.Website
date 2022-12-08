@@ -166,7 +166,7 @@ export const IndexPage = () => {
       <div className="mx-5 text-2xl font-semibold text-body-700">
         <p>No installation required.</p>
         <br />
-        <p>Low on ressources, high on power.</p>
+        <p>Low on resources, high on power.</p>
       </div>
 
       <div className="flex gap-6">
