@@ -27,8 +27,12 @@ const defaultTitle: string = "Home";
   </head>
   <body>
     <div class="flex min-h-screen flex-col">
-      <NavBar pageTitle={title === defaultTitle ? "" : title} client:load />
-      <main class="mt-5 grow bg-transparent"><slot /></main>
+      <NavBar
+        className="fixed top-0 z-50"
+        pageTitle={title === defaultTitle ? "" : title}
+        client:load
+      />
+      <main class="mt-16 grow bg-transparent"><slot /></main>
       <Footer client:load />
     </div>
   </body>

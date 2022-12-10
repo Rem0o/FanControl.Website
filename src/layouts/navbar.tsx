@@ -1,3 +1,6 @@
+import type React from "react";
+import type { HTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 import { SpinningLogo } from "../components/spinningLogo";
 
 const links = [
@@ -15,9 +18,11 @@ const getPageTitle = (title?: string) => {
   return "";
 };
 
-const NavBar = ({ pageTitle }: { pageTitle?: string }) => {
+const NavBar = (props : HTMLAttributes<HTMLElement> & { pageTitle?: string }) => {
+  const {pageTitle, className, ...restOfProps} = props;
+
   return (
-    <nav className="w-screen sticky top-0 z-50 flex bg-primary-800 text-body-50 shadow-sm shadow-body-400">
+    <nav {...restOfProps} className={twMerge("w-full flex bg-primary-800 text-body-50 shadow-sm shadow-body-400", className)}>
       <div className="m-1 flex items-center justify-center">
         <SpinningLogo />
         <div className="ml-2">
