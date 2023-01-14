@@ -141,6 +141,24 @@ const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
   );
 };
 
+const ArticleReference = (
+  imgSrc: string,
+  href?: string,
+  className?: string
+) => {
+  return (
+    <a href={href} className={className}>
+      <img
+        className="rounded"
+        height={100}
+        width={175}
+        src={imgSrc}
+        alt=""
+      ></img>
+    </a>
+  );
+};
+
 export const IndexPage = () => {
   const [animationRefreshId, animateDemoCard] = useRefreshState();
   const demoRef = useRef<HTMLDivElement | null>(null);
@@ -193,6 +211,27 @@ export const IndexPage = () => {
         <TrackedExternalLink href={consts.urls.videoUrl}>
           JayzTwoCents
         </TrackedExternalLink>
+        {/*Article references here!!!*/}
+        <div className="mt-16 mb-8 align-middle text-2xl font-medium">
+          Featured articles
+        </div>
+        <div className="flex items-center align-text-top">
+          {[
+            [
+              "assets/voltcave.png",
+              "https://voltcave.com/fan-control-software/?utm_source=rss&utm_medium=rss&utm_campaign=fan-control-software",
+            ],
+            [
+              "assets/cputemper.png",
+              "https://www.cputemper.com/fan-control-software-windows-10/",
+              "bg-[#fc5313] rounded-xl p-2",
+            ],
+          ].map((x) => {
+            const [imgSrc, href, style] = x;
+
+            return ArticleReference(imgSrc, href, style);
+          })}
+        </div>
       </section>
 
       <section className="my-10 w-full bg-body-200 px-5 py-20">
@@ -203,7 +242,7 @@ export const IndexPage = () => {
             [icons.svgPaths.save, "Create multiple configurations"],
             [icons.svgPaths.brush, "UI Themes"],
             [icons.svgPaths.wrench, "Assisted setup"],
-            [icons.svgPaths.temperature, "Temperature Tray Icon"],
+            [icons.svgPaths.temperature, "Temperature Tray Icons"],
           ].map(([icon, text, onClick], i) => (
             <div key={i} className="m-auto flex items-center">
               <Card className="bg-body-700 font-medium text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">

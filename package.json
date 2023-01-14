@@ -1,7 +1,7 @@
 {
-  "name": "@example/minimal",
+  "name": "fancontrol.website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
