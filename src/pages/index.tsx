@@ -340,8 +340,8 @@ export const IndexPage = () => {
               LibreHardwareMonitor
             </ExternalLink>
             , an open source fork of the original OpenHardwareMonitor. This
-            means that hardware compatiblity is entierely open for anyone to
-            contribute, and doesn't rely on a single developer which may stop
+            means that hardware compatiblity is entirely open for anyone to
+            contribute, and doesn't rely on a single developer who may stop
             caring at some point. Combined with the plugin system, Fan Control
             is unlocked for many generations of hardware to come.
           </p>
