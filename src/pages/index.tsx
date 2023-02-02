@@ -147,7 +147,7 @@ const ArticleReference = (
   className?: string
 ) => {
   return (
-    <a href={href} className={className}>
+    <TrackedExternalLink href={href} className={className}>
       <img
         className="rounded"
         height={100}
@@ -155,7 +155,7 @@ const ArticleReference = (
         src={imgSrc}
         alt=""
       ></img>
-    </a>
+    </TrackedExternalLink>
   );
 };
 
@@ -215,7 +215,7 @@ export const IndexPage = () => {
         <div className="mt-16 mb-8 align-middle text-2xl font-medium">
           Featured articles
         </div>
-        <div className="flex items-center align-text-top">
+        <div className="flex items-center align-text-top space-x-5 space-y-5">
           {[
             [
               "assets/voltcave.png",
@@ -226,6 +226,15 @@ export const IndexPage = () => {
               "https://www.cputemper.com/fan-control-software-windows-10/",
               "bg-[#fc5313] rounded-xl p-2",
             ],
+            [
+              "assets/muo.svg",
+              "https://www.makeuseof.com/how-to-use-fan-control-to-manage-your-windows-pcs-fan/",
+            ],
+            [
+              "assets/digitalTrends.svg",
+              "https://www.digitaltrends.com/computing/how-to-use-fan-control/",
+              "bg-[#000000] rounded-xl p-2"
+            ]
           ].map((x) => {
             const [imgSrc, href, style] = x;
 

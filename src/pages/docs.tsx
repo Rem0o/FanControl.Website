@@ -126,11 +126,14 @@ export const DocsPage = () => {
   const refs = useRef<Map<string, HTMLElement | null>>(
     new Map<string, HTMLElement | null>()
   );
-
+  const [v, setV] = useState(true);
+  
   return (
+   
     <div className="flex px-5 pb-5">
+      <button onClick={() => setV(!v)} className="hidden fixed rounded-full p-2 bg-body-700 text-body-50 top-12 left-5">{"<="}</button>
       {/* Left columm with elements */}
-      <div className="w-fit border-r-2 border-body-200 pr-5">
+      <div className={twMerge("w-fit border-r-2 border-body-200 pr-5", v ? "" : "hidden")}>
         <div className="sticky top-20 flex flex-col ">
           <DocSidebarHeader
             text="Fan Curves"
