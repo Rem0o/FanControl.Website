@@ -147,7 +147,7 @@ const ArticleReference = (
   className?: string
 ) => {
   return (
-    <TrackedExternalLink href={href} className={className}>
+    <TrackedExternalLink key={href} href={href} className={className}>
       <img
         className="rounded"
         height={100}
