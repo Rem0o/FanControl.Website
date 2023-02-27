@@ -151,7 +151,7 @@ const ArticleReference = (
       <img
         className="rounded"
         height={100}
-        width={175}
+        width={160}
         src={imgSrc}
         alt=""
       ></img>
@@ -215,7 +215,7 @@ export const IndexPage = () => {
         <div className="mt-16 mb-8 align-middle text-2xl font-medium">
           Featured articles
         </div>
-        <div className="flex items-center align-text-top space-x-5 space-y-5">
+        <div className="flex items-center space-x-5 space-y-5 align-text-top">
           {[
             [
               "assets/voltcave.png",
@@ -233,8 +233,13 @@ export const IndexPage = () => {
             [
               "assets/digitalTrends.svg",
               "https://www.digitaltrends.com/computing/how-to-use-fan-control/",
-              "bg-[#000000] rounded-xl p-2"
-            ]
+              "bg-[#000000] rounded-xl p-2",
+            ],
+            [
+              "assets/techguided.png",
+              "https://techguided.com/best-fan-control-software/",
+              "bg-[#000000] rounded-xl p-2",
+            ],
           ].map((x) => {
             const [imgSrc, href, style] = x;
 

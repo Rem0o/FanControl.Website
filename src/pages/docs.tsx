@@ -81,12 +81,12 @@ const SideBarDocSection = (section: DocSection, onClick: () => void) => {
 };
 
 const DocSectionComponent = (
-  sections: DocSection,
+  section: DocSection,
   refs: React.MutableRefObject<Map<string, HTMLElement | null>>
 ): JSX.Element => (
-  <div key={sections.key} ref={(el) => refs.current.set(sections.key, el)}>
-    <NiceHeader icon={sections.icon} text={sections.key}></NiceHeader>
-    {sections.render()}
+  <div id={section.key} key={section.key} ref={(el) => refs.current.set(section.key, el)}>
+    <NiceHeader icon={section.icon} text={section.key}></NiceHeader>
+    {section.render()}
   </div>
 );
 
