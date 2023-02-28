@@ -23,6 +23,8 @@ import {
   TrackedExternalLink,
 } from "../components/links";
 import { SpinningLogo } from "../components/spinningLogo";
+import { ArticleReference } from "../components/articles/articlesReference";
+import { articles } from "../components/articles/articles"
 
 const IconButton = ({
   classList,
@@ -141,24 +143,6 @@ const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
   );
 };
 
-const ArticleReference = (
-  imgSrc: string,
-  href?: string,
-  className?: string
-) => {
-  return (
-    <TrackedExternalLink key={href} href={href} className={className}>
-      <img
-        className="rounded"
-        height={100}
-        width={160}
-        src={imgSrc}
-        alt=""
-      ></img>
-    </TrackedExternalLink>
-  );
-};
-
 export const IndexPage = () => {
   const [animationRefreshId, animateDemoCard] = useRefreshState();
   const demoRef = useRef<HTMLDivElement | null>(null);
@@ -216,31 +200,7 @@ export const IndexPage = () => {
           Featured articles
         </div>
         <div className="flex items-center space-x-5 space-y-5 align-text-top">
-          {[
-            [
-              "assets/voltcave.png",
-              "https://voltcave.com/fan-control-software/?utm_source=rss&utm_medium=rss&utm_campaign=fan-control-software",
-            ],
-            [
-              "assets/cputemper.png",
-              "https://www.cputemper.com/fan-control-software-windows-10/",
-              "bg-[#fc5313] rounded-xl p-2",
-            ],
-            [
-              "assets/muo.svg",
-              "https://www.makeuseof.com/how-to-use-fan-control-to-manage-your-windows-pcs-fan/",
-            ],
-            [
-              "assets/digitalTrends.svg",
-              "https://www.digitaltrends.com/computing/how-to-use-fan-control/",
-              "bg-[#000000] rounded-xl p-2",
-            ],
-            [
-              "assets/techguided.png",
-              "https://techguided.com/best-fan-control-software/",
-              "bg-[#000000] rounded-xl p-2",
-            ],
-          ].map((x) => {
+          {articles.map((x) => {
             const [imgSrc, href, style] = x;
 
             return ArticleReference(imgSrc, href, style);
@@ -280,7 +240,7 @@ export const IndexPage = () => {
             Yup, that's covered. Fan Control has extensive support for a variety
             of motherboards, GPUs, and other hardware, like AIOs. Say goodbye to
             the "silo" approach of using multiple softwares to control your
-            different fans. Have all your them controlled by a single smart
+            different fans. Have all of them controlled by a single smart
             entity, and start thinking about cooling and noise as a system-wide
             concern.
           </p>
