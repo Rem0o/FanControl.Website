@@ -24,7 +24,8 @@ import {
 } from "../components/links";
 import { SpinningLogo } from "../components/spinningLogo";
 import { ArticleReference } from "../components/articles/articlesReference";
-import { articles } from "../components/articles/articles"
+import { articles } from "../components/articles/articles";
+import { DonationModal } from "../components/donationModal";
 
 const IconButton = ({
   classList,
@@ -47,7 +48,7 @@ const IconButton = ({
   </button>
 );
 
-const DownloadButton = () => {
+const DownloadButton = ({ onClick }: { onClick?: Function }) => {
   const [version, setVersion] = useState(0);
 
   useEffect(() => {
@@ -67,6 +68,7 @@ const DownloadButton = () => {
         classList="bg-primary-600 hover:text-accent hover:bg-primary-700 text-white"
         icon={icons.svgPaths.download}
         text={text}
+        onClick={onClick}
       />
     </TrackedAnchor>
   );
@@ -146,6 +148,7 @@ const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
 export const IndexPage = () => {
   const [animationRefreshId, animateDemoCard] = useRefreshState();
   const demoRef = useRef<HTMLDivElement | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
   const tryItOut = (click: boolean) => {
     if (click && demoRef.current) {
@@ -173,7 +176,7 @@ export const IndexPage = () => {
 
       <div className="flex gap-6">
         <GithubButton />
-        <DownloadButton />
+        <DownloadButton onClick={() => setShowModal(true)} />
       </div>
 
       <Card className="m-5 p-0 shadow-xl shadow-body-600">
@@ -321,6 +324,8 @@ export const IndexPage = () => {
           </p>
         </div>
       </section>
+
+      {showModal ? DonationModal(() => setShowModal(false)) : <></>}
     </div>
   );
 };
