@@ -9,7 +9,7 @@ const timeAverage: DocSection = {
       <>
         <p>
           The time average custom sensor averages the selected sensor over a set
-          ammount of time.
+          amount of time.
         </p>
         <br />
 
