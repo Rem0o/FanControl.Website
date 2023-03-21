@@ -79,4 +79,31 @@ const fileSensor: DocSection = {
   },
 };
 
-export { timeAverage, mixSensor, fileSensor };
+const offsetSensor: DocSection = {
+  key: "Offset",
+  icon: icons.svgPaths.delta,
+  render: () => {
+    return (
+      <>
+        <p>The offset custom sensor allows to offset an existing sensor.</p>
+        <br />
+
+        <ParametersCard>
+          <h2>Parameters:</h2>
+
+          <ul>
+            <li>
+              Offset: Offset in degrees or percent (proportional) to be applied.
+            </li>
+            <li>
+              Proportional offset: If checked, the offset will be proportional
+              (%) instead of absolute (degree).
+            </li>
+          </ul>
+        </ParametersCard>
+      </>
+    );
+  },
+};
+
+export { timeAverage, mixSensor, fileSensor, offsetSensor };

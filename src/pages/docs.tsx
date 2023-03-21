@@ -5,6 +5,7 @@ import {
   mixSensor,
   timeAverage,
   fileSensor,
+  offsetSensor
 } from "../components/docs/customSensors";
 import type { DocSection } from "../components/docs/docSection";
 import {
@@ -50,7 +51,7 @@ const fanCurveSections: DocSection[] = [
   sync,
 ];
 
-const customSensorSections: DocSection[] = [timeAverage, mixSensor, fileSensor];
+const customSensorSections: DocSection[] = [timeAverage, mixSensor, fileSensor, offsetSensor];
 
 const commandLineArgumentSections: DocSection[] = [c, w];
 
