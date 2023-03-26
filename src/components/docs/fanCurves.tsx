@@ -154,6 +154,10 @@ const sync: DocSection = {
           <ul>
             <li>Selected control: The control to sync with.</li>
             <li>Offset: Offset in % to be applied to the selected control.</li>
+            <li>
+              Proportional offset: If checked, the offset will be proportional
+              instead of absolute.
+            </li>
           </ul>
         </ParametersCard>
       </>
