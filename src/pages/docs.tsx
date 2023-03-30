@@ -42,6 +42,14 @@ const w: DocSection = {
   },
 };
 
+const m: DocSection = {
+  key: "-m",
+  render: () => {
+    return <>Force the program to be minimized, even if an error occured at launch.</>;
+  },
+};
+
+
 const fanCurveSections: DocSection[] = [
   linear,
   graph,
@@ -53,7 +61,7 @@ const fanCurveSections: DocSection[] = [
 
 const customSensorSections: DocSection[] = [timeAverage, mixSensor, fileSensor, offsetSensor];
 
-const commandLineArgumentSections: DocSection[] = [c, w];
+const commandLineArgumentSections: DocSection[] = [c, w, m];
 
 const ScrollToSection = (
   refs: React.MutableRefObject<Map<string, HTMLElement | null>>,
