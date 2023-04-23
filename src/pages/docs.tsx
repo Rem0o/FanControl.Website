@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Card from "../components/card";
 import {
   mixSensor,
   timeAverage,
@@ -19,6 +18,7 @@ import {
 import { SmallIcon } from "../components/icon";
 import NiceHeader from "../components/niceHeader";
 import "./../styles/docs.css";
+import { PageHeader } from "../components/pageHeader";
 
 const c: DocSection = {
   key: "-c --config",
@@ -124,7 +124,7 @@ const DocHeader = ({
   return (
     <h2
       ref={(el) => refs.current.set(text, el)}
-      className="mx-auto self-center text-left text-4xl font-semibold underline"
+      className="mx-auto self-center text-left text-3xl font-medium"
     >
       {text}
     </h2>
@@ -179,6 +179,7 @@ export const DocsPage = () => {
       {/* Main section with actual documentation */}
       <div className="docs ml-5">
         <div className="max-w-3xl space-y-16">
+          <PageHeader text="Documentation"/>
           <DocHeader text="Fan Curves" refs={refs} />
           {fanCurveSections.map((s) => DocSectionComponent(s, refs))}
 
@@ -192,3 +193,5 @@ export const DocsPage = () => {
     </div>
   );
 };
+
+

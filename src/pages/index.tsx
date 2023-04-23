@@ -27,6 +27,12 @@ import { ArticleReference } from "../components/articles/articlesReference";
 import { articles } from "../components/articles/articles";
 import { DonationModal } from "../components/donationModal";
 
+type VersionInfo =
+{
+  Number: number
+  Message: string
+}
+
 const IconButton = ({
   classList,
   text,
@@ -49,12 +55,16 @@ const IconButton = ({
 );
 
 const DownloadButton = ({ onClick }: { onClick?: Function }) => {
-  const [version, setVersion] = useState(0);
+  const [version, setVersion] = useState<number>(0);
+  const [messages, setMessages] = useState<string[]>();
 
   useEffect(() => {
     fetch(consts.urls.versionJsonUrl)
-      .then((r) => r.json())
-      .then((json) => setVersion(json.Number));
+      .then((r) => r.json() as Promise<VersionInfo>)
+      .then((v) => {
+        setVersion(v.Number);
+        setMessages(v.Message.split("\r\n").map(x => x.trim()));
+      });
   }, []);
 
   let text = "Download";
