@@ -8,42 +8,80 @@ import {
 import icons from "../../common/icons";
 import { useState } from "react";
 import { useInterval } from "../../common/hooks";
-import type { FanCurve } from "../demo/fanCurve";
+import LinearFanCurveCard from "../demo/linearFanCurveCard";
+import type { FanCurve, LinearFanCurveConfig } from "../demo/fanCurve";
+
+const DocDemoLinearFanCurveCard = () => {
+  const updateSources = (): [TemperatureSource, TemperatureSource] => [
+    createTempSourceRandom("CPU Core", 30, 70),
+    createTempSourceRandom("GPU Core", 30, 70),
+  ];
+
+  const [sources, setSources] = useState([
+    createTempSource("CPU Core", 50),
+    createTempSource("GPU Core", 50),
+  ]);
+
+  useInterval(3000, () => {
+    setSources(updateSources());
+  });
+
+  const linearFanCurve: LinearFanCurveConfig = {
+    minimumTemp: 30,
+    maximumTemp: 50,
+    minimumSpeed: 40,
+    maximumSpeed: 100,
+    selectedTemperature: sources[0],
+  };
+
+  return (
+    <LinearFanCurveCard
+      name="Linear demo"
+      availableTemperatures={sources}
+      linearFanCurve={linearFanCurve}
+    />
+  );
+};
 
 const linear: DocSection = {
   key: "Linear",
   icon: icons.svgPaths.linear,
-  render: () => (
-    <>
-      <p>
-        The linear fan curve applies a linear function based on a temperature
-        source.
-      </p>
-      <br />
-      <p>Below the minimum temperature, minimum speed is applied.</p>
-      <p>Above the maximum temperature, maximum speed is applied.</p>
+  render: () => {
+    return (
+      <>
+        <div className="my-5">
+          <DocDemoLinearFanCurveCard />
+        </div>
+        <p>
+          The linear fan curve applies a linear function based on a temperature
+          source.
+        </p>
+        <br />
+        <p>Below the minimum temperature, minimum speed is applied.</p>
+        <p>Above the maximum temperature, maximum speed is applied.</p>
 
-      <br />
+        <br />
 
-      <ParametersCard>
-        <h2>Parameters:</h2>
+        <ParametersCard>
+          <h2>Parameters:</h2>
 
-        <ul>
-          <li>
-            Min. and max. temperature : Temperature bounds to be
-            interpolated between.
-          </li>
-          <li>
-            Min. and max. speed : Fan speeds as % to be interpolated between the
-            min. and max. temperature.{" "}
-          </li>
-          <li>Temperature source: {parameters.tempSource}</li>
-          <li>Hysteresis: {parameters.hysteresis}</li>
-          <li>Response time: {parameters.responseTime}</li>
-        </ul>
-      </ParametersCard>
-    </>
-  ),
+          <ul>
+            <li>
+              Min. and max. temperature : Temperature bounds to be interpolated
+              between.
+            </li>
+            <li>
+              Min. and max. speed : Fan speeds as % to be interpolated between
+              the min. and max. temperature.{" "}
+            </li>
+            <li>Temperature source: {parameters.tempSource}</li>
+            <li>Hysteresis: {parameters.hysteresis}</li>
+            <li>Response time: {parameters.responseTime}</li>
+          </ul>
+        </ParametersCard>
+      </>
+    );
+  },
 };
 
 const graph: DocSection = {
@@ -53,8 +91,8 @@ const graph: DocSection = {
     return (
       <>
         <p>
-          The graph fan curve applies a custom function based on a
-          temperature source.
+          The graph fan curve applies a custom function based on a temperature
+          source.
         </p>
 
         <br />
@@ -91,7 +129,7 @@ const DocDemoMixFanCurveCard = () => {
     createTempSource("b", 50),
   ]);
 
-  useInterval(1000, () => {
+  useInterval(3000, () => {
     setSources(updateSources());
   });
 

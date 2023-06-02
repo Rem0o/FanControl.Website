@@ -5,8 +5,12 @@ type FanCurve = {
   getValue: () => number;
 };
 
-type LinearFanCurve = FanCurve & {
-  selectedTemperature?: string;
+type LinearFanCurveConfig = {
+  selectedTemperature?: TemperatureSource;
+  minimumTemp: number;
+  maximumTemp: number;
+  minimumSpeed: number;
+  maximumSpeed: number;
 };
 
 type MixFunction = {
@@ -42,22 +46,16 @@ const clamp = (num: number, min: number, max: number) =>
 
 let createlinearFanCurve = (
   name: string,
-  selectedTemperature: string,
+  config: LinearFanCurveConfig,
   sources: TemperatureSource[]
-): LinearFanCurve => {
-  const getValue = () => {
-    let source = sources.find((x) => x.name == selectedTemperature);
-    if (source) {
-      return clamp((source.value - 30) * 3, 0, 100);
-    }
+): FanCurve => {
 
-    return -1;
-  };
+  const s = config;
+  const tempSource = s.selectedTemperature ?? sources[0];
 
   return {
-    name,
-    selectedTemperature,
-    getValue,
+    name: name,
+    getValue: () => clamp(s.minimumSpeed + ((tempSource.value - s.minimumTemp) * ((s.maximumSpeed - s.minimumSpeed) / (s.maximumTemp - s.minimumTemp))), 0, 100),
   };
 };
 
@@ -75,6 +73,6 @@ let createMixFanCurve = (
   };
 };
 
-export type { FanCurve, LinearFanCurve, MixFanCurve, MixFunction };
+export type { FanCurve, LinearFanCurveConfig, MixFanCurve, MixFunction };
 
 export { mixFunctions, createlinearFanCurve, createMixFanCurve };

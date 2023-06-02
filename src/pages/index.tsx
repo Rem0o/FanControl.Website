@@ -113,7 +113,7 @@ const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
     createTempSource("c", 50),
   ]);
 
-  useInterval(1000, () => {
+  useInterval(3000, () => {
     setSources(updateSources());
   });
 
