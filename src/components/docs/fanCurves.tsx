@@ -13,13 +13,13 @@ import type { FanCurve, LinearFanCurveConfig } from "../demo/fanCurve";
 
 const DocDemoLinearFanCurveCard = () => {
   const updateSources = (): [TemperatureSource, TemperatureSource] => [
-    createTempSourceRandom("CPU Core", 30, 70),
+    createTempSourceRandom("CPU Core", 25, 75),
     createTempSourceRandom("GPU Core", 30, 70),
   ];
 
   const [sources, setSources] = useState([
-    createTempSource("CPU Core", 50),
-    createTempSource("GPU Core", 50),
+    createTempSource("CPU Core", 35),
+    createTempSource("GPU Core", 40),
   ]);
 
   useInterval(3000, () => {
@@ -28,7 +28,7 @@ const DocDemoLinearFanCurveCard = () => {
 
   const linearFanCurve: LinearFanCurveConfig = {
     minimumTemp: 30,
-    maximumTemp: 50,
+    maximumTemp: 70,
     minimumSpeed: 40,
     maximumSpeed: 100,
     selectedTemperature: sources[0],
