@@ -22,4 +22,9 @@ export const articles = [
     "https://techguided.com/best-fan-control-software/",
     "bg-[#000000] rounded-xl p-2",
   ],
+  [
+    "assets/softlay.png",
+    "https://www.softlay.com/downloads/remi-fan-control",
+    "p-2 w-60"
+  ]
 ];
