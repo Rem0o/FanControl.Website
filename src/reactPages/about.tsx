@@ -1,7 +1,7 @@
-import Card from "../components/card";
-import { ExternalLink } from "../components/links";
+import Card from "../reactComponents/card";
+import { ExternalLink } from "../reactComponents/links";
 import consts from "../common/consts";
-import { PageHeader } from "../components/pageHeader";
+import { PageHeader } from "../reactComponents/pageHeader";
 
 const cardStyle = "bg-white gap-y-2 max-w-full";
 

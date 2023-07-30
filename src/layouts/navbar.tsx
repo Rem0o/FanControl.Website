@@ -1,7 +1,7 @@
 import type React from "react";
 import type { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-import { SpinningLogo } from "../components/spinningLogo";
+import { SpinningLogo } from "../reactComponents/spinningLogo";
 
 const links = [
   { url: "/", title: "Home" },

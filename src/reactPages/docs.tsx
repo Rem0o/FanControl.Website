@@ -5,8 +5,8 @@ import {
   timeAverage,
   fileSensor,
   offsetSensor
-} from "../components/docs/customSensors";
-import type { DocSection } from "../components/docs/docSection";
+} from "../reactComponents/docs/customSensors";
+import type { DocSection } from "../reactComponents/docs/docSection";
 import {
   graph,
   linear,
@@ -14,11 +14,11 @@ import {
   trigger,
   flat,
   sync,
-} from "../components/docs/fanCurves";
-import { SmallIcon } from "../components/icon";
-import NiceHeader from "../components/niceHeader";
+} from "../reactComponents/docs/fanCurves";
+import { SmallIcon } from "../reactComponents/icon";
+import NiceHeader from "../reactComponents/niceHeader";
 import "./../styles/docs.css";
-import { PageHeader } from "../components/pageHeader";
+import { PageHeader } from "../reactComponents/pageHeader";
 
 const c: DocSection = {
   key: "-c --config",

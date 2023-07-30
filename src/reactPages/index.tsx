@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 import consts from "../common/consts";
 import icons from "../common/icons";
-import NiceHeader from "../components/niceHeader";
-import Card from "../components/card";
-import { BigIcon, Icon } from "../components/icon";
+import NiceHeader from "../reactComponents/niceHeader";
+import Card from "../reactComponents/card";
+import { BigIcon, Icon } from "../reactComponents/icon";
 import {
   useInterval,
   useRefreshState,
@@ -14,24 +14,23 @@ import {
   createTempSource,
   createTempSourceRandom,
   TemperatureSource,
-} from "../components/demo/temperatureSource";
-import type { FanCurve } from "../components/demo/fanCurve";
-import MixFanCurveCard from "../components/demo/mixFanCurveCard";
+} from "../reactComponents/demo/temperatureSource";
+import type { FanCurve } from "../reactComponents/demo/fanCurve";
+import MixFanCurveCard from "../reactComponents/demo/mixFanCurveCard";
 import {
   ExternalLink,
   TrackedAnchor,
   TrackedExternalLink,
-} from "../components/links";
-import { SpinningLogo } from "../components/spinningLogo";
-import { ArticleReference } from "../components/articles/articlesReference";
-import { articles } from "../components/articles/articles";
-import { DonationModal } from "../components/donationModal";
+} from "../reactComponents/links";
+import { SpinningLogo } from "../reactComponents/spinningLogo";
+import { ArticleReference } from "../reactComponents/articles/articlesReference";
+import { articles } from "../reactComponents/articles/articles";
+import { DonationModal } from "../reactComponents/donationModal";
 
-type VersionInfo =
-{
-  Number: number
-  Message: string
-}
+type VersionInfo = {
+  Number: number;
+  Message: string;
+};
 
 const IconButton = ({
   classList,
@@ -63,7 +62,7 @@ const DownloadButton = ({ onClick }: { onClick?: Function }) => {
       .then((r) => r.json() as Promise<VersionInfo>)
       .then((v) => {
         setVersion(v.Number);
-        setMessages(v.Message.split("\r\n").map(x => x.trim()));
+        setMessages(v.Message.split("\r\n").map((x) => x.trim()));
       });
   }, []);
 
@@ -198,7 +197,7 @@ export const IndexPage = () => {
         ></img>
       </Card>
 
-      <section className="my-10 mx-5 max-w-xl text-xl italic">
+      <section className="mx-5 my-10 max-w-xl text-xl italic">
         " No third-party software, at all, as much as they might want to tout
         that they do, do not have this level of control. This is what happens
         when someone that sees a problem, is an enthusiast, and is a programmer,
@@ -209,7 +208,7 @@ export const IndexPage = () => {
           JayzTwoCents
         </TrackedExternalLink>
         {/*Article references here!!!*/}
-        <div className="mt-16 mb-8 align-middle text-2xl font-medium">
+        <div className="mb-8 mt-16 align-middle text-2xl font-medium">
           Featured articles
         </div>
         <div className="flex items-center space-x-5 space-y-5 align-text-top">
@@ -243,7 +242,7 @@ export const IndexPage = () => {
         </div>
       </section>
 
-      <section className="wrap my-10 mx-5 grid justify-center gap-20 text-left sm:grid-cols-1 md:grid-cols-2">
+      <section className="wrap mx-5 my-10 grid justify-center gap-20 text-left sm:grid-cols-1 md:grid-cols-2">
         <div className="max-w-sm">
           <NiceHeader
             text="CPU, GPU, and case fans"
@@ -307,12 +306,17 @@ export const IndexPage = () => {
           <p>
             Want to add more sensors and controls from a third party? No
             problem! Fan Control has a simple{" "}
-            <TrackedExternalLink href={consts.urls.pluginUrl}>
-              plugin
+            <TrackedExternalLink href={consts.urls.pluginWikiUrl}>
+              plugin system
             </TrackedExternalLink>{" "}
-            system with .NET that allow any third party developer to add
-            temperature, speed or control sensors. Installing is as easy as
-            dropping a dll in the plugin folder, that's it.
+            with .NET that allow any third party developer to add temperature,
+            speed or control sensors. Installing is as easy as dropping a dll in
+            the plugin folder, that's it. You can checkout the list of active
+            plugins on the{" "}
+            <TrackedExternalLink href={consts.urls.pluginListUrl}>
+              Github page
+            </TrackedExternalLink>
+            .
           </p>
         </div>
 

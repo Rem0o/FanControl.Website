@@ -1,8 +1,8 @@
 import consts from "../common/consts";
 import icons from "../common/icons";
-import { ExternalLink } from "../components/links";
-import { SpinningLogo } from "../components/spinningLogo";
-import { FooterButton } from "../components/footerButton";
+import { ExternalLink } from "../reactComponents/links";
+import { SpinningLogo } from "../reactComponents/spinningLogo";
+import { FooterButton } from "../reactComponents/footerButton";
 
 export const Footer = () => {
   return (
