@@ -31,7 +31,7 @@ const gaOnClick =
           if (redirect && document && props.href) {
             document.location = props.href;
           }
-        },
+        }
       });
     } else {
       if (redirect && document && props.href) {

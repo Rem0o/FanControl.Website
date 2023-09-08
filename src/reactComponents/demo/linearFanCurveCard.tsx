@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import icons from "../../common/icons";
 import Select from "../select";
 import FanCurveCard from "./fanCurveCard";
@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge";
 export default function LinearFanCurveCard({
   name,
   linearFanCurve,
-  availableTemperatures,
+  availableTemperatures
 }: {
   name: string;
   linearFanCurve: LinearFanCurveConfig;
@@ -23,7 +23,10 @@ export default function LinearFanCurveCard({
   );
 
   useEffect(() => {
-    setFanCurveConfig({...fanCurveConfig, selectedTemperature: linearFanCurve.selectedTemperature});
+    setFanCurveConfig({
+      ...fanCurveConfig,
+      selectedTemperature: linearFanCurve.selectedTemperature
+    });
   }, [linearFanCurve.selectedTemperature]);
 
   return (
@@ -32,7 +35,7 @@ export default function LinearFanCurveCard({
         onChange={(e) =>
           setFanCurveConfig({
             ...fanCurveConfig,
-            selectedTemperature: availableTemperatures[e.target.selectedIndex],
+            selectedTemperature: availableTemperatures[e.target.selectedIndex]
           })
         }
         value={
@@ -57,7 +60,7 @@ export default function LinearFanCurveCard({
         onChange={(v) =>
           setFanCurveConfig({
             ...fanCurveConfig,
-            minimumTemp: Number.parseInt(v.target.value),
+            minimumTemp: Number.parseInt(v.target.value)
           })
         }
         value={fanCurveConfig.minimumTemp}
@@ -69,7 +72,7 @@ export default function LinearFanCurveCard({
         onChange={(v) =>
           setFanCurveConfig({
             ...fanCurveConfig,
-            maximumTemp: Number.parseInt(v.target.value),
+            maximumTemp: Number.parseInt(v.target.value)
           })
         }
         value={fanCurveConfig.maximumTemp}
@@ -81,7 +84,7 @@ export default function LinearFanCurveCard({
         onChange={(v) =>
           setFanCurveConfig({
             ...fanCurveConfig,
-            minimumSpeed: Number.parseInt(v.target.value),
+            minimumSpeed: Number.parseInt(v.target.value)
           })
         }
         value={fanCurveConfig.minimumSpeed}
@@ -93,7 +96,7 @@ export default function LinearFanCurveCard({
         onChange={(v) =>
           setFanCurveConfig({
             ...fanCurveConfig,
-            maximumSpeed: Number.parseInt(v.target.value),
+            maximumSpeed: Number.parseInt(v.target.value)
           })
         }
         value={fanCurveConfig.maximumSpeed}

@@ -13,7 +13,7 @@ import {
   mix,
   trigger,
   flat,
-  sync,
+  sync
 } from "../reactComponents/docs/fanCurves";
 import { SmallIcon } from "../reactComponents/icon";
 import NiceHeader from "../reactComponents/niceHeader";
@@ -32,23 +32,26 @@ const c: DocSection = {
         </div>
       </div>
     );
-  },
+  }
 };
 
 const w: DocSection = {
   key: "-w",
   render: () => {
     return <>Force the UI window to open, override the minimize option.</>;
-  },
+  }
 };
 
 const m: DocSection = {
   key: "-m",
   render: () => {
-    return <>Force the program to be minimized, even if an error occured at launch.</>;
-  },
+    return (
+      <>
+        Force the program to be minimized, even if an error occured at launch.
+      </>
+    );
+  }
 };
-
 
 const fanCurveSections: DocSection[] = [
   linear,
@@ -56,10 +59,15 @@ const fanCurveSections: DocSection[] = [
   mix,
   trigger,
   flat,
-  sync,
+  sync
 ];
 
-const customSensorSections: DocSection[] = [timeAverage, mixSensor, fileSensor, offsetSensor];
+const customSensorSections: DocSection[] = [
+  timeAverage,
+  mixSensor,
+  fileSensor,
+  offsetSensor
+];
 
 const commandLineArgumentSections: DocSection[] = [c, w, m];
 
@@ -93,7 +101,11 @@ const DocSectionComponent = (
   section: DocSection,
   refs: React.MutableRefObject<Map<string, HTMLElement | null>>
 ): JSX.Element => (
-  <div id={section.key} key={section.key} ref={(el) => refs.current.set(section.key, el)}>
+  <div
+    id={section.key}
+    key={section.key}
+    ref={(el) => refs.current.set(section.key, el)}
+  >
     <NiceHeader icon={section.icon} text={section.key}></NiceHeader>
     {section.render()}
   </div>
@@ -101,7 +113,7 @@ const DocSectionComponent = (
 
 const DocSidebarHeader = ({
   text,
-  onClick,
+  onClick
 }: {
   text: string;
   onClick: Function;
@@ -116,7 +128,7 @@ const DocSidebarHeader = ({
 
 const DocHeader = ({
   text,
-  refs,
+  refs
 }: {
   refs: React.MutableRefObject<Map<string, HTMLElement | null>>;
   text: string;
@@ -136,20 +148,29 @@ export const DocsPage = () => {
     new Map<string, HTMLElement | null>()
   );
   const [v, setV] = useState(true);
-  
+
   return (
-   
     <div className="flex px-5 pb-5">
-      <button onClick={() => setV(!v)} className="hidden fixed rounded-full p-2 bg-body-700 text-body-50 top-12 left-5">{"<="}</button>
+      <button
+        onClick={() => setV(!v)}
+        className="fixed left-5 top-12 hidden rounded-full bg-body-700 p-2 text-body-50"
+      >
+        {"<="}
+      </button>
       {/* Left columm with elements */}
-      <div className={twMerge("w-fit border-r-2 border-body-200 pr-5", v ? "" : "hidden")}>
+      <div
+        className={twMerge(
+          "w-fit border-r-2 border-body-200 pr-5",
+          v ? "" : "hidden"
+        )}
+      >
         <div className="sticky top-20 flex flex-col ">
           <DocSidebarHeader
             text="Fan Curves"
             onClick={() => ScrollToSection(refs, "Fan Curves")}
           />
 
-          <ul className="mr-5 mb-5">
+          <ul className="mb-5 mr-5">
             {fanCurveSections.map((s) =>
               SideBarDocSection(s, () => ScrollToSection(refs, s.key))
             )}
@@ -159,7 +180,7 @@ export const DocsPage = () => {
             text="Custom Sensors"
             onClick={() => ScrollToSection(refs, "Custom Sensors")}
           />
-          <ul className="mr-5 mb-5">
+          <ul className="mb-5 mr-5">
             {customSensorSections.map((s) =>
               SideBarDocSection(s, () => ScrollToSection(refs, s.key))
             )}
@@ -169,7 +190,7 @@ export const DocsPage = () => {
             text="Command Line Arguments"
             onClick={() => ScrollToSection(refs, "Command Line Arguments")}
           />
-          <ul className="mr-5 mb-5">
+          <ul className="mb-5 mr-5">
             {commandLineArgumentSections.map((s) =>
               SideBarDocSection(s, () => ScrollToSection(refs, s.key))
             )}
@@ -179,7 +200,7 @@ export const DocsPage = () => {
       {/* Main section with actual documentation */}
       <div className="docs ml-5">
         <div className="max-w-3xl space-y-16">
-          <PageHeader text="Documentation"/>
+          <PageHeader text="Documentation" />
           <DocHeader text="Fan Curves" refs={refs} />
           {fanCurveSections.map((s) => DocSectionComponent(s, refs))}
 
@@ -193,5 +214,3 @@ export const DocsPage = () => {
     </div>
   );
 };
-
-

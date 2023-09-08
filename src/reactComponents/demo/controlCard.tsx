@@ -16,7 +16,7 @@ const icon = (
 
 const ControlCard = ({
   name,
-  availableFanCurves,
+  availableFanCurves
 }: {
   name: string;
   availableFanCurves: FanCurve[];

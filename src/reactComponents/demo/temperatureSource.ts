@@ -10,14 +10,14 @@ function createTempSourceRandom(
 ): TemperatureSource {
   return {
     name: name,
-    value: Math.round(Math.random() * (max - min) + min),
+    value: Math.round(Math.random() * (max - min) + min)
   };
 }
 
 function createTempSource(name: string, value: number): TemperatureSource {
   return {
     name: name,
-    value: value,
+    value: value
   };
 }
 

@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import icons from "../../common/icons";
 import Select from "../select";
 import {
   createMixFanCurve,
-  FanCurve,
-  MixFanCurve,
-  mixFunctions,
+  type FanCurve,
+  type MixFanCurve,
+  mixFunctions
 } from "./fanCurve";
 import FanCurveCard from "./fanCurveCard";
 
 export default function MixFanCurveCard({
   name,
   fanCurves,
-  selectedFanCurvesDefault,
+  selectedFanCurvesDefault
 }: {
   name: string;
   fanCurves: FanCurve[];
@@ -49,11 +49,7 @@ export default function MixFanCurveCard({
       : selectedFunction.name;
 
   return (
-    <FanCurveCard
-      iconPath={icons.svgPaths.mix}
-      fanCurve={fanCurve}
-      controlValueSuffix={` (${suffix})`}
-    >
+    <FanCurveCard iconPath={icons.svgPaths.mix} fanCurve={fanCurve}>
       <Select
         onChange={(e) =>
           setSelectedFunction(mixFunctions[e.target.selectedIndex])

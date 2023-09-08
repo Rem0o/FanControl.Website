@@ -26,19 +26,19 @@ const mixFunctions: MixFunction[] = [
   {
     name: "Max",
     invoke: (fanCurves) =>
-      fanCurves.map((x) => x.getValue()).reduce((a, b) => (a > b ? a : b), -1),
+      fanCurves.map((x) => x.getValue()).reduce((a, b) => (a > b ? a : b), -1)
   },
   {
     name: "Min",
     invoke: (fanCurves) =>
-      fanCurves.map((x) => x.getValue()).reduce((a, b) => (a < b ? a : b), 101),
+      fanCurves.map((x) => x.getValue()).reduce((a, b) => (a < b ? a : b), 101)
   },
   {
     name: "Average",
     invoke: (fanCurves) =>
       fanCurves.map((f) => f.getValue()).reduce((a, b) => a + b, 0) /
-      fanCurves.length,
-  },
+      fanCurves.length
+  }
 ];
 
 const clamp = (num: number, min: number, max: number) =>
@@ -49,13 +49,20 @@ let createlinearFanCurve = (
   config: LinearFanCurveConfig,
   sources: TemperatureSource[]
 ): FanCurve => {
-
   const s = config;
   const tempSource = s.selectedTemperature ?? sources[0];
 
   return {
     name: name,
-    getValue: () => clamp(s.minimumSpeed + ((tempSource.value - s.minimumTemp) * ((s.maximumSpeed - s.minimumSpeed) / (s.maximumTemp - s.minimumTemp))), 0, 100),
+    getValue: () =>
+      clamp(
+        s.minimumSpeed +
+          (tempSource.value - s.minimumTemp) *
+            ((s.maximumSpeed - s.minimumSpeed) /
+              (s.maximumTemp - s.minimumTemp)),
+        0,
+        100
+      )
   };
 };
 
@@ -69,7 +76,7 @@ let createMixFanCurve = (
     selectedMixFunction: mixFunction,
     getValue: () => {
       return mixFunction.invoke(fanCurves);
-    },
+    }
   };
 };
 

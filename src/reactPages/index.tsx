@@ -8,19 +8,19 @@ import { BigIcon, Icon } from "../reactComponents/icon";
 import {
   useInterval,
   useRefreshState,
-  useTimeoutBooleanState,
+  useTimeoutBooleanState
 } from "../common/hooks";
 import {
   createTempSource,
   createTempSourceRandom,
-  TemperatureSource,
+  type TemperatureSource
 } from "../reactComponents/demo/temperatureSource";
 import type { FanCurve } from "../reactComponents/demo/fanCurve";
 import MixFanCurveCard from "../reactComponents/demo/mixFanCurveCard";
 import {
   ExternalLink,
   TrackedAnchor,
-  TrackedExternalLink,
+  TrackedExternalLink
 } from "../reactComponents/links";
 import { SpinningLogo } from "../reactComponents/spinningLogo";
 import { ArticleReference } from "../reactComponents/articles/articlesReference";
@@ -36,7 +36,7 @@ const IconButton = ({
   classList,
   text,
   icon,
-  onClick,
+  onClick
 }: {
   classList: string;
   text: string;
@@ -103,13 +103,13 @@ const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
   ] => [
     createTempSourceRandom("a", 40, 60),
     createTempSourceRandom("b", 30, 70),
-    createTempSourceRandom("c", 26, 65),
+    createTempSourceRandom("c", 26, 65)
   ];
 
   const [sources, setSources] = useState([
     createTempSource("a", 50),
     createTempSource("b", 50),
-    createTempSource("c", 50),
+    createTempSource("c", 50)
   ]);
 
   useInterval(3000, () => {
@@ -132,7 +132,7 @@ const DemoMixFanCurveCard = ({ refreshId: refresh }: { refreshId: number }) => {
   const mockedFanCurves: FanCurve[] = [
     { name: "CPU -> Case fans", getValue: () => sources[0].value },
     { name: "GPU -> Case fans", getValue: () => sources[1].value },
-    { name: "SSD -> Case fans", getValue: () => sources[2].value },
+    { name: "SSD -> Case fans", getValue: () => sources[2].value }
   ];
 
   return (
@@ -164,7 +164,7 @@ export const IndexPage = () => {
       demoRef.current.scrollIntoView({
         behavior: "smooth",
         block: "center",
-        inline: "center",
+        inline: "center"
       });
     }
 
@@ -228,7 +228,7 @@ export const IndexPage = () => {
             [icons.svgPaths.save, "Create multiple configurations"],
             [icons.svgPaths.brush, "UI Themes"],
             [icons.svgPaths.wrench, "Assisted setup"],
-            [icons.svgPaths.temperature, "Temperature Tray Icons"],
+            [icons.svgPaths.temperature, "Temperature Tray Icons"]
           ].map(([icon, text, onClick], i) => (
             <div key={i} className="m-auto flex items-center">
               <Card className="bg-body-700 font-medium text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">

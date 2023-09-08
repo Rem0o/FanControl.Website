@@ -1,5 +1,5 @@
 import icons from "../../common/icons";
-import { DocSection, parameters, ParametersCard } from "./docSection";
+import { type DocSection, parameters, ParametersCard } from "./docSection";
 
 const timeAverage: DocSection = {
   key: "Time Average",
@@ -23,7 +23,7 @@ const timeAverage: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const mixSensor: DocSection = {
@@ -50,7 +50,7 @@ const mixSensor: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const fileSensor: DocSection = {
@@ -76,7 +76,7 @@ const fileSensor: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const offsetSensor: DocSection = {
@@ -103,7 +103,7 @@ const offsetSensor: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 export { timeAverage, mixSensor, fileSensor, offsetSensor };

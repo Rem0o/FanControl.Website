@@ -1,9 +1,9 @@
-import { DocSection, parameters, ParametersCard } from "./docSection";
+import { type DocSection, parameters, ParametersCard } from "./docSection";
 import MixFanCurveCard from "../demo/mixFanCurveCard";
 import {
   createTempSource,
   createTempSourceRandom,
-  TemperatureSource,
+  type TemperatureSource
 } from "../demo/temperatureSource";
 import icons from "../../common/icons";
 import { useState } from "react";
@@ -14,12 +14,12 @@ import type { FanCurve, LinearFanCurveConfig } from "../demo/fanCurve";
 const DocDemoLinearFanCurveCard = () => {
   const updateSources = (): [TemperatureSource, TemperatureSource] => [
     createTempSourceRandom("CPU Core", 25, 75),
-    createTempSourceRandom("GPU Core", 30, 70),
+    createTempSourceRandom("GPU Core", 30, 70)
   ];
 
   const [sources, setSources] = useState([
     createTempSource("CPU Core", 35),
-    createTempSource("GPU Core", 40),
+    createTempSource("GPU Core", 40)
   ]);
 
   useInterval(3000, () => {
@@ -31,7 +31,7 @@ const DocDemoLinearFanCurveCard = () => {
     maximumTemp: 70,
     minimumSpeed: 40,
     maximumSpeed: 100,
-    selectedTemperature: sources[0],
+    selectedTemperature: sources[0]
   };
 
   return (
@@ -81,7 +81,7 @@ const linear: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const graph: DocSection = {
@@ -115,18 +115,18 @@ const graph: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const DocDemoMixFanCurveCard = () => {
   const updateSources = (): [TemperatureSource, TemperatureSource] => [
     createTempSourceRandom("a", 30, 70),
-    createTempSourceRandom("b", 30, 70),
+    createTempSourceRandom("b", 30, 70)
   ];
 
   const [sources, setSources] = useState([
     createTempSource("a", 50),
-    createTempSource("b", 50),
+    createTempSource("b", 50)
   ]);
 
   useInterval(3000, () => {
@@ -136,7 +136,7 @@ const DocDemoMixFanCurveCard = () => {
   // we mock random fan curves that outputs the temperature source as the %
   const mockedFanCurves: FanCurve[] = [
     { name: "A linear fan curve", getValue: () => sources[0].value },
-    { name: "Graph fan curve", getValue: () => sources[1].value },
+    { name: "Graph fan curve", getValue: () => sources[1].value }
   ];
 
   return (
@@ -169,7 +169,7 @@ const flat: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const sync: DocSection = {
@@ -200,7 +200,7 @@ const sync: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const trigger: DocSection = {
@@ -227,7 +227,7 @@ const trigger: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 const mix: DocSection = {
@@ -256,7 +256,7 @@ const mix: DocSection = {
         </ParametersCard>
       </>
     );
-  },
+  }
 };
 
 export { linear, graph, mix, trigger, flat, sync };

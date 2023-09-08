@@ -6,7 +6,7 @@ import { SpinningLogo } from "./spinningLogo";
 
 export const DonationModal = (exitModal: Function) => (
   <>
-    <div className="fixed top-1/2 left-1/2 z-50 m-auto -translate-x-1/2 -translate-y-1/2 rounded bg-slate-50 p-5 shadow-xl">
+    <div className="fixed left-1/2 top-1/2 z-50 m-auto -translate-x-1/2 -translate-y-1/2 rounded bg-slate-50 p-5 shadow-xl">
       <div className="flex flex-col items-center self-center">
         <div className="flex w-full flex-row">
           <SpinningLogo className="m-auto h-8 w-8" spinInitially={true} />

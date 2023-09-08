@@ -18,7 +18,7 @@ export default function FanCurveCard({
   iconPath,
   fanCurve,
   controlValueSuffix,
-  children,
+  children
 }: Props) {
   const background = "bg-primary-700";
   const value = fanCurve.getValue();

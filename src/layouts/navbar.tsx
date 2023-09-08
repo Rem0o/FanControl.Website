@@ -7,7 +7,7 @@ const links = [
   { url: "/", title: "Home" },
   //{ url: "/demo", title: "Demo" },
   { url: "/docs/", title: "Docs" },
-  { url: "/about/", title: "About" },
+  { url: "/about/", title: "About" }
 ];
 
 const getPageTitle = (title?: string) => {
@@ -18,11 +18,19 @@ const getPageTitle = (title?: string) => {
   return "";
 };
 
-const NavBar = (props : HTMLAttributes<HTMLElement> & { pageTitle?: string }) => {
-  const {pageTitle, className, ...restOfProps} = props;
+const NavBar = (
+  props: HTMLAttributes<HTMLElement> & { pageTitle?: string }
+) => {
+  const { pageTitle, className, ...restOfProps } = props;
 
   return (
-    <nav {...restOfProps} className={twMerge("w-full flex bg-primary-800 text-body-50 shadow-sm shadow-body-400", className)}>
+    <nav
+      {...restOfProps}
+      className={twMerge(
+        "flex w-full bg-primary-800 text-body-50 shadow-sm shadow-body-400",
+        className
+      )}
+    >
       <div className="m-1 flex items-center justify-center">
         <SpinningLogo />
         <div className="ml-2">

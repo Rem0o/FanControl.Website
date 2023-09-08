@@ -12,7 +12,7 @@ const urls = {
     "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=N4JPSTUQHRJM8&currency_code=USD&source=url&item_name=Fan+Control",
   email: "remi.mercier.software@gmail.com",
   sponsor: "https://github.com/sponsors/Rem0o",
-  videoUrl: "https://www.youtube.com/watch?v=uDPKVKBMQU8",
+  videoUrl: "https://www.youtube.com/watch?v=uDPKVKBMQU8"
 };
 
 export default { urls };
