@@ -20,7 +20,7 @@ export const articles = [
   [
     "assets/techguided.png",
     "https://techguided.com/best-fan-control-software/",
-    "bg-[#000000] rounded-xl p-2"
+    "bg-[#000000] rounded-xl p-2 w-24"
   ],
   [
     "assets/softlay.png",

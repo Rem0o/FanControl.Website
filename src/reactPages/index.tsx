@@ -183,7 +183,7 @@ export const IndexPage = () => {
         <p>Low on resources, high on power.</p>
       </div>
 
-      <div className="flex gap-6">
+      <div className="flex flex-wrap gap-6 justify-center">
         <GithubButton />
         <DownloadButton onClick={() => setShowModal(true)} />
       </div>
@@ -211,7 +211,7 @@ export const IndexPage = () => {
         <div className="mb-8 mt-16 align-middle text-2xl font-medium">
           Featured articles
         </div>
-        <div className="flex items-center space-x-5 space-y-5 align-text-top">
+        <div className="flex flex-wrap items-center space-x-5 space-y-5 align-text-top">
           {articles.map((x) => {
             const [imgSrc, href, style] = x;
 
@@ -221,7 +221,7 @@ export const IndexPage = () => {
       </section>
 
       <section className="my-10 w-full bg-body-200 px-5 py-20">
-        <div className=" wrap mx-auto flex max-w-5xl flex-wrap place-content-center content-evenly gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div className="wrap mx-auto flex max-w-5xl flex-wrap place-content-center content-evenly gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {[
             [icons.svgPaths.bulb, "Flexible by design"],
             [icons.svgPaths.graph, "7 Fan Curve types"],
