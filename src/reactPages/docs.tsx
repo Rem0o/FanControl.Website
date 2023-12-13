@@ -13,7 +13,8 @@ import {
   mix,
   trigger,
   flat,
-  sync
+  sync,
+  auto
 } from "../reactComponents/docs/fanCurves";
 import { SmallIcon } from "../reactComponents/icon";
 import NiceHeader from "../reactComponents/niceHeader";
@@ -59,7 +60,8 @@ const fanCurveSections: DocSection[] = [
   mix,
   trigger,
   flat,
-  sync
+  sync,
+  auto
 ];
 
 const customSensorSections: DocSection[] = [

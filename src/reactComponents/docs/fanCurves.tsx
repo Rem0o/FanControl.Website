@@ -77,8 +77,13 @@ const linear: DocSection = {
             <li>Temperature source: {parameters.tempSource}</li>
             <li>Hysteresis: {parameters.hysteresis}</li>
             <li>Response time: {parameters.responseTime}</li>
-            <li>Hysteresis only applies on the way down: {parameters.onThewayDown}</li>
-            <li>Ignore hysteresis at minimum and maximum temps: {parameters.ignoreHysteresis}</li>
+            <li>
+              Hysteresis only applies on the way down: {parameters.onThewayDown}
+            </li>
+            <li>
+              Ignore hysteresis at minimum and maximum temps:{" "}
+              {parameters.ignoreHysteresis}
+            </li>
           </ul>
         </ParametersCard>
       </>
@@ -113,8 +118,13 @@ const graph: DocSection = {
             <li>Temperature source: {parameters.tempSource}</li>
             <li>Hysteresis: {parameters.hysteresis}</li>
             <li>Response time: {parameters.responseTime}</li>
-            <li>Hysteresis only applies on the way down: {parameters.onThewayDown}</li>
-            <li>Ignore hysteresis at minimum and maximum temps: {parameters.ignoreHysteresis}</li>
+            <li>
+              Hysteresis only applies on the way down: {parameters.onThewayDown}
+            </li>
+            <li>
+              Ignore hysteresis at minimum and maximum temps:{" "}
+              {parameters.ignoreHysteresis}
+            </li>
           </ul>
         </ParametersCard>
       </>
@@ -263,4 +273,52 @@ const mix: DocSection = {
   }
 };
 
-export { linear, graph, mix, trigger, flat, sync };
+const auto: DocSection = {
+  key: "Auto",
+  icon: icons.svgPaths.auto,
+  render: () => (
+    <>
+      <p>
+        The auto fan curve is designed to find the lowest possible speed to
+        sustain a desired load temperature. It will work best in constant load
+        scenarios, less so in regular usage. Internally, the function will
+        define 2 distinct temperatures "zones": idle and load. During idle, up
+        to load, it will act like a regular linear fan curve. In the load zone,
+        defined by the Load Temperature and Deadband parameters, it will use a
+        feedback loop to look at the temperature trend and increase or decrease
+        the speed accordingly. If the temperature trend is slowly decreasing, it
+        will decrease the speed little by little until an equilibrium state is
+        found, finding the minimum fan speed required to hold a steady load
+        temperature.
+      </p>
+      <br />
+
+      <ParametersCard>
+        <h2>Parameters:</h2>
+
+        <ul>
+          <li>
+            Idle temp. : Temperature threshold for the minimum fan speed.{" "}
+          </li>
+          <li>Load temp. : Desired load temperature to be sustained. </li>
+          <li>Min. fan speed</li>
+          <li>Max. fan speed</li>
+          <li>
+            Step: Rate at which the % will change after the given response time.
+            Step is half when temperature is decreasing.
+          </li>
+          <li>
+            Deadband: Range under the load temperature defining the "load"
+            temperature zone.
+          </li>
+          <li>
+            Response time: {parameters.responseTime}. Parameters is doubled when
+            temperature is decreasing.
+          </li>
+        </ul>
+      </ParametersCard>
+    </>
+  )
+};
+
+export { linear, graph, mix, trigger, flat, sync, auto };
