@@ -202,7 +202,7 @@ export const DocsPage = () => {
       {/* Main section with actual documentation */}
       <div className="docs ml-5">
         <div className="max-w-3xl space-y-16">
-          <PageHeader text="Documentation" />
+          <PageHeader children="Documentation" />
           <DocHeader text="Fan Curves" refs={refs} />
           {fanCurveSections.map((s) => DocSectionComponent(s, refs))}
 

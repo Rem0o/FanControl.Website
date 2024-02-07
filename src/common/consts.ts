@@ -4,6 +4,8 @@ const urls = {
     "https://github.com/Rem0o/FanControl.Releases/blob/master/FanControl.zip?raw=true",
   versionJsonUrl:
     "https://raw.githubusercontent.com/Rem0o/FanControl.Releases/master/version.json",
+  latestVersionGithubApiUrl:
+    "https://api.github.com/repos/rem0o/fancontrol.releases/releases/latest",
   lhmGithubPageUrl:
     "https://github.com/LibreHardwareMonitor/LibreHardwareMonitor",
   pluginWikiUrl: "https://github.com/Rem0o/FanControl.Releases/wiki/Plugins",

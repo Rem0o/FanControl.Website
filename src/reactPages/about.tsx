@@ -9,7 +9,7 @@ export const AboutPage = () => {
   return (
     <>
       <div className="ml-5">
-        <PageHeader text="About" />
+        <PageHeader children="About" />
       </div>
 
       <div className="flex flex-wrap gap-4 p-5">
