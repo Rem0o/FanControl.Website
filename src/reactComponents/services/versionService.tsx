@@ -21,13 +21,13 @@ async function getVersion() {
   return versionInfo;
 }
 
-type Asset = {
+export type Asset = {
   name: string;
   download_count: number;
   browser_download_url: string;
 };
 
-type LatestRelease = {
+export type LatestRelease = {
   assets: Asset[];
   name: string;
   tag_name: string;
@@ -39,17 +39,5 @@ async function getLatestRelease() {
   return json;
 }
 
-const latestRelease = await getLatestRelease();
-
-export function getDownloadUrl(searchStr: string) {
-  const asset = latestRelease.assets.find((a) =>
-    a.name.toLowerCase().includes(searchStr.toLowerCase())
-  );
-  if (asset) {
-    return asset.browser_download_url;
-  }
-
-  return "";
-}
-
+export const latestRelease = await getLatestRelease();
 export const versionInfo = await getVersion();
