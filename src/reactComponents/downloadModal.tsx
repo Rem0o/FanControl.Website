@@ -44,14 +44,14 @@ function GetDownloadable(
   }
 
   var splittedName = name.split("_");
-  const [fc, net, major, minor] = splittedName;
+  const [fc, version, net, major, minor] = splittedName;
 
   const dotnetString = major == "4" ? ".NET Framework" : ".NET";
   const dotnetVersionString =
     minor == "0" ? major.toString() : `${major}.${minor}`;
 
   return {
-    name: `Fan Control V${props.version} ${dotnetString} ${dotnetVersionString}`,
+    name: `Fan Control V${version} ${dotnetString} ${dotnetVersionString}`,
     url: asset.browser_download_url,
     type: ExtensionToAssetType(extension)
   };
