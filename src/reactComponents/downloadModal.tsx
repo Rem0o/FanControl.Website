@@ -60,7 +60,7 @@ function GetDownloadable(
 function Download(props: DownloadProps) {
   const downloadableAssets = latestRelease.assets.map((a) =>
     GetDownloadable(a, props)
-  );
+  ).filter( x => !x.name.includes("NET 7"));
   const grouped = Object.groupBy(downloadableAssets, (a) => a.type);
 
   return (

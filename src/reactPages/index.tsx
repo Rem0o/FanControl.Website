@@ -28,7 +28,7 @@ import { articles } from "../reactComponents/articles/articles";
 import { DonationModal } from "../reactComponents/donationModal";
 import { DownloadModal } from "../reactComponents/downloadModal";
 
-import {versionInfo} from "../reactComponents/services/versionService"
+import { versionInfo } from "../reactComponents/services/versionService";
 
 type VersionInfo = {
   Number: number;
@@ -56,22 +56,25 @@ const IconButton = ({
   </button>
 );
 
-const DownloadButton = ({ version, onClick }: { version: number, onClick?: Function }) => {
-
+const DownloadButton = ({
+  version,
+  onClick
+}: {
+  version: number;
+  onClick?: Function;
+}) => {
   let text = "Download";
   if (version > 0) {
     text += " V" + version;
   }
 
   return (
-    <TrackedAnchor href={consts.urls.directDownloadUrl}>
-      <IconButton
-        classList="bg-primary-600 hover:text-accent hover:bg-primary-700 text-white"
-        icon={icons.svgPaths.download}
-        text={text}
-        onClick={onClick}
-      />
-    </TrackedAnchor>
+    <IconButton
+      classList="bg-primary-600 hover:text-accent hover:bg-primary-700 text-white"
+      icon={icons.svgPaths.download}
+      text={text}
+      onClick={onClick}
+    />
   );
 };
 
@@ -151,7 +154,7 @@ export const IndexPage = () => {
   const demoRef = useRef<HTMLDivElement | null>(null);
   const [showDonationModal, setShowDonationModal] = useState(false);
   const [showDownloadModal, setShowDownloadModal] = useState(false);
- 
+
   const tryItOut = (click: boolean) => {
     if (click && demoRef.current) {
       demoRef.current.scrollIntoView({
@@ -179,9 +182,11 @@ export const IndexPage = () => {
       <div>
         <div className="flex flex-wrap justify-center gap-6">
           <GithubButton />
-          <DownloadButton version={versionInfo.Number} onClick={() => setShowDonationModal(true)} />
+          <DownloadButton
+            version={versionInfo.Number}
+            onClick={() => setShowDownloadModal(true)}
+          />
         </div>
-        <button onClick={() => setShowDownloadModal(true)} className="hover:underline mt-6">More download options</button>
       </div>
 
       <Card className="m-5 p-0 shadow-xl shadow-body-600">
@@ -335,11 +340,23 @@ export const IndexPage = () => {
         </div>
       </section>
 
-      {showDonationModal ? DonationModal(() => setShowDonationModal(false)) : <></>}
-      {showDownloadModal ? DownloadModal({version: versionInfo.Number, exitModal: () => setShowDownloadModal(false), onDownload: () => {
-        setShowDownloadModal(false);
-        setShowDonationModal(true);
-      }}) : <></>}
+      {showDonationModal ? (
+        DonationModal(() => setShowDonationModal(false))
+      ) : (
+        <></>
+      )}
+      {showDownloadModal ? (
+        DownloadModal({
+          version: versionInfo.Number,
+          exitModal: () => setShowDownloadModal(false),
+          onDownload: () => {
+            setShowDownloadModal(false);
+            setShowDonationModal(true);
+          }
+        })
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
