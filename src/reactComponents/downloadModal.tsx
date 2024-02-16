@@ -66,7 +66,7 @@ function Download(props: DownloadProps) {
   return (
     <div className="text-left">
       {grouped.portable ? (
-        DownloadableAssetAssetGroup(grouped.portable, "Portable", props)
+        DownloadableAssetAssetGroup(grouped.portable, "Portable (.zip)", props)
       ) : (
         <></>
       )}
