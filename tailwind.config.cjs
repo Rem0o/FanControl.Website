@@ -36,7 +36,7 @@ module.exports = {
       colors: {
         primary: toryBlue,
         accent: chartreuse["500"],
-        body: colors.zinc,
+        body: colors.slate,
         "tory-blue": toryBlue,
         chartreuse: chartreuse,
       },

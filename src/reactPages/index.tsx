@@ -221,8 +221,8 @@ export const IndexPage = () => {
         </div>
       </section>
 
-      <section className="my-10 w-full bg-body-200 px-5 py-20">
-        <div className="wrap mx-auto flex max-w-5xl flex-wrap place-content-center content-evenly gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+      <section className="w-full bg-body-200 px-5 py-20">
+        <div className="mx-auto max-w-xl grid grid-cols-4 gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {[
             [icons.svgPaths.bulb, "Flexible by design"],
             [icons.svgPaths.graph, "7 Fan Curve types"],
@@ -231,10 +231,10 @@ export const IndexPage = () => {
             [icons.svgPaths.wrench, "Assisted setup"],
             [icons.svgPaths.temperature, "Temperature Tray Icons"]
           ].map(([icon, text, onClick], i) => (
-            <div key={i} className="m-auto flex items-center">
-              <Card className="bg-body-700 font-medium text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">
-                <div className="h-18 justify-left flex w-52 items-center text-center text-xl">
-                  <div className="mr-2">{BigIcon(icon)}</div>
+            <div key={i} className="flex items-center mx-auto ">
+              <Card className="bg-body-700 text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">
+                <div className="h-18 justify-left flex items-center text-center">
+                  <div className="mr-2">{Icon(icon)}</div>
                   <div className="mx-auto">{text}</div>
                 </div>
               </Card>
