@@ -43,8 +43,8 @@ function GetDownloadable(
     return { name, url: asset.browser_download_url, type: "unknown" };
   }
 
-  var splittedName = name.split("_").filter(x => x != props.version.toString());
-  // fc, version, net, major, minor
+  var splittedName = name.split("_");
+  // fc_version_net_major_minor
   const [fc, version, net, major, minor] = splittedName;
 
   const dotnetString = major == "4" ? ".NET Framework" : ".NET";
