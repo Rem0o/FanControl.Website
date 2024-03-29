@@ -278,8 +278,8 @@ export const IndexPage = () => {
             icon={icons.svgPaths.mix}
           ></NiceHeader>
           <p>
-            THE missing function that originates this whole project. Mix fan
-            curves take the possibilities to a whole new level. Combine any type
+            THE missing feature that originates this whole project. Mix fan
+            curves take the possibilities to a whole new level. Combine any amount
             of fan curves together and apply a function like maximum or average
             to create a whole new control logic. Different curves bound to
             different temperature sensors, mixed together, your case fans never
@@ -333,7 +333,7 @@ export const IndexPage = () => {
             </ExternalLink>
             , an open source fork of the original OpenHardwareMonitor. This
             means that hardware compatiblity is entirely open for anyone to
-            contribute, and doesn't rely on a single developer who may stop
+            contribute, and doesn't rely on a single developer or company who may stop
             caring at some point. Combined with the plugin system, Fan Control
             is unlocked for many generations of hardware to come.
           </p>
