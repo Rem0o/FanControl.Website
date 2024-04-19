@@ -173,9 +173,8 @@ export const IndexPage = () => {
       <h1 className="mx-5 max-w-lg text-4xl font-extrabold">
         Fan Control is a highly focused fan controlling software for Windows
       </h1>
-      <div className="mx-5 text-2xl font-semibold text-body-700">
-        <p>No installation required.</p>
-        <br />
+      <div className="mx-5 gap-1 text-2xl font-semibold text-body-700">
+        <p className="mb-5">No installation required.</p>
         <p>Low on resources, high on power.</p>
       </div>
 
@@ -198,31 +197,42 @@ export const IndexPage = () => {
         ></img>
       </Card>
 
-      <section className="mx-5 my-10 max-w-xl text-xl italic">
-        " No third-party software, at all, as much as they might want to tout
-        that they do, do not have this level of control. This is what happens
-        when someone that sees a problem, is an enthusiast, and is a programmer,
-        gets involved and says I'm gonna do something that nobody has been doing
-        a way I feel they should do it, and they did it right in my opinion. "
-        <br /> <br /> -
-        <TrackedExternalLink href={consts.urls.videoUrl}>
-          JayzTwoCents
-        </TrackedExternalLink>
+      <section className="mx-5 mt-10">
+        <div className="rounded-2xl border border-body-300 p-4">
+          <p className="flex max-w-xl justify-center text-xl italic ">
+            " No third-party software, at all, as much as they might want to
+            tout that they do, do not have this level of control. This is what
+            happens when someone that sees a problem, is an enthusiast, and is a
+            programmer, gets involved and says I'm gonna do something that
+            nobody has been doing a way I feel they should do it, and they did
+            it right in my opinion. "<br></br>
+          </p>
+          <p className="relative mx-5 mb-5">
+            <TrackedExternalLink
+              href={consts.urls.videoUrl}
+              className="absolute right-0 top-0"
+            >
+              JayzTwoCents
+            </TrackedExternalLink>
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-5">
         {/*Article references here!!!*/}
-        <div className="mb-8 mt-16 align-middle text-2xl font-medium">
+        <div className="mb-8 mt-16 align-middle text-3xl font-semibold">
           Featured articles
         </div>
         <div className="flex flex-wrap items-center space-x-5 space-y-5 align-text-top">
-          {articles.map((x) => {
-            const [imgSrc, href, style] = x;
-
+          {articles.map((article) => {
+            const [imgSrc, href, style] = article;
             return ArticleReference(imgSrc, href, style);
           })}
         </div>
       </section>
 
       <section className="w-full bg-body-200 px-5 py-20">
-        <div className="mx-auto max-w-xl grid grid-cols-4 gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mx-auto grid max-w-xl grid-cols-4 gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {[
             [icons.svgPaths.bulb, "Flexible by design"],
             [icons.svgPaths.graph, "7 Fan Curve types"],
@@ -231,7 +241,7 @@ export const IndexPage = () => {
             [icons.svgPaths.wrench, "Assisted setup"],
             [icons.svgPaths.temperature, "Temperature Tray Icons"]
           ].map(([icon, text, onClick], i) => (
-            <div key={i} className="flex items-center mx-auto ">
+            <div key={i} className="mx-auto flex items-center ">
               <Card className="bg-body-700 text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">
                 <div className="h-18 justify-left flex items-center text-center">
                   <div className="mr-2">{Icon(icon)}</div>
@@ -243,8 +253,8 @@ export const IndexPage = () => {
         </div>
       </section>
 
-      <section className="wrap mx-5 my-10 grid justify-center gap-20 text-left sm:grid-cols-1 md:grid-cols-2">
-        <div className="max-w-sm">
+      <section className="wrap mx-5 my-10 grid justify-center gap-10 text-left sm:grid-cols-1 md:grid-cols-2">
+        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
           <NiceHeader
             text="CPU, GPU, and case fans"
             icon={icons.svgPaths.check}
@@ -259,35 +269,34 @@ export const IndexPage = () => {
           </p>
         </div>
 
-        <div className="max-w-sm">
+        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
           <NiceHeader
             text="Tinkerers rejoice"
             icon={icons.svgPaths.parameters}
           ></NiceHeader>
           <p>
-            Fan Control has ALL the parameters. Response time, hysteresis,
+            Fan Control has ALL the parameters. Fan calibration, response time, hysteresis,
             hysteresis direction, step up, step down... Fine tune to your
             heart's desire. Control your fan's start and stopping logic, for
             smooth 0 RPM operation <i>(when supported)</i>.
           </p>
         </div>
 
-        <div className="max-w-sm">
+        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
           <NiceHeader
             text="It's all about the mix"
             icon={icons.svgPaths.mix}
           ></NiceHeader>
-          <p>
+          <p className="">
             THE missing feature that originates this whole project. Mix fan
-            curves take the possibilities to a whole new level. Combine any amount
-            of fan curves together and apply a function like maximum or average
-            to create a whole new control logic. Different curves bound to
-            different temperature sensors, mixed together, your case fans never
-            asked for better. <br />
-            <br />{" "}
+            curves take the possibilities to a whole new level. Combine any
+            amount of fan curves together and apply a function like maximum or
+            average to create a whole new control logic. Different curves bound
+            to different temperature sensors, mixed together, your case fans
+            never asked for better.
           </p>
           <p
-            className="text-body-90 cursor-pointer rounded border border-body-900 p-1 text-center font-medium hover:border-primary-600 hover:text-primary-600"
+            className="mt-3 cursor-pointer rounded border border-body-700 bg-body-200 p-1 text-center font-medium text-body-50 text-body-700 hover:border-primary-600 hover:text-primary-600"
             onClick={() => tryItOut(true)}
             onMouseEnter={() => tryItOut(false)}
           >
@@ -299,7 +308,7 @@ export const IndexPage = () => {
           <DemoMixFanCurveCard refreshId={animationRefreshId} />
         </div>
 
-        <div className="max-w-sm">
+        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
           <NiceHeader
             text="Expansion through plugins"
             icon={icons.svgPaths.plugin}
@@ -321,10 +330,10 @@ export const IndexPage = () => {
           </p>
         </div>
 
-        <div className="max-w-sm">
+        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
           <NiceHeader
             text="Open source backend"
-            icon={icons.svgPaths.backend}
+            icon={icons.svgPaths.github}
           ></NiceHeader>
           <p>
             Fan Control backend is mainly based on{" "}
@@ -333,9 +342,9 @@ export const IndexPage = () => {
             </ExternalLink>
             , an open source fork of the original OpenHardwareMonitor. This
             means that hardware compatiblity is entirely open for anyone to
-            contribute, and doesn't rely on a single developer or company who may stop
-            caring at some point. Combined with the plugin system, Fan Control
-            is unlocked for many generations of hardware to come.
+            contribute, and doesn't rely on a single developer or company who
+            may stop caring at some point. Combined with the plugin system, Fan
+            Control is unlocked for many generations of hardware to come.
           </p>
         </div>
       </section>

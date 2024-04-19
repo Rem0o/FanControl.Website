@@ -9,7 +9,7 @@ const NiceHeader = ({ icon, text }: { icon?: string; text: string }) => {
         <></>
       )}
 
-      <span className="align-middle text-2xl font-medium">{text}</span>
+      <span className="align-middle text-xl font-medium">{text}</span>
     </h2>
   );
 };
