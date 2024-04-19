@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 import consts from "../common/consts";
 import icons from "../common/icons";
-import NiceHeader from "../reactComponents/niceHeader";
+import { NiceHeader } from "../reactComponents/niceHeader";
 import Card from "../reactComponents/card";
-import { BigIcon, Icon } from "../reactComponents/icon";
+import { Icon } from "../reactComponents/icon";
 import {
   useInterval,
   useRefreshState,
@@ -29,6 +29,7 @@ import { DonationModal } from "../reactComponents/donationModal";
 import { DownloadModal } from "../reactComponents/downloadModal";
 
 import { versionInfo } from "../reactComponents/services/versionService";
+import Border from "../reactComponents/border";
 
 type VersionInfo = {
   Number: number;
@@ -198,7 +199,7 @@ export const IndexPage = () => {
       </Card>
 
       <section className="mx-5 mt-10">
-        <div className="rounded-2xl border border-body-300 p-4">
+        <Border>
           <p className="flex max-w-xl justify-center text-xl italic ">
             " No third-party software, at all, as much as they might want to
             tout that they do, do not have this level of control. This is what
@@ -215,7 +216,7 @@ export const IndexPage = () => {
               JayzTwoCents
             </TrackedExternalLink>
           </p>
-        </div>
+        </Border>
       </section>
 
       <section className="mx-5">
@@ -254,7 +255,7 @@ export const IndexPage = () => {
       </section>
 
       <section className="wrap mx-5 my-10 grid justify-center gap-10 text-left sm:grid-cols-1 md:grid-cols-2">
-        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
+        <Border className="max-w-sm">
           <NiceHeader
             text="CPU, GPU, and case fans"
             icon={icons.svgPaths.check}
@@ -267,22 +268,22 @@ export const IndexPage = () => {
             entity, and start thinking about cooling and noise as a system-wide
             concern.
           </p>
-        </div>
+        </Border>
 
-        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
+        <Border className="max-w-sm">
           <NiceHeader
             text="Tinkerers rejoice"
             icon={icons.svgPaths.parameters}
           ></NiceHeader>
           <p>
-            Fan Control has ALL the parameters. Fan calibration, response time, hysteresis,
-            hysteresis direction, step up, step down... Fine tune to your
-            heart's desire. Control your fan's start and stopping logic, for
-            smooth 0 RPM operation <i>(when supported)</i>.
+            Fan Control has ALL the parameters. Fan calibration, response time,
+            hysteresis, hysteresis direction, step up, step down... Fine tune to
+            your heart's desire. Control your fan's start and stopping logic,
+            for smooth 0 RPM operation <i>(when supported)</i>.
           </p>
-        </div>
+        </Border>
 
-        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
+        <Border className="max-w-sm">
           <NiceHeader
             text="It's all about the mix"
             icon={icons.svgPaths.mix}
@@ -302,13 +303,13 @@ export const IndexPage = () => {
           >
             Try it out on the demo card!
           </p>
-        </div>
+        </Border>
 
         <div className="m-auto w-fit" ref={demoRef}>
           <DemoMixFanCurveCard refreshId={animationRefreshId} />
         </div>
 
-        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
+        <Border className="max-w-sm">
           <NiceHeader
             text="Expansion through plugins"
             icon={icons.svgPaths.plugin}
@@ -328,9 +329,9 @@ export const IndexPage = () => {
             </TrackedExternalLink>
             .
           </p>
-        </div>
+        </Border>
 
-        <div className="max-w-sm rounded-2xl border border-body-300 p-4">
+        <Border className="max-w-sm">
           <NiceHeader
             text="Open source backend"
             icon={icons.svgPaths.github}
@@ -346,7 +347,7 @@ export const IndexPage = () => {
             may stop caring at some point. Combined with the plugin system, Fan
             Control is unlocked for many generations of hardware to come.
           </p>
-        </div>
+        </Border>
       </section>
 
       {showDonationModal ? (

@@ -14,4 +14,21 @@ const NiceHeader = ({ icon, text }: { icon?: string; text: string }) => {
   );
 };
 
-export default NiceHeader;
+const NiceSmallerHeader = ({ icon, text }: { icon?: string; text: string }) => {
+  return (
+    <h3 className="mb-2 flex items-center text-left">
+      {icon ? (
+        <svg className="mr-5 h-12 w-12" viewBox="0 0 24 24">
+          <path fill="currentColor" d={icon} />
+        </svg>
+      ) : (
+        <></>
+      )}
+
+      <span className="align-middle text-lg font-medium">{text}</span>
+    </h3>
+  );
+};
+
+
+export { NiceHeader, NiceSmallerHeader };

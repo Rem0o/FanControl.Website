@@ -1,5 +1,8 @@
+import type consts from "../../common/consts";
 import icons from "../../common/icons";
-import { type DocSection, parameters, ParametersCard } from "./docSection";
+import Border from "../border";
+import { NiceSmallerHeader } from "../niceHeader";
+import { type DocSection, parameters } from "./docSection";
 
 const timeAverage: DocSection = {
   key: "Time Average",
@@ -13,14 +16,14 @@ const timeAverage: DocSection = {
         </p>
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Temperature source: {parameters.tempSource}</li>
             <li>Time: Averaging period of the selected temperature source.</li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -38,8 +41,8 @@ const mixSensor: DocSection = {
         </p>
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Function: {parameters.functions}</li>
@@ -47,7 +50,7 @@ const mixSensor: DocSection = {
               Add sensor: Add any existing temperature sensor to the mix.{" "}
             </li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -67,13 +70,13 @@ const fileSensor: DocSection = {
         </p>
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters"/>
 
           <ul>
             <li>Path: Path of the sensor file.</li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -88,8 +91,8 @@ const offsetSensor: DocSection = {
         <p>The offset custom sensor allows to offset an existing sensor.</p>
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>
@@ -100,7 +103,7 @@ const offsetSensor: DocSection = {
               (%) instead of absolute (degree).
             </li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }

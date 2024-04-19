@@ -17,7 +17,7 @@ import {
   auto
 } from "../reactComponents/docs/fanCurves";
 import { SmallIcon } from "../reactComponents/icon";
-import NiceHeader from "../reactComponents/niceHeader";
+import { NiceHeader } from "../reactComponents/niceHeader";
 import "./../styles/docs.css";
 import { PageHeader } from "../reactComponents/pageHeader";
 

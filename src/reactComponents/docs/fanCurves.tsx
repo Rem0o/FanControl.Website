@@ -1,4 +1,4 @@
-import { type DocSection, parameters, ParametersCard } from "./docSection";
+import { type DocSection, parameters } from "./docSection";
 import MixFanCurveCard from "../demo/mixFanCurveCard";
 import {
   createTempSource,
@@ -10,6 +10,8 @@ import { useState } from "react";
 import { useInterval } from "../../common/hooks";
 import LinearFanCurveCard from "../demo/linearFanCurveCard";
 import type { FanCurve, LinearFanCurveConfig } from "../demo/fanCurve";
+import Border from "../border";
+import { NiceSmallerHeader } from "../niceHeader";
 
 const DocDemoLinearFanCurveCard = () => {
   const updateSources = (): [TemperatureSource, TemperatureSource] => [
@@ -62,8 +64,8 @@ const linear: DocSection = {
 
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>
@@ -85,7 +87,7 @@ const linear: DocSection = {
               {parameters.ignoreHysteresis}
             </li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -111,8 +113,8 @@ const graph: DocSection = {
         </p>
 
         <br />
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Temperature source: {parameters.tempSource}</li>
@@ -126,7 +128,7 @@ const graph: DocSection = {
               {parameters.ignoreHysteresis}
             </li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -174,13 +176,13 @@ const flat: DocSection = {
         </p>
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Fan speed %: Percent.</li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -200,8 +202,8 @@ const sync: DocSection = {
         </p>
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Selected control: The control to sync with.</li>
@@ -211,7 +213,7 @@ const sync: DocSection = {
               instead of absolute.
             </li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -232,13 +234,13 @@ const trigger: DocSection = {
         </p>
         <br />
 
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Response Time: {parameters.responseTime}</li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -260,14 +262,14 @@ const mix: DocSection = {
         </p>
 
         <br />
-        <ParametersCard>
-          <h2>Parameters:</h2>
+        <Border>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Function: {parameters.functions}</li>
             <li>Fan curves: Add any existing fan curve to the mix. </li>
           </ul>
-        </ParametersCard>
+        </Border>
       </>
     );
   }
@@ -293,8 +295,8 @@ const auto: DocSection = {
       </p>
       <br />
 
-      <ParametersCard>
-        <h2>Parameters:</h2>
+      <Border>
+        <NiceSmallerHeader text="Parameters" />
 
         <ul>
           <li>
@@ -316,7 +318,7 @@ const auto: DocSection = {
             temperature is decreasing.
           </li>
         </ul>
-      </ParametersCard>
+      </Border>
     </>
   )
 };

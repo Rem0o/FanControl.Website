@@ -1,5 +1,3 @@
-import Card from "../card";
-
 export type DocSection = {
   key: string;
   icon?: string;
@@ -15,8 +13,4 @@ export const parameters = {
     "Hysteresis and response time parameters will be ignored as soon at the minimum or maximum temperature point set by the fan curve is hit. Hysteresis will apply when re-entering the set temperature range.",
   tempSource: "Source to use as input.",
   functions: "Choose between Max, Min, Average, Sum, Subtract."
-};
-
-export const ParametersCard = ({ children }: { children: React.ReactNode }) => {
-  return <Card className="bg-body-50">{children}</Card>;
 };
