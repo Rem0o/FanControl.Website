@@ -7,11 +7,11 @@ import "../styles/global.css";
 
 interface Props {
   title: string;
+  navTitle: string;
 }
 
-const { title } = Astro.props;
+const { title, navTitle } = Astro.props;
 
-const defaultTitle: string = "Home";
 ---
 
 <html lang="en">
@@ -29,7 +29,7 @@ const defaultTitle: string = "Home";
     <div class="flex min-h-screen flex-col">
       <NavBar
         className="fixed top-0 z-30"
-        pageTitle={title === defaultTitle ? "" : title}
+        pageTitle={navTitle}
         client:load
       />
       <main class="mt-16 grow bg-transparent"><slot /></main>
