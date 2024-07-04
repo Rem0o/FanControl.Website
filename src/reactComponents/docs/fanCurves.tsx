@@ -12,6 +12,7 @@ import LinearFanCurveCard from "../demo/linearFanCurveCard";
 import type { FanCurve, LinearFanCurveConfig } from "../demo/fanCurve";
 import Border from "../border";
 import { NiceSmallerHeader } from "../niceHeader";
+import { SmallIcon } from "../icon";
 
 const DocDemoLinearFanCurveCard = () => {
   const updateSources = (): [TemperatureSource, TemperatureSource] => [
@@ -43,6 +44,17 @@ const DocDemoLinearFanCurveCard = () => {
       linearFanCurve={linearFanCurve}
     />
   );
+};
+
+const rpmMode: DocSection = {
+  key: "RPM mode",
+  render: () => (
+    <p>
+      All fan curves can used in RPM mode from their<span className="inline-block align-middle">{SmallIcon(icons.svgPaths.threeDot)}</span> menu. Instead of outputing a specific %, it
+      will output a target RPM value. Only controls with a valid calibration can
+      use fan curves in RPM mode.
+    </p>
+  )
 };
 
 const linear: DocSection = {
@@ -323,4 +335,4 @@ const auto: DocSection = {
   )
 };
 
-export { linear, graph, mix, trigger, flat, sync, auto };
+export { rpmMode, linear, graph, mix, trigger, flat, sync, auto };

@@ -14,12 +14,14 @@ import {
   trigger,
   flat,
   sync,
-  auto
+  auto,
+  rpmMode
 } from "../reactComponents/docs/fanCurves";
 import { SmallIcon } from "../reactComponents/icon";
 import { NiceHeader } from "../reactComponents/niceHeader";
 import "./../styles/docs.css";
 import { PageHeader } from "../reactComponents/pageHeader";
+import { calibration, speedPairing } from "../reactComponents/docs/control";
 
 const c: DocSection = {
   key: "-c --config",
@@ -54,7 +56,13 @@ const m: DocSection = {
   }
 };
 
+const controlSections: DocSection[] = [
+  speedPairing,
+  calibration
+];
+
 const fanCurveSections: DocSection[] = [
+  rpmMode,
   linear,
   graph,
   mix,
@@ -166,7 +174,18 @@ export const DocsPage = () => {
           v ? "" : "hidden"
         )}
       >
-        <div className="sticky top-20 flex flex-col ">
+        <div className="sticky top-20 flex flex-col">
+          <DocSidebarHeader
+            text="Control"
+            onClick={() => ScrollToSection(refs, "Control")}
+          />
+
+          <ul className="mb-5 mr-5">
+            {controlSections.map((s) =>
+              SideBarDocSection(s, () => ScrollToSection(refs, s.key))
+            )}
+          </ul>
+
           <DocSidebarHeader
             text="Fan Curves"
             onClick={() => ScrollToSection(refs, "Fan Curves")}
@@ -203,6 +222,10 @@ export const DocsPage = () => {
       <div className="docs ml-5">
         <div className="max-w-3xl space-y-16">
           <PageHeader children="Documentation" />
+
+          <DocHeader text="Control" refs={refs} />
+          {controlSections.map((s) => DocSectionComponent(s, refs))}
+
           <DocHeader text="Fan Curves" refs={refs} />
           {fanCurveSections.map((s) => DocSectionComponent(s, refs))}
 
