@@ -16,7 +16,7 @@ export const AboutPage = () => {
       </div>
 
       <div className="flex flex-wrap gap-4 p-5">
-        <Border className="max-w-sm">
+        <Border className="max-w-xl">
           <NiceHeader text="Powered by:" icon={icons.github} />
           <ul className="ml-5 mt-5 list-disc">
             {[
