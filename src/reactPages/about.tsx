@@ -22,6 +22,7 @@ export const AboutPage = () => {
             {[
               consts.urls.lhmGithubPageUrl,
               "https://github.com/falahati/NvAPIWrapper",
+              "https://github.com/Rem0o/ADLXWrapper",
               "https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit"
             ].map((x, i) => (
               <li key={i} className="break-words">

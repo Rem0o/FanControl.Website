@@ -1,8 +1,6 @@
-import type { JsxElement } from "typescript";
 import consts from "../common/consts";
 import { icons } from "../common/icons";
 import { FooterButton } from "./footerButton";
-import { BigIcon, Icon } from "./icon";
 import { SpinningLogo } from "./spinningLogo";
 import { Modal } from "./modal";
 
@@ -17,6 +15,8 @@ function Donation(exitModal: Function) {
 
       <div className="m-2">Thanks for downloading FanControl !</div>
 
+      <div className="mb-2">If you want to support the developper of this project: </div>
+
       <div className="m-2 flex flex-row space-x-4">
         <FooterButton
           iconSvgPath={icons.heart}
@@ -27,7 +27,7 @@ function Donation(exitModal: Function) {
           iconSvgPath={icons.paypal}
           href={consts.urls.donationUrl}
           viewBox="0 0 16 16"
-          text="PayPal"
+          text="Donate"
         />
       </div>
     </>

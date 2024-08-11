@@ -33,7 +33,7 @@ export const DevInformation = () => {
           iconSvgPath={icons.paypal}
           href={consts.urls.donationUrl}
           viewBox="0 0 16 16"
-          text="PayPal"
+          text="Donate"
         />
       </div>
     </div>
