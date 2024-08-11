@@ -4,7 +4,7 @@ import consts from "../common/consts";
 import { PageHeader } from "../reactComponents/pageHeader";
 import Border from "../reactComponents/border";
 import { NiceHeader } from "../reactComponents/niceHeader";
-import icons from "../common/icons";
+import { icons } from "../common/icons";
 
 const cardStyle = "bg-white gap-y-2 max-w-full";
 
@@ -17,7 +17,7 @@ export const AboutPage = () => {
 
       <div className="flex flex-wrap gap-4 p-5">
         <Border className="max-w-sm">
-          <NiceHeader text="Powered by:" icon={icons.svgPaths.github} />
+          <NiceHeader text="Powered by:" icon={icons.github} />
           <ul className="ml-5 mt-5 list-disc">
             {[
               consts.urls.lhmGithubPageUrl,
