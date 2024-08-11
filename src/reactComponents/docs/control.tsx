@@ -1,4 +1,4 @@
-import icons from "../../common/icons";
+import {icons} from "../../common/icons";
 import Border from "../border";
 import { NiceSmallerHeader } from "../niceHeader";
 import type { DocSection } from "./docSection";
@@ -47,7 +47,7 @@ const parameters = (
 
 export const speedPairing: DocSection = {
   key: "Speed sensor pairing",
-  icon: icons.svgPaths.pairing,
+  icon: icons.pairing,
   render: () => {
     return speedPairingText;
   }
@@ -55,7 +55,7 @@ export const speedPairing: DocSection = {
 
 export const calibration: DocSection = {
   key: "Calibration",
-  icon: icons.svgPaths.calibration,
+  icon: icons.calibration,
   render: () => {
     return (
       <div>

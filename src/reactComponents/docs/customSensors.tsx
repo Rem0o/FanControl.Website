@@ -1,12 +1,12 @@
 import type consts from "../../common/consts";
-import icons from "../../common/icons";
+import {icons} from "../../common/icons";
 import Border from "../border";
 import { NiceSmallerHeader } from "../niceHeader";
 import { type DocSection, parameters } from "./docSection";
 
 const timeAverage: DocSection = {
   key: "Time Average",
-  icon: icons.svgPaths.time,
+  icon: icons.time,
   render: () => {
     return (
       <>
@@ -31,7 +31,7 @@ const timeAverage: DocSection = {
 
 const mixSensor: DocSection = {
   key: "Mix Sensor",
-  icon: icons.svgPaths.temperature,
+  icon: icons.temperature,
   render: () => {
     return (
       <>
@@ -58,7 +58,7 @@ const mixSensor: DocSection = {
 
 const fileSensor: DocSection = {
   key: "File",
-  icon: icons.svgPaths.file,
+  icon: icons.file,
   render: () => {
     return (
       <>
@@ -84,7 +84,7 @@ const fileSensor: DocSection = {
 
 const offsetSensor: DocSection = {
   key: "Offset",
-  icon: icons.svgPaths.delta,
+  icon: icons.delta,
   render: () => {
     return (
       <>

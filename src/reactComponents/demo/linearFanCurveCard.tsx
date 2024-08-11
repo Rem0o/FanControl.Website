@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import icons from "../../common/icons";
+import { icons } from "../../common/icons";
 import Select from "../select";
 import FanCurveCard from "./fanCurveCard";
 import type { TemperatureSource } from "./temperatureSource";
@@ -30,7 +30,7 @@ export default function LinearFanCurveCard({
   }, [linearFanCurve.selectedTemperature]);
 
   return (
-    <FanCurveCard iconPath={icons.svgPaths.linear} fanCurve={fanCurve}>
+    <FanCurveCard iconPath={icons.linear} fanCurve={fanCurve}>
       <Select
         onChange={(e) =>
           setFanCurveConfig({
@@ -119,10 +119,10 @@ function CardNumberInput(
 
   return (
     <div className={twMerge("relative inline-block", className)}>
-      <div className="text-xs text-gray-300 ">{label}</div>
+      <div className="text-xs text-gray-300">{label}</div>
       <div>
         <input
-          className="inline-block w-full border-b-2 border-b-white bg-transparent "
+          className="inline-block w-full border-b-2 border-b-white bg-transparent"
           type="number"
           {...attr}
           onMouseEnter={() => setHoverAndFocus([true, focus])}

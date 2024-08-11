@@ -1,6 +1,6 @@
 import type { JsxElement } from "typescript";
 import consts from "../common/consts";
-import icons from "../common/icons";
+import { icons } from "../common/icons";
 import { FooterButton } from "./footerButton";
 import { BigIcon, Icon } from "./icon";
 import { SpinningLogo } from "./spinningLogo";
@@ -19,12 +19,12 @@ function Donation(exitModal: Function) {
 
       <div className="m-2 flex flex-row space-x-4">
         <FooterButton
-          iconSvgPath={icons.svgPaths.heart}
+          iconSvgPath={icons.heart}
           href={consts.urls.sponsor}
           text="Sponsor"
         />
         <FooterButton
-          iconSvgPath={icons.svgPaths.paypal}
+          iconSvgPath={icons.paypal}
           href={consts.urls.donationUrl}
           viewBox="0 0 16 16"
           text="PayPal"

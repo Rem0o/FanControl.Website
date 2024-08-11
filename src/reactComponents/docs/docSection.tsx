@@ -1,6 +1,8 @@
+import type { SvgIcon } from "../../common/icons";
+
 export type DocSection = {
   key: string;
-  icon?: string;
+  icon?: SvgIcon;
   render: () => JSX.Element;
 };
 

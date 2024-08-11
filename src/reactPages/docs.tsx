@@ -22,6 +22,7 @@ import { NiceHeader } from "../reactComponents/niceHeader";
 import "./../styles/docs.css";
 import { PageHeader } from "../reactComponents/pageHeader";
 import { calibration, speedPairing } from "../reactComponents/docs/control";
+import { amd, nvidia } from "../reactComponents/docs/gpu";
 
 const c: DocSection = {
   key: "-c --config",
@@ -56,10 +57,9 @@ const m: DocSection = {
   }
 };
 
-const controlSections: DocSection[] = [
-  speedPairing,
-  calibration
-];
+const controlSections: DocSection[] = [speedPairing, calibration];
+
+const gpuSections: DocSection[] = [nvidia, amd];
 
 const fanCurveSections: DocSection[] = [
   rpmMode,
@@ -187,6 +187,17 @@ export const DocsPage = () => {
           </ul>
 
           <DocSidebarHeader
+            text="GPU"
+            onClick={() => ScrollToSection(refs, "GPU")}
+          />
+
+          <ul className="mb-5 mr-5">
+            {gpuSections.map((s) =>
+              SideBarDocSection(s, () => ScrollToSection(refs, s.key))
+            )}
+          </ul>
+
+          <DocSidebarHeader
             text="Fan Curves"
             onClick={() => ScrollToSection(refs, "Fan Curves")}
           />
@@ -225,6 +236,9 @@ export const DocsPage = () => {
 
           <DocHeader text="Control" refs={refs} />
           {controlSections.map((s) => DocSectionComponent(s, refs))}
+          
+          <DocHeader text="GPU" refs={refs} />
+          {gpuSections.map((s) => DocSectionComponent(s, refs))}
 
           <DocHeader text="Fan Curves" refs={refs} />
           {fanCurveSections.map((s) => DocSectionComponent(s, refs))}

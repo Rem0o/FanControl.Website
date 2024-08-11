@@ -1,5 +1,5 @@
 import consts from "../common/consts";
-import icons from "../common/icons";
+import { icons } from "../common/icons";
 import { ExternalLink } from "../reactComponents/links";
 import { SpinningLogo } from "../reactComponents/spinningLogo";
 import { FooterButton } from "../reactComponents/footerButton";
@@ -25,12 +25,12 @@ export const DevInformation = () => {
       </ExternalLink>
       <div className="flex items-center justify-center space-x-3 py-3">
         <FooterButton
-          iconSvgPath={icons.svgPaths.heart}
+          iconSvgPath={icons.heart}
           href={consts.urls.sponsor}
           text="Sponsor"
         />
         <FooterButton
-          iconSvgPath={icons.svgPaths.paypal}
+          iconSvgPath={icons.paypal}
           href={consts.urls.donationUrl}
           viewBox="0 0 16 16"
           text="PayPal"

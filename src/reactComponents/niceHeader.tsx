@@ -1,11 +1,10 @@
-const NiceHeader = ({ icon, text }: { icon?: string; text: string }) => {
+import type { SvgIcon } from "../common/icons";
+import { BigIcon, Icon } from "./icon";
+
+const NiceHeader = ({ icon, text }: { icon?: SvgIcon; text: string }) => {
   return (
     <h2 className="mb-2 flex items-center text-left">
-      {icon ? (
-        <svg className="mr-5 h-12 w-12" viewBox="0 0 24 24">
-          <path fill="currentColor" d={icon} />
-        </svg>
-      ) : (
+      {icon ? BigIcon(icon, "mr-5") : (
         <></>
       )}
 
@@ -14,16 +13,13 @@ const NiceHeader = ({ icon, text }: { icon?: string; text: string }) => {
   );
 };
 
-const NiceSmallerHeader = ({ icon, text }: { icon?: string; text: string }) => {
+const NiceSmallerHeader = ({ icon, text }: { icon?: SvgIcon; text: string }) => {
   return (
     <h3 className="mb-2 flex items-center text-left">
-      {icon ? (
-        <svg className="mr-5 h-12 w-12" viewBox="0 0 24 24">
-          <path fill="currentColor" d={icon} />
-        </svg>
-      ) : (
+      {icon ? BigIcon(icon, "mr-5")
+        : 
         <></>
-      )}
+      }
 
       <span className="align-middle text-lg font-medium">{text}</span>
     </h3>

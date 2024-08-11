@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { useTimeoutBooleanState } from "../common/hooks";
-import icons from "../common/icons";
+import { icons } from "../common/icons";
 
 interface Props {
   spinInitially?: boolean;
@@ -27,7 +27,7 @@ const SpinningLogo = (props: React.SVGProps<SVGSVGElement> & Props) => {
       )}
       viewBox={viewBox ? viewBox : "0 0 24 24"}
     >
-      <path fill="currentColor" d={icons.svgPaths.fan} />
+      <path fill="currentColor" d={icons.fan} />
     </svg>
   );
 };

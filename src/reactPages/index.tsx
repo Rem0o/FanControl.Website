@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 import consts from "../common/consts";
-import icons from "../common/icons";
+import { icons } from "../common/icons";
 import { NiceHeader } from "../reactComponents/niceHeader";
 import Card from "../reactComponents/card";
 import { Icon } from "../reactComponents/icon";
@@ -72,7 +72,7 @@ const DownloadButton = ({
   return (
     <IconButton
       classList="bg-primary-600 hover:text-accent hover:bg-primary-700 text-white"
-      icon={icons.svgPaths.download}
+      icon={icons.download}
       text={text}
       onClick={onClick}
     />
@@ -84,7 +84,7 @@ const GithubButton = () => {
     <TrackedAnchor href={consts.urls.githubPageUrl}>
       <IconButton
         classList="bg-gray-300 hover:bg-gray-400"
-        icon={icons.svgPaths.github}
+        icon={icons.github}
         text="GitHub Page"
       />
     </TrackedAnchor>
@@ -200,7 +200,7 @@ export const IndexPage = () => {
 
       <section className="mx-5 mt-10">
         <Border>
-          <p className="flex max-w-xl justify-center text-xl italic ">
+          <p className="flex max-w-xl justify-center text-xl italic">
             " No third-party software, at all, as much as they might want to
             tout that they do, do not have this level of control. This is what
             happens when someone that sees a problem, is an enthusiast, and is a
@@ -235,14 +235,14 @@ export const IndexPage = () => {
       <section className="w-full bg-body-200 px-5 py-20">
         <div className="mx-auto grid max-w-xl grid-cols-4 gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {[
-            [icons.svgPaths.bulb, "Flexible by design"],
-            [icons.svgPaths.graph, "7 Fan Curve types"],
-            [icons.svgPaths.save, "Create multiple configurations"],
-            [icons.svgPaths.brush, "UI Themes"],
-            [icons.svgPaths.wrench, "Assisted setup"],
-            [icons.svgPaths.temperature, "Temperature Tray Icons"]
+            [icons.bulb, "Flexible by design"],
+            [icons.graph, "7 Fan Curve types"],
+            [icons.save, "Create multiple configurations"],
+            [icons.brush, "UI Themes"],
+            [icons.wrench, "Assisted setup"],
+            [icons.temperature, "Temperature Tray Icons"]
           ].map(([icon, text, onClick], i) => (
-            <div key={i} className="mx-auto flex items-center ">
+            <div key={i} className="mx-auto flex items-center">
               <Card className="bg-body-700 text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">
                 <div className="h-18 justify-left flex items-center text-center">
                   <div className="mr-2">{Icon(icon)}</div>
@@ -258,7 +258,7 @@ export const IndexPage = () => {
         <Border className="max-w-sm">
           <NiceHeader
             text="CPU, GPU, and case fans"
-            icon={icons.svgPaths.check}
+            icon={icons.check}
           ></NiceHeader>
           <p>
             Yup, that's covered. Fan Control has extensive support for a variety
@@ -273,7 +273,7 @@ export const IndexPage = () => {
         <Border className="max-w-sm">
           <NiceHeader
             text="Tinkerers rejoice"
-            icon={icons.svgPaths.parameters}
+            icon={icons.parameters}
           ></NiceHeader>
           <p>
             Fan Control has ALL the parameters. Fan calibration, response time,
@@ -286,7 +286,7 @@ export const IndexPage = () => {
         <Border className="max-w-sm">
           <NiceHeader
             text="It's all about the mix"
-            icon={icons.svgPaths.mix}
+            icon={icons.mix}
           ></NiceHeader>
           <p className="">
             THE missing feature that originates this whole project. Mix fan
@@ -312,7 +312,7 @@ export const IndexPage = () => {
         <Border className="max-w-sm">
           <NiceHeader
             text="Expansion through plugins"
-            icon={icons.svgPaths.plugin}
+            icon={icons.plugin}
           ></NiceHeader>
           <p>
             Want to add more sensors and controls from a third party? No
@@ -334,7 +334,7 @@ export const IndexPage = () => {
         <Border className="max-w-sm">
           <NiceHeader
             text="Open source backend"
-            icon={icons.svgPaths.github}
+            icon={icons.github}
           ></NiceHeader>
           <p>
             Fan Control backend is mainly based on{" "}

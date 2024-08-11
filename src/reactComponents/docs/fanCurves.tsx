@@ -5,7 +5,7 @@ import {
   createTempSourceRandom,
   type TemperatureSource
 } from "../demo/temperatureSource";
-import icons from "../../common/icons";
+import { icons } from "../../common/icons";
 import { useState } from "react";
 import { useInterval } from "../../common/hooks";
 import LinearFanCurveCard from "../demo/linearFanCurveCard";
@@ -50,16 +50,20 @@ const rpmMode: DocSection = {
   key: "RPM mode",
   render: () => (
     <p>
-      All fan curves can used in RPM mode from their<span className="inline-block align-middle">{SmallIcon(icons.svgPaths.threeDot)}</span> menu. Instead of outputing a specific %, it
-      will output a target RPM value. Only controls with a valid calibration can
-      use fan curves in RPM mode.
+      All fan curves can used in RPM mode from their
+      <span className="inline-block align-middle">
+        {SmallIcon(icons.threeDot)}
+      </span>{" "}
+      menu. Instead of outputing a specific %, it will output a target RPM
+      value. Only controls with a valid calibration can use fan curves in RPM
+      mode.
     </p>
   )
 };
 
 const linear: DocSection = {
   key: "Linear",
-  icon: icons.svgPaths.linear,
+  icon: icons.linear,
   render: () => {
     return (
       <>
@@ -107,7 +111,7 @@ const linear: DocSection = {
 
 const graph: DocSection = {
   key: "Graph",
-  icon: icons.svgPaths.graph,
+  icon: icons.graph,
   render: () => {
     return (
       <>
@@ -178,7 +182,7 @@ const DocDemoMixFanCurveCard = () => {
 
 const flat: DocSection = {
   key: "Flat",
-  icon: icons.svgPaths.flat,
+  icon: icons.flat,
   render: () => {
     return (
       <>
@@ -202,7 +206,7 @@ const flat: DocSection = {
 
 const sync: DocSection = {
   key: "Sync",
-  icon: icons.svgPaths.sync,
+  icon: icons.sync,
   render: () => {
     return (
       <>
@@ -233,7 +237,7 @@ const sync: DocSection = {
 
 const trigger: DocSection = {
   key: "Trigger",
-  icon: icons.svgPaths.trigger,
+  icon: icons.trigger,
   render: () => {
     return (
       <>
@@ -260,7 +264,7 @@ const trigger: DocSection = {
 
 const mix: DocSection = {
   key: "Mix Fan Curve",
-  icon: icons.svgPaths.mix,
+  icon: icons.mix,
   render: () => {
     return (
       <>
@@ -289,7 +293,7 @@ const mix: DocSection = {
 
 const auto: DocSection = {
   key: "Auto",
-  icon: icons.svgPaths.auto,
+  icon: icons.auto,
   render: () => (
     <>
       <p>
