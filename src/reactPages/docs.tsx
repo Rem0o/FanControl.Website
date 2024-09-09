@@ -57,6 +57,29 @@ const m: DocSection = {
   }
 };
 
+
+const r: DocSection = {
+  key: "-r --refresh",
+  render: () => {
+    return (
+      <>
+        Force the program to refresh its sensors.
+      </>
+    );
+  }
+};
+
+const e: DocSection = {
+  key: "-e --exit",
+  render: () => {
+    return (
+      <>
+        Force the currently running instance to exit.
+      </>
+    );
+  }
+};
+
 const controlSections: DocSection[] = [speedPairing, calibration];
 
 const gpuSections: DocSection[] = [nvidia, amd];
@@ -79,7 +102,7 @@ const customSensorSections: DocSection[] = [
   offsetSensor
 ];
 
-const commandLineArgumentSections: DocSection[] = [c, w, m];
+const commandLineArgumentSections: DocSection[] = [c, w, m, r, e];
 
 const ScrollToSection = (
   refs: React.MutableRefObject<Map<string, HTMLElement | null>>,
