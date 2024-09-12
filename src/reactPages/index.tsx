@@ -202,7 +202,7 @@ export const IndexPage = () => {
         <Border>
           <p className="flex max-w-xl justify-center text-xl italic">
             " No third-party software, at all, as much as they might want to
-            tout that they do, do not have this level of control. This is what
+            tout that they do, {"[has]"} this level of control. This is what
             happens when someone that sees a problem, is an enthusiast, and is a
             programmer, gets involved and says I'm gonna do something that
             nobody has been doing a way I feel they should do it, and they did
