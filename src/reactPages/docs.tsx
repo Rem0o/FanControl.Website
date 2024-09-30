@@ -40,14 +40,14 @@ const c: DocSection = {
 };
 
 const w: DocSection = {
-  key: "-w",
+  key: "-w --window",
   render: () => {
     return <>Force the UI window to open, override the minimize option.</>;
   }
 };
 
 const m: DocSection = {
-  key: "-m",
+  key: "-m --minimized",
   render: () => {
     return (
       <>
