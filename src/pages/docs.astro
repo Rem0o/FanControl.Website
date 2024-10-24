@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
 import { DocsPage } from "../reactPages/docs";
----
 
-<BaseLayout title="Detailed Documentation" navTitle="Docs">
+const description = "Detailled documentation for the FanControl software.";
+---
+<BaseLayout title="Detailed Documentation" navTitle="Docs" metaDescription={description}>
   <DocsPage client:load />
 </BaseLayout>

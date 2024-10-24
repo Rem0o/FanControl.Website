@@ -8,9 +8,10 @@ import "../styles/global.css";
 interface Props {
   title: string;
   navTitle: string;
+  metaDescription?: string
 }
 
-const { title, navTitle } = Astro.props;
+const { title, navTitle, metaDescription } = Astro.props;
 
 ---
 
@@ -19,7 +20,7 @@ const { title, navTitle } = Astro.props;
     <!-- Google tag (gtag.js) -->
     <GoogleAnalytics />
     <!-- SEO -->
-    <SEO title={title} />
+    <SEO title={title} description={metaDescription} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta charset="UTF-8" />

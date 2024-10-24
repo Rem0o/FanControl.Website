@@ -3,13 +3,14 @@ import seo from "./../common/seo";
 
 interface Props {
   title: string;
+  description?: string
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <title>Fan Control - {title}</title>
-<meta name="description" content={seo.description} />
+<meta name="description" content={ description ?? seo.description} />
 <meta name="image" content={seo.image} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={seo.title} />
