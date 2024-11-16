@@ -1,23 +1,31 @@
 import { TrackedAnchor } from "./links";
+import { twMerge } from "tailwind-merge";
 
 export function FooterButton({
   href,
   text,
   iconSvgPath,
-  viewBox
+  viewBox,
+  className
 }: {
   href: string;
   text: string;
   iconSvgPath: string;
   viewBox?: string;
+  className?: string;
 }) {
   return (
     <TrackedAnchor href={href}>
-      <button className="flex rounded-2xl border border-black px-2 py-1 pr-3 text-sm hover:border-primary-600 hover:text-primary-600">
+      <button
+        className={twMerge(
+          "flex items-center justify-center rounded-2xl border border-black px-2 py-1 pr-3 text-sm hover:border-primary-600 hover:text-primary-600",
+          className
+        )}
+      >
         <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
-        <span className="ml-1 self-center">{text}</span>
+        <span className="ml-2">{text}</span>
       </button>
     </TrackedAnchor>
   );

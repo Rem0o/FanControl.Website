@@ -4,9 +4,13 @@ import { FooterButton } from "./footerButton";
 import { SpinningLogo } from "./spinningLogo";
 import { Modal } from "./modal";
 
-export const DonationModal = (exitModal: Function) => <Modal exitModal={exitModal}>{Donation(exitModal)}</Modal>;
+export const DonationModal = (exitModal: Function) => (
+  <Modal exitModal={exitModal}>
+    <Donation/>
+  </Modal>
+);
 
-function Donation(exitModal: Function) {
+function Donation() {
   return (
     <>
       <div className="flex w-full flex-row">
@@ -15,19 +19,23 @@ function Donation(exitModal: Function) {
 
       <div className="m-2">Thanks for downloading FanControl !</div>
 
-      <div className="mb-2">If you want to support the developper of this project: </div>
+      <div className="mb-2">
+        If you want to support the developper of this project:{" "}
+      </div>
 
       <div className="m-2 flex flex-row space-x-4">
-        <FooterButton
-          iconSvgPath={icons.heart}
-          href={consts.urls.sponsor}
-          text="Sponsor"
-        />
         <FooterButton
           iconSvgPath={icons.paypal}
           href={consts.urls.donationUrl}
           viewBox="0 0 16 16"
           text="Donate"
+          className="border-2 border-[#00457C] font-semibold text-[#00457C] hover:border-[#00053C] hover:text-[#00053C]"
+        />
+        <FooterButton
+          iconSvgPath={icons.heart}
+          href={consts.urls.sponsor}
+          text="Sponsor"
+          className="border-2 border-[#db61a2] font-semibold text-[#db61a2] hover:border-[#ab2172] hover:text-[#ab2172]"
         />
       </div>
     </>

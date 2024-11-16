@@ -15,7 +15,7 @@ export const Footer = () => {
 export const DevInformation = () => {
   return (
     <div className="min-w-sm m-auto flex flex-col space-y-0">
-      <div className="flex items-center justify-center ">
+      <div className="flex items-center justify-center">
         <SpinningLogo className="h-8 w-8" />
         <span className="ml-1 self-center text-xl">Fan Control</span>
       </div>
@@ -25,15 +25,15 @@ export const DevInformation = () => {
       </ExternalLink>
       <div className="flex items-center justify-center space-x-3 py-3">
         <FooterButton
-          iconSvgPath={icons.heart}
-          href={consts.urls.sponsor}
-          text="Sponsor"
-        />
-        <FooterButton
           iconSvgPath={icons.paypal}
           href={consts.urls.donationUrl}
           viewBox="0 0 16 16"
           text="Donate"
+        />
+        <FooterButton
+          iconSvgPath={icons.heart}
+          href={consts.urls.sponsor}
+          text="Sponsor"
         />
       </div>
     </div>
