@@ -31,7 +31,7 @@ const ControlCard = ({
       <div className="flex w-52 flex-col text-white">
         <div className="flex flex-row items-center justify-center">
           {icon}
-          <div className="ml-4 w-full border-b-2 border-white ">{name}</div>
+          <div className="ml-4 w-full border-b-2 border-white">{name}</div>
         </div>
         <div className="mt-1 flex flex-row justify-between">
           <Toggle checkedState={enabledState} text=""></Toggle>

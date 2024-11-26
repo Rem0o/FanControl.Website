@@ -6,7 +6,7 @@ import { Modal } from "./modal";
 
 export const DonationModal = (exitModal: Function) => (
   <Modal exitModal={exitModal}>
-    <Donation/>
+    <Donation />
   </Modal>
 );
 

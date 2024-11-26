@@ -6,7 +6,7 @@ import { FooterButton } from "../reactComponents/footerButton";
 
 export const Footer = () => {
   return (
-    <footer className="min-h-sm mt-10 flex border-t border-body-300 bg-body-100 pt-2 text-center text-body-800">
+    <footer className="min-h-sm flex border-t border-body-300 bg-body-100 pt-2 text-center text-body-800">
       <DevInformation />
     </footer>
   );

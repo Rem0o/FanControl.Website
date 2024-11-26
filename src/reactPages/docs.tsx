@@ -57,26 +57,17 @@ const m: DocSection = {
   }
 };
 
-
 const r: DocSection = {
   key: "-r --refresh",
   render: () => {
-    return (
-      <>
-        Force the program to refresh its sensors.
-      </>
-    );
+    return <>Force the program to refresh its sensors.</>;
   }
 };
 
 const e: DocSection = {
   key: "-e --exit",
   render: () => {
-    return (
-      <>
-        Force the currently running instance to exit.
-      </>
-    );
+    return <>Force the currently running instance to exit.</>;
   }
 };
 
@@ -183,7 +174,7 @@ export const DocsPage = () => {
   const [v, setV] = useState(true);
 
   return (
-    <div className="flex px-5 pb-5">
+    <div className="flex px-5">
       <button
         onClick={() => setV(!v)}
         className="fixed left-5 top-12 hidden rounded-full bg-body-700 p-2 text-body-50"
@@ -193,11 +184,11 @@ export const DocsPage = () => {
       {/* Left columm with elements */}
       <div
         className={twMerge(
-          "w-fit border-r-2 border-body-200 pr-5",
+          "sticky top-[40px] h-[96svh] w-fit overflow-y-auto border-r-2 border-body-200",
           v ? "" : "hidden"
         )}
       >
-        <div className="sticky top-20 flex flex-col">
+        <div className="sticky mt-6 flex flex-col">
           <DocSidebarHeader
             text="Control"
             onClick={() => ScrollToSection(refs, "Control")}
@@ -252,14 +243,15 @@ export const DocsPage = () => {
           </ul>
         </div>
       </div>
+
       {/* Main section with actual documentation */}
-      <div className="docs ml-5">
+      <div className="docs mb-5 ml-5 mt-12">
         <div className="max-w-3xl space-y-16">
           <PageHeader children="Documentation" />
 
           <DocHeader text="Control" refs={refs} />
           {controlSections.map((s) => DocSectionComponent(s, refs))}
-          
+
           <DocHeader text="GPU" refs={refs} />
           {gpuSections.map((s) => DocSectionComponent(s, refs))}
 

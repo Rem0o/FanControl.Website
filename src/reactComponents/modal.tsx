@@ -15,16 +15,17 @@ export const Modal = ({
 
     <div
       onClick={() => exitModal()}
-      className="fixed left-0 top-0 z-40 block h-full w-full bg-black opacity-50 "
+      className="fixed left-0 top-0 z-40 block h-full w-full bg-black opacity-50"
     ></div>
   </>
 );
 function XButton(exitModal: Function) {
-  return <button
-    className="absolute right-2 top-2 rounded-full border border-body-700 px-2 text-body-700 hover:border-primary-600 hover:text-primary-600"
-    onClick={() => exitModal()}
-  >
-    X
-  </button>;
+  return (
+    <button
+      className="absolute right-2 top-2 rounded-full border border-body-700 px-2 text-body-700 hover:border-primary-600 hover:text-primary-600"
+      onClick={() => exitModal()}
+    >
+      X
+    </button>
+  );
 }
-

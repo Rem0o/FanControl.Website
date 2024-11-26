@@ -70,8 +70,8 @@ export const amd: DocSection = {
           </li>
           <li>
             Minimum %: There is a minimum % (0% excluded, see Zero RPM) a card
-            can take as an input command, usually 30%. Below that,
-            the card will refuse the command and will keep the minimum %.
+            can take as an input command, usually 30%. Below that, the card will
+            refuse the command and will keep the minimum %.
           </li>
         </ul>
 

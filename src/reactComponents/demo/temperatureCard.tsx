@@ -19,7 +19,7 @@ const TemperatureCard = (temperatureSource: TemperatureSource) => {
       <div className="flex w-52 flex-col text-white">
         <div className="flex flex-row items-center justify-center">
           {icon}
-          <div className="ml-4 w-full border-b-2 border-white ">
+          <div className="ml-4 w-full border-b-2 border-white">
             {temperatureSource.name}
           </div>
         </div>

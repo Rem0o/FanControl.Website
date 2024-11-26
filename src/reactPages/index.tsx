@@ -169,8 +169,8 @@ export const IndexPage = () => {
   };
 
   return (
-    <div className="flex flex-col place-items-center gap-12 text-center">
-      <SpinningLogo className="mt-10 h-36 w-36" spinInitially={true} />
+    <div className="mt-32 flex flex-col place-items-center gap-12 text-center">
+      <SpinningLogo className="h-36 w-36" spinInitially={true} />
       <h1 className="mx-5 max-w-lg text-4xl font-extrabold">
         Fan Control is a highly focused fan controlling software for Windows
       </h1>

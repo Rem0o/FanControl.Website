@@ -1,4 +1,4 @@
-import {icons} from "../../common/icons";
+import { icons } from "../../common/icons";
 import Border from "../border";
 import { NiceSmallerHeader } from "../niceHeader";
 import type { DocSection } from "./docSection";

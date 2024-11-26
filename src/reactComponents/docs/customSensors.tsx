@@ -1,5 +1,5 @@
 import type consts from "../../common/consts";
-import {icons} from "../../common/icons";
+import { icons } from "../../common/icons";
 import Border from "../border";
 import { NiceSmallerHeader } from "../niceHeader";
 import { type DocSection, parameters } from "./docSection";
@@ -71,7 +71,7 @@ const fileSensor: DocSection = {
         <br />
 
         <Border>
-          <NiceSmallerHeader text="Parameters"/>
+          <NiceSmallerHeader text="Parameters" />
 
           <ul>
             <li>Path: Path of the sensor file.</li>

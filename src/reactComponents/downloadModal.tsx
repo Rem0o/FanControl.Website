@@ -1,10 +1,7 @@
 import { Spacer } from "./spacer";
 import { TrackedExternalLink } from "./links";
 import { Modal } from "./modal";
-import {
-  latestRelease,
-  type Asset
-} from "./services/versionService";
+import { latestRelease, type Asset } from "./services/versionService";
 
 type DownloadProps = {
   version: number;
@@ -59,9 +56,9 @@ function GetDownloadable(
 }
 
 function Download(props: DownloadProps) {
-  const downloadableAssets = latestRelease.assets.map((a) =>
-    GetDownloadable(a, props)
-  ).filter( x => !x.name.includes("NET 7"));
+  const downloadableAssets = latestRelease.assets
+    .map((a) => GetDownloadable(a, props))
+    .filter((x) => !x.name.includes("NET 7"));
   const grouped = Object.groupBy(downloadableAssets, (a) => a.type);
 
   return (
@@ -73,7 +70,7 @@ function Download(props: DownloadProps) {
       )}
       {grouped.installer ? (
         <>
-          <Spacer/>
+          <Spacer />
           {DownloadableAssetAssetGroup(grouped.installer, "Installer", props)}
         </>
       ) : (

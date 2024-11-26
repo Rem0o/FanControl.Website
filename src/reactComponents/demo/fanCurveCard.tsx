@@ -29,7 +29,7 @@ export default function FanCurveCard({
       <div className="flex w-56 flex-col text-white">
         <div className="flex flex-row items-center justify-center text-white">
           {icon(iconPath)}
-          <div className="ml-4 w-full border-b-2 border-white ">
+          <div className="ml-4 w-full border-b-2 border-white">
             {fanCurve.name}
           </div>
         </div>

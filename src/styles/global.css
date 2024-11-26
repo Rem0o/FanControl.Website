@@ -5,3 +5,45 @@ body {
   @apply bg-body-50;
   @apply text-body-900;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-body-200;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-body-300;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-body-500;
+}
+
+/* width */
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+  @apply bg-body-600;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  @apply bg-body-800;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+  @apply bg-body-900;
+}
