@@ -174,7 +174,7 @@ export const DocsPage = () => {
   const [v, setV] = useState(true);
 
   return (
-    <div className="flex px-5">
+    <div className="flex">
       <button
         onClick={() => setV(!v)}
         className="fixed left-5 top-12 hidden rounded-full bg-body-700 p-2 text-body-50"
@@ -184,7 +184,7 @@ export const DocsPage = () => {
       {/* Left columm with elements */}
       <div
         className={twMerge(
-          "sticky top-[40px] h-[96svh] w-fit overflow-y-auto border-r-2 border-body-200",
+          "sticky top-[40px] h-[96svh] w-fit px-2 overflow-y-auto border-r-2 border-body-200",
           v ? "" : "hidden"
         )}
       >
@@ -245,7 +245,7 @@ export const DocsPage = () => {
       </div>
 
       {/* Main section with actual documentation */}
-      <div className="docs mb-5 ml-5 mt-12">
+      <div className="docs mb-5 mx-5 mt-12">
         <div className="max-w-3xl space-y-16">
           <PageHeader children="Documentation" />
 
