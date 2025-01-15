@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, type JSX } from "react";
 import { twMerge } from "tailwind-merge";
 import {
   mixSensor,
@@ -96,7 +96,7 @@ const customSensorSections: DocSection[] = [
 const commandLineArgumentSections: DocSection[] = [c, w, m, r, e];
 
 const ScrollToSection = (
-  refs: React.MutableRefObject<Map<string, HTMLElement | null>>,
+  refs: React.RefObject<Map<string, HTMLElement | null>>,
   key: string
 ) => {
   const htmlItem = refs.current.get(key);
@@ -123,12 +123,12 @@ const SideBarDocSection = (section: DocSection, onClick: () => void) => {
 
 const DocSectionComponent = (
   section: DocSection,
-  refs: React.MutableRefObject<Map<string, HTMLElement | null>>
+  refs: React.RefObject<Map<string, HTMLElement | null>>
 ): JSX.Element => (
   <div
     id={section.key}
     key={section.key}
-    ref={(el) => refs.current.set(section.key, el)}
+    ref={(el) => { refs.current.set(section.key, el); }}
   >
     <NiceHeader icon={section.icon} text={section.key}></NiceHeader>
     {section.render()}
@@ -154,12 +154,12 @@ const DocHeader = ({
   text,
   refs
 }: {
-  refs: React.MutableRefObject<Map<string, HTMLElement | null>>;
+  refs: React.RefObject<Map<string, HTMLElement | null>>;
   text: string;
 }) => {
   return (
     <h2
-      ref={(el) => refs.current.set(text, el)}
+      ref={(el) => { refs.current.set(text, el); }}
       className="mx-auto self-center text-left text-3xl font-medium"
     >
       {text}
@@ -168,9 +168,7 @@ const DocHeader = ({
 };
 
 export const DocsPage = () => {
-  const refs = useRef<Map<string, HTMLElement | null>>(
-    new Map<string, HTMLElement | null>()
-  );
+  const refs = useRef(new Map<string, HTMLElement>());
   const [v, setV] = useState(true);
 
   return (

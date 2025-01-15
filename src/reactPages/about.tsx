@@ -1,4 +1,3 @@
-import Card from "../reactComponents/card";
 import { ExternalLink } from "../reactComponents/links";
 import consts from "../common/consts";
 import { PageHeader } from "../reactComponents/pageHeader";
@@ -6,12 +5,10 @@ import Border from "../reactComponents/border";
 import { NiceHeader } from "../reactComponents/niceHeader";
 import { icons } from "../common/icons";
 
-const cardStyle = "bg-white gap-y-2 max-w-full";
-
 export const AboutPage = () => {
   return (
     <>
-      <div className="ml-5">
+      <div className="flex ml-5 mt-12" >
         <PageHeader children="About" />
       </div>
 
