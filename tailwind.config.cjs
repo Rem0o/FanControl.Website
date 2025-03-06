@@ -11,7 +11,7 @@ const toryBlue = {
   600: "#0C47AD",
   700: "#083179",
   800: "#051C44",
-  900: "#010610",
+  900: "#010610"
 };
 
 const chartreuse = {
@@ -25,13 +25,13 @@ const chartreuse = {
   600: "#68B200",
   700: "#477A00",
   800: "#264200",
-  900: "#060A00",
+  900: "#060A00"
 };
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,ts,tsx}"],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -39,12 +39,12 @@ module.exports = {
         accent: chartreuse["500"],
         body: colors.slate,
         "tory-blue": toryBlue,
-        chartreuse: chartreuse,
+        chartreuse: chartreuse
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",
         wiggle: "wiggle 1.5s ease-in",
-        "scroll-in": "scroll-in 0.5s ease-in",
+        "scroll-in": "scroll-in 0.5s ease-in"
       },
       keyframes: {
         wiggle: {
@@ -54,13 +54,13 @@ module.exports = {
           "25%": { transform: "rotateZ(-8deg)" },
           "30%": { transform: "rotateZ(5deg)" },
           "35%": { transform: "rotateZ(-1deg)" },
-          "40%, 100%": { transform: "rotateZ(0)" },
+          "40%, 100%": { transform: "rotateZ(0)" }
         },
         "scroll-in": {
           "0%": { transform: "translateY(-20px)" },
-          "100%": { transform: "translateY(0)" },
-        },
-      },
-    },
-  },
+          "100%": { transform: "translateY(0)" }
+        }
+      }
+    }
+  }
 };

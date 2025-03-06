@@ -8,7 +8,7 @@ import { icons } from "../common/icons";
 export const AboutPage = () => {
   return (
     <>
-      <div className="flex ml-5 mt-12" >
+      <div className="ml-5 mt-12 flex">
         <PageHeader children="About" />
       </div>
 

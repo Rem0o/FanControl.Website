@@ -58,9 +58,9 @@ const ControlCard = ({
         <div className="mt-1 flex flex-row justify-between">
           <div>
             {enabled
-              ? availableFanCurves
+              ? (availableFanCurves
                   .find((x) => x.name == selectedFanCurve)
-                  ?.getValue() ?? "-"
+                  ?.getValue() ?? "-")
               : "-"}{" "}
             %
           </div>

@@ -128,7 +128,9 @@ const DocSectionComponent = (
   <div
     id={section.key}
     key={section.key}
-    ref={(el) => { refs.current.set(section.key, el); }}
+    ref={(el) => {
+      refs.current.set(section.key, el);
+    }}
   >
     <NiceHeader icon={section.icon} text={section.key}></NiceHeader>
     {section.render()}
@@ -159,7 +161,9 @@ const DocHeader = ({
 }) => {
   return (
     <h2
-      ref={(el) => { refs.current.set(text, el); }}
+      ref={(el) => {
+        refs.current.set(text, el);
+      }}
       className="mx-auto self-center text-left text-3xl font-medium"
     >
       {text}
@@ -182,7 +186,7 @@ export const DocsPage = () => {
       {/* Left columm with elements */}
       <div
         className={twMerge(
-          "sticky top-[40px] h-[96svh] w-fit px-2 overflow-y-auto border-r-2 border-body-200 dark:border-body-700 bg-body-200 dark:bg-body-950",
+          "sticky top-[40px] h-[96svh] w-fit overflow-y-auto border-r-2 border-body-200 bg-body-200 px-2 dark:border-body-700 dark:bg-body-950",
           v ? "" : "hidden"
         )}
       >

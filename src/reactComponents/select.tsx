@@ -15,7 +15,12 @@ export default function (
   > &
     Props
 ) {
-  const { className, label, labelClassName: labelClassName, ...restOfProps } = props;
+  const {
+    className,
+    label,
+    labelClassName: labelClassName,
+    ...restOfProps
+  } = props;
 
   return (
     <>

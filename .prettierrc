@@ -2,6 +2,5 @@
     "singleQuote": false,
     "trailingComma": "none",
     "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-    "tailwindConfig": "./tailwind.config.cjs",
-    "pluginSearchDirs": false
+    "tailwindConfig": "./tailwind.config.cjs"
  }

@@ -56,7 +56,10 @@ const ExternalLink = (
   const { children, className, href, ...restOfProps } = props;
   return (
     <a
-      className={twMerge("underline hover:text-primary-500 dark:hover:text-primary-400", className)}
+      className={twMerge(
+        "underline hover:text-primary-500 dark:hover:text-primary-400",
+        className
+      )}
       href={href}
       {...restOfProps}
     >

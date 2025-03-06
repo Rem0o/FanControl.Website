@@ -44,8 +44,8 @@ export default function MixFanCurveCard({
 
   const suffix =
     selectedFanCurveNames.length > 0
-      ? selectedFanCurves.find((x) => x.getValue() == fanCurve.getValue())
-          ?.name ?? "Average"
+      ? (selectedFanCurves.find((x) => x.getValue() == fanCurve.getValue())
+          ?.name ?? "Average")
       : selectedFunction.name;
 
   return (

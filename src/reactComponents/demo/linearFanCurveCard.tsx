@@ -44,7 +44,8 @@ export default function LinearFanCurveCard({
             : ""
         }
         className="text-accent"
-        labelClassName="" label="Temperature Source"
+        labelClassName=""
+        label="Temperature Source"
       >
         {availableTemperatures.map((t) => {
           return (
