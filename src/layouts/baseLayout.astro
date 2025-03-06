@@ -15,16 +15,47 @@ const { title, navTitle, metaDescription } = Astro.props;
 ---
 
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <GoogleAnalytics />
-    <!-- SEO -->
-    <SEO title={title} description={metaDescription} />
+  <!-- dark mode script -->
+  <script>
+    // Function to check if there is a url parameter for dark mode with a value of true or false
+    const isDarkModeUrlParam = (): boolean =>
+      new URLSearchParams(window.location.search).get("dark") === "true";
+    const isLightModeUrlParam = (): boolean =>
+      new URLSearchParams(window.location.search).get("dark") === "false";
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
+    // Function to check if the user prefers dark mode
+    const isDarkModePreferred = (): boolean =>
+      isDarkModeUrlParam() ||
+      (!isLightModeUrlParam() &&
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    // Function to apply dark mode based on the user's preference
+    const applyDarkMode = () => {
+      if (isDarkModePreferred()) {
+        document.querySelector("html")?.classList.add("dark");
+      } else {
+        document.querySelector("html")?.classList.remove("dark");
+      }
+    };
+
+    // Call the function when the page loads
+    applyDarkMode();
+
+    // Optional: Add an event listener to detect changes in the preferred color scheme
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", applyDarkMode);
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <GoogleAnalytics />
+  <!-- SEO -->
+  <SEO title={title} description={metaDescription} />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <body>
     <div class="flex min-h-screen flex-col">
       <NavBar className="fixed top-0 z-30" pageTitle={navTitle} client:load />

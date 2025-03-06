@@ -1,10 +1,10 @@
 import { twMerge } from "tailwind-merge";
 
 const defaultClassName =
-  "text-base font-normal text-white w-full bg-transparent border-white border-spacing-1 border-b focus:text-gray-700 focus:bg-white";
+  "w-full border-spacing-1 border-b border-white bg-transparent text-base font-normal text-white focus:bg-white focus:text-gray-700";
 
 interface Props {
-  labelClassList?: string;
+  labelClassName?: string;
   label: string;
 }
 
@@ -15,11 +15,11 @@ export default function (
   > &
     Props
 ) {
-  const { className, label, labelClassList, ...restOfProps } = props;
+  const { className, label, labelClassName: labelClassName, ...restOfProps } = props;
 
   return (
     <>
-      <label className={twMerge("mb-2 text-sm font-medium", labelClassList)}>
+      <label className={twMerge("mb-2 text-sm font-medium", labelClassName)}>
         {props.label}
       </label>
       <select

@@ -56,7 +56,7 @@ export default function MixFanCurveCard({
         }
         value={fanCurve.selectedMixFunction.name}
         className="text-accent"
-        labelClassList=""
+        labelClassName=""
         label="Function"
       >
         {mixFunctions.map((f) => {

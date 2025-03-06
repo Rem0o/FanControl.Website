@@ -27,7 +27,7 @@ const NavBar = (
     <nav
       {...restOfProps}
       className={twMerge(
-        "flex w-full bg-primary-800 text-body-50 shadow-sm shadow-body-400",
+        "flex w-full border-b border-body-300 bg-primary-800 text-body-50 dark:border-body-700 dark:bg-neutral-950 dark:text-body-300 dark:shadow-body-800",
         className
       )}
     >

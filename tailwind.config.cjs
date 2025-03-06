@@ -31,6 +31,7 @@ const chartreuse = {
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,ts,tsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {

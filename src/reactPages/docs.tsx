@@ -182,7 +182,7 @@ export const DocsPage = () => {
       {/* Left columm with elements */}
       <div
         className={twMerge(
-          "sticky top-[40px] h-[96svh] w-fit px-2 overflow-y-auto border-r-2 border-body-200",
+          "sticky top-[40px] h-[96svh] w-fit px-2 overflow-y-auto border-r-2 border-body-200 dark:border-body-700 bg-body-200 dark:bg-body-950",
           v ? "" : "hidden"
         )}
       >
@@ -243,7 +243,7 @@ export const DocsPage = () => {
       </div>
 
       {/* Main section with actual documentation */}
-      <div className="docs mb-5 mx-5 mt-12">
+      <div className="docs mx-10 mb-5 mt-12">
         <div className="max-w-3xl space-y-16">
           <PageHeader children="Documentation" />
 

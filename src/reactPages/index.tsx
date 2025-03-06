@@ -37,18 +37,18 @@ type VersionInfo = {
 };
 
 const IconButton = ({
-  classList,
+  className: className,
   text,
   icon,
   onClick
 }: {
-  classList: string;
+  className: string;
   text: string;
   icon: string;
   onClick?: Function;
 }) => (
   <button onClick={() => (onClick ? onClick() : null)}>
-    <Card className={classList}>
+    <Card className={className}>
       <div className="flex w-44 gap-2">
         {Icon(icon)}
         <span className="m-auto font-semibold">{text}</span>
@@ -71,7 +71,7 @@ const DownloadButton = ({
 
   return (
     <IconButton
-      classList="bg-primary-600 hover:text-accent hover:bg-primary-700 text-white"
+      className="bg-primary-600 text-white hover:bg-primary-700 hover:text-accent dark:bg-primary-700 dark:hover:bg-primary-800"
       icon={icons.download}
       text={text}
       onClick={onClick}
@@ -83,7 +83,7 @@ const GithubButton = () => {
   return (
     <TrackedAnchor href={consts.urls.githubPageUrl}>
       <IconButton
-        classList="bg-gray-300 hover:bg-gray-400"
+        className="bg-gray-300 hover:bg-gray-500 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
         icon={icons.github}
         text="GitHub Page"
       />
@@ -174,7 +174,7 @@ export const IndexPage = () => {
       <h1 className="mx-5 max-w-lg text-4xl font-extrabold">
         Fan Control is a highly focused fan controlling software for Windows
       </h1>
-      <div className="mx-5 gap-1 text-2xl font-semibold text-body-700">
+      <div className="mx-5 gap-1 text-2xl font-semibold text-body-700 dark:text-body-400">
         <p className="mb-5">No installation required.</p>
         <p>Low on resources, high on power.</p>
       </div>
@@ -232,7 +232,7 @@ export const IndexPage = () => {
         </div>
       </section>
 
-      <section className="w-full bg-body-200 px-5 py-20">
+      <section className="w-full bg-body-200 px-5 py-20 dark:bg-body-950">
         <div className="mx-auto grid max-w-xl grid-cols-4 gap-12 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {[
             [icons.bulb, "Flexible by design"],
@@ -243,7 +243,7 @@ export const IndexPage = () => {
             [icons.temperature, "Temperature Tray Icons"]
           ].map(([icon, text, onClick], i) => (
             <div key={i} className="mx-auto flex items-center">
-              <Card className="bg-body-700 text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent">
+              <Card className="bg-body-700 text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent dark:bg-body-800 dark:text-body-50 dark:hover:bg-primary-800 dark:hover:text-accent">
                 <div className="h-18 justify-left flex items-center text-center">
                   <div className="mr-2">{Icon(icon)}</div>
                   <div className="mx-auto">{text}</div>
@@ -297,7 +297,7 @@ export const IndexPage = () => {
             never asked for better.
           </p>
           <p
-            className="mt-3 cursor-pointer rounded border border-body-700 bg-body-200 p-1 text-center font-medium text-body-50 text-body-700 hover:border-primary-600 hover:text-primary-600"
+            className="mt-3 cursor-pointer rounded border border-body-700 bg-body-200 p-1 text-center font-medium text-body-700 hover:border-primary-600 hover:text-primary-600 dark:border-body-800 dark:bg-body-800 dark:text-body-300 dark:hover:border-primary-400 dark:hover:text-primary-400"
             onClick={() => tryItOut(true)}
             onMouseEnter={() => tryItOut(false)}
           >

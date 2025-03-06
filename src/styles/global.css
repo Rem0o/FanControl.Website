@@ -2,8 +2,8 @@
 
 body {
   font-family: "Poppins", cursive;
-  @apply bg-body-50;
-  @apply text-body-900;
+  @apply bg-body-50 dark:bg-body-900;
+  @apply text-body-900 dark:text-body-300;
 }
 
 /* width */
@@ -13,18 +13,18 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-body-200;
+  @apply bg-body-200 dark:bg-body-800;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-body-300;
+  @apply bg-body-300 dark:bg-body-700;
   border-radius: 2px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-body-500;
+  @apply bg-body-500 dark:bg-body-600;
 }
 
 /* width */

@@ -44,8 +44,7 @@ export default function LinearFanCurveCard({
             : ""
         }
         className="text-accent"
-        labelClassList=""
-        label="Temperature Source"
+        labelClassName="" label="Temperature Source"
       >
         {availableTemperatures.map((t) => {
           return (
@@ -113,7 +112,7 @@ function CardNumberInput(
     label: string;
     unit: string;
   }
-): JSX.Element {
+) {
   const { label, unit, className, ...attr } = props;
   const [[hover, focus], setHoverAndFocus] = useState([false, false]);
 
