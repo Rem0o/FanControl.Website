@@ -8,7 +8,7 @@ export const Modal = ({
   exitModal: Function;
 }) => (
   <>
-    <div className="fixed left-1/2 top-1/2 z-50 m-auto -translate-x-1/2 -translate-y-1/2 rounded bg-slate-50 p-5 shadow-xl">
+    <div className="fixed left-1/2 top-1/2 z-50 m-auto -translate-x-1/2 -translate-y-1/2 rounded bg-slate-50 p-5 shadow-xl dark:bg-slate-600">
       {XButton(exitModal)}
       <div className="flex flex-col items-center self-center">{children}</div>
     </div>
@@ -22,7 +22,7 @@ export const Modal = ({
 function XButton(exitModal: Function) {
   return (
     <button
-      className="absolute right-2 top-2 rounded-full border border-body-700 px-2 text-body-700 hover:border-primary-600 hover:text-primary-600"
+      className="absolute right-2 top-2 rounded-full border border-body-700 px-2 text-body-700 hover:border-primary-600 hover:text-primary-600 dark:border-body-300 dark:text-body-300"
       onClick={() => exitModal()}
     >
       X

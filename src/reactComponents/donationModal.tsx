@@ -29,7 +29,7 @@ function Donation() {
           href={consts.urls.donationUrl}
           viewBox="0 0 16 16"
           text="Donate"
-          className="border-2 border-[#00457C] font-semibold text-[#00457C] hover:border-[#00053C] hover:text-[#00053C]"
+          className="border-2 border-[#00457C] font-semibold text-[#00457C] hover:border-[#00053C] hover:text-[#00053C] dark:border-[#52b1ff] dark:text-[#52b1ff]"
         />
         <FooterButton
           iconSvgPath={icons.heart}
