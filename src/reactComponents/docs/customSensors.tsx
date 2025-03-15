@@ -64,7 +64,7 @@ const fileSensor: DocSection = {
       <>
         <p>
           The file custom sensor reads data from a given file. The temperature
-          must be written directly into the ".sensor" file as text in celcius on
+          must be written directly into the ".sensor" file as text in celsius on
           the first line. Use this sensor as a way to inject a sensor from any
           other source that the software doesn't support natively.
         </p>

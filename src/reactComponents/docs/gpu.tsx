@@ -13,11 +13,11 @@ export const nvidia: DocSection = {
         </p>
         <ul>
           <li>
-            Minimum %: Their is a 30% minimum value and 0 RPM can't be applied
+            Minimum %: There is a 30% minimum value and 0 RPM can't be applied
             manually.
           </li>
           <li>
-            0 RPM minimum temperature: usually around the 45 degree range.
+            0 RPM minimum temperature: Usually around the 45 degree range.
           </li>
           <li>
             0 RPM maximum power draw: Having multiple monitors active may exceed
@@ -25,9 +25,9 @@ export const nvidia: DocSection = {
           </li>
         </ul>
         <p>
-          To play arround these limitations, the software will release its
-          control over the GPU when the command hits 0%. If the card supports
-          natively 0 RPM, it will be able to enter 0 RPM mode. However, most
+          To work around these limitations, the software will release its
+          control over the GPU when the command hits 0%. If the card natively
+          supports 0 RPM, it will be able to enter 0 RPM mode. However, most
           cards will have built-in conditions for 0 RPM to trigger.
         </p>
         <br />
@@ -52,14 +52,14 @@ export const amd: DocSection = {
           control various aspects like monitoring and overclocking. The software
           uses the same interface (ALDX) to get the temperature data, fan RPM
           and to control the fan. This comes with a few caveat for the fan to be
-          controlled. Only using the temperatures without controlling the fan do
-          not come with these caveats:
+          controlled. Only using the temperatures without controlling the fan
+          does not come with these caveats:
         </p>
 
         <ul>
           <li>
-            Overclocking reset: any fan setting applied from the software will
-            reset the overcloking tuning settings in Adrenaline to their default
+            Overclocking reset: Any fan setting applied from the software will
+            reset the overclocking tuning settings in Adrenaline to their default
             values.
           </li>
           <li>
