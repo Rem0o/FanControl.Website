@@ -20,7 +20,7 @@ function Donation() {
       <div className="m-2">Thanks for downloading FanControl !</div>
 
       <div className="mb-2">
-        If you want to support the developper of this project:{" "}
+        If you want to support the developer of this project:{" "}
       </div>
 
       <div className="m-2 flex flex-row space-x-4">

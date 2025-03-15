@@ -54,7 +54,7 @@ const rpmMode: DocSection = {
       <span className="inline-block align-middle">
         {SmallIcon(icons.threeDot)}
       </span>{" "}
-      menu. Instead of outputing a specific %, it will output a target RPM
+      menu. Instead of outputting a specific %, it will output a target RPM
       value. Only controls with a valid calibration can use fan curves in RPM
       mode.
     </p>
@@ -187,7 +187,7 @@ const flat: DocSection = {
     return (
       <>
         <p>
-          The flat fan curve simply applies a fixed %. Usefull if you want to
+          The flat fan curve simply applies a fixed %. Useful if you want to
           set and change the % of multiple controls.
         </p>
         <br />
@@ -243,7 +243,7 @@ const trigger: DocSection = {
       <>
         <p>
           The trigger fan curve will hold its fan speed until one of the two
-          changing point is triggered. Below the idle temperature, idle fan
+          changing points is reached. Below the idle temperature, idle fan
           speed is applied until the temperature gets back up to the load
           temperature. Above the load temperature, load fan speed is applied
           until the temperature gets back down to the idle temperature.
@@ -330,7 +330,7 @@ const auto: DocSection = {
             temperature zone.
           </li>
           <li>
-            Response time: {parameters.responseTime}. Parameters is doubled when
+            Response time: {parameters.responseTime}. Parameter is doubled when
             temperature is decreasing.
           </li>
         </ul>

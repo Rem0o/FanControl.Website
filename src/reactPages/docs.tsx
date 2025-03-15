@@ -51,7 +51,7 @@ const m: DocSection = {
   render: () => {
     return (
       <>
-        Force the program to be minimized, even if an error occured at launch.
+        Force the program to be minimized, even if an error occurred at launch.
       </>
     );
   }
@@ -183,7 +183,7 @@ export const DocsPage = () => {
       >
         {"<="}
       </button>
-      {/* Left columm with elements */}
+      {/* Left column with elements */}
       <div
         className={twMerge(
           "sticky top-[40px] h-[96svh] w-fit overflow-y-auto border-r-2 border-body-200 bg-body-200 px-2 dark:border-body-700 dark:bg-body-950",
