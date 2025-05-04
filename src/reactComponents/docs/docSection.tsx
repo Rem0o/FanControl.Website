@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import type { SvgIcon } from "../../common/icons";
 
 export type DocSection = {
