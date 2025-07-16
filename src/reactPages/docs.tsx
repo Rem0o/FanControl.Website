@@ -110,7 +110,7 @@ const SideBarDocSection = (section: DocSection, onClick: () => void) => {
   return (
     <li
       key={section.key}
-      className="cursor-pointer rounded p-1 hover:bg-body-200"
+      className="cursor-pointer rounded p-1 hover:bg-body-200 dark:hover:bg-body-700"
       onClick={() => onClick()}
     >
       <div className="flex items-center">
@@ -146,7 +146,7 @@ const DocSidebarHeader = ({
 }) => (
   <h3
     onClick={() => onClick()}
-    className="mb-2 cursor-pointer rounded p-1 font-medium underline hover:bg-body-200"
+    className="mb-2 cursor-pointer rounded p-1 font-medium underline hover:bg-body-200 dark:hover:bg-body-700"
   >
     {text}
   </h3>
