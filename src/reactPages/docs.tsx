@@ -21,7 +21,7 @@ import { SmallIcon } from "../reactComponents/icon";
 import { NiceHeader } from "../reactComponents/niceHeader";
 import "./../styles/docs.css";
 import { PageHeader } from "../reactComponents/pageHeader";
-import { calibration, speedPairing } from "../reactComponents/docs/control";
+import { calibration, curvesAndManualControl, speedPairing } from "../reactComponents/docs/control";
 import { amd, nvidia } from "../reactComponents/docs/gpu";
 
 const c: DocSection = {
@@ -71,7 +71,7 @@ const e: DocSection = {
   }
 };
 
-const controlSections: DocSection[] = [speedPairing, calibration];
+const controlSections: DocSection[] = [curvesAndManualControl, speedPairing, calibration];
 
 const gpuSections: DocSection[] = [nvidia, amd];
 

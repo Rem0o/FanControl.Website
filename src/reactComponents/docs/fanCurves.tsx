@@ -50,11 +50,11 @@ const rpmMode: DocSection = {
   key: "RPM mode",
   render: () => (
     <p>
-      All fan curves can used in RPM mode from their
+      All fan curves can be used in RPM mode from their
       <span className="inline-block align-middle">
         {SmallIcon(icons.threeDot)}
       </span>{" "}
-      menu. Instead of outputting a specific %, it will output a target RPM
+      menu. Instead of outputting a % value, it will output a target RPM
       value. Only controls with a valid calibration can use fan curves in RPM
       mode.
     </p>

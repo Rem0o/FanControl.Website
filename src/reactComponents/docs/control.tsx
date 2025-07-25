@@ -3,6 +3,12 @@ import Border from "../border";
 import { NiceSmallerHeader } from "../niceHeader";
 import type { DocSection } from "./docSection";
 
+const curvesAndManualControlText = (
+  <p>
+    A control (fan) can either be set manually, or through a fan curve. To assign a fan curve to a control, use the "curve" dropdown menu on the control card and select the desired curve. To use manual control instead, select the "Manual control" checkbox from the "3-dots" menu of any control card.
+  </p>
+);
+
 const speedPairingText = (
   <p>
     Speed sensor pairing is the first step to configure a control. It will give
@@ -44,6 +50,12 @@ const parameters = (
     </ul>
   </Border>
 );
+
+export const curvesAndManualControl: DocSection = {
+  key: "Curves and manual control",
+  icon: icons.control,
+  render: () => curvesAndManualControlText
+};
 
 export const speedPairing: DocSection = {
   key: "Speed sensor pairing",
