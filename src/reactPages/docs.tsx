@@ -114,7 +114,7 @@ const SideBarDocSection = (section: DocSection, onClick: () => void) => {
       onClick={() => onClick()}
     >
       <div className="flex items-center">
-        {section.icon ? SmallIcon(section.icon) : ""}
+        {section.icon ? SmallIcon({icon: section.icon}) : ""}
         <span className="ml-2 align-middle">{section.key}</span>
       </div>
     </li>

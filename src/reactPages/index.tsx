@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 import consts from "../common/consts";
-import { icons } from "../common/icons";
+import { icons, type SvgIcon } from "../common/icons";
 import { NiceHeader } from "../reactComponents/niceHeader";
 import Card from "../reactComponents/card";
 import { Icon } from "../reactComponents/icon";
@@ -31,11 +31,6 @@ import { DownloadModal } from "../reactComponents/downloadModal";
 import { versionInfo } from "../reactComponents/services/versionService";
 import Border from "../reactComponents/border";
 
-type VersionInfo = {
-  Number: number;
-  Message: string;
-};
-
 const IconButton = ({
   className: className,
   text,
@@ -44,13 +39,13 @@ const IconButton = ({
 }: {
   className: string;
   text: string;
-  icon: string;
+  icon: SvgIcon;
   onClick?: Function;
 }) => (
   <button onClick={() => (onClick ? onClick() : null)}>
     <Card className={className}>
       <div className="flex w-44 gap-2">
-        {Icon(icon)}
+        <Icon icon={icon}/>
         <span className="m-auto font-semibold">{text}</span>
       </div>
     </Card>
@@ -245,7 +240,7 @@ export const IndexPage = () => {
             <div key={i} className="mx-auto flex items-center">
               <Card className="bg-body-700 text-body-100 shadow-lg shadow-body-500 hover:animate-wiggle hover:bg-primary-700 hover:text-accent dark:bg-body-800 dark:text-body-50 dark:hover:bg-primary-800 dark:hover:text-accent">
                 <div className="h-18 justify-left flex items-center text-center">
-                  <div className="mr-2">{Icon(icon)}</div>
+                  <div className="mr-2"><Icon icon={icon}/></div>
                   <div className="mx-auto">{text}</div>
                 </div>
               </Card>
