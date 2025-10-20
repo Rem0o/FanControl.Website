@@ -1,3 +1,5 @@
+  @reference "./global.css";
+
 .docs ul {
   @apply my-3;
 }

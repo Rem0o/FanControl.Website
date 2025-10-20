@@ -21,7 +21,7 @@ const { title, navTitle, metaDescription } = Astro.props;
     const isDarkModeUrlParam = (): boolean =>
       new URLSearchParams(window.location.search).get("dark") === "true";
     const isLightModeUrlParam = (): boolean =>
-      new URLSearchParams(window.location.search).get("dark") === "false";
+      new URLSearchParams(window.location.search).get("dark") === "false" || new URLSearchParams(window.location.search).get("light") === "true";
 
     // Function to check if the user prefers dark mode
     const isDarkModePreferred = (): boolean =>
@@ -30,6 +30,7 @@ const { title, navTitle, metaDescription } = Astro.props;
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches);
     // Function to apply dark mode based on the user's preference
+    
     const applyDarkMode = () => {
       if (isDarkModePreferred()) {
         document.querySelector("html")?.classList.add("dark");

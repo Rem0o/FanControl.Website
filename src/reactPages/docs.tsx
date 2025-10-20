@@ -186,11 +186,11 @@ export const DocsPage = () => {
       {/* Left column with elements */}
       <div
         className={twMerge(
-          "sticky top-[40px] h-[96svh] w-fit overflow-y-auto border-r-2 border-body-200 bg-body-200 px-2 dark:border-body-700 dark:bg-body-950",
+          "sticky top-[48px] h-[96svh] w-fit overflow-y-auto border-r-2 border-body-200 bg-body-200 px-2 dark:border-body-700 dark:bg-body-950",
           v ? "" : "hidden"
         )}
       >
-        <div className="sticky mt-6 flex flex-col">
+        <div className="sticky mt-2 flex flex-col">
           <DocSidebarHeader
             text="Control"
             onClick={() => ScrollToSection(refs, "Control")}

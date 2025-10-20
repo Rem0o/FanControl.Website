@@ -14,19 +14,20 @@ const toryBlue = {
   900: "#010610"
 };
 
-const chartreuse = {
-  DEFAULT: "#89EA00",
-  50: "#D9FFA3",
-  100: "#D0FF8E",
-  200: "#BFFF65",
-  300: "#AEFF3D",
-  400: "#9EFF14",
-  500: "#89EA00",
-  600: "#68B200",
-  700: "#477A00",
-  800: "#264200",
-  900: "#060A00"
+const yellow = {
+  DEFAULT: "#F0CF41",
+  50: "#FDF6E8",
+  100: "#FBEED1",
+  200: "#F9E5AA",
+  300: "#F6DC7A",
+  400: "#F0CF41",
+  500: "#D8B72E",
+  600: "#BF9F1F",
+  700: "#A68714",
+  800: "#8D6F0C",
+  900: "#745707"
 };
+
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -36,10 +37,8 @@ module.exports = {
     extend: {
       colors: {
         primary: toryBlue,
-        accent: chartreuse["500"],
+        accent: yellow["400"],
         body: colors.slate,
-        "tory-blue": toryBlue,
-        chartreuse: chartreuse
       },
       animation: {
         "spin-slow": "spin 3s linear infinite",
