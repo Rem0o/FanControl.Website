@@ -1,7 +1,29 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
+
+const description = "Page not found. Return to Fan Control homepage to download the free Windows fan control software or browse documentation.";
 ---
 
-<BaseLayout title="404" navTitle="404">
-  <p class="text-lg m-4"><span>404</span></p>
+<BaseLayout title="404 - Page Not Found | Fan Control" navTitle="404" metaDescription={description}>
+  <div class="mx-auto max-w-2xl px-4 py-20 text-center">
+    <h1 class="mb-6 text-6xl font-bold text-primary-700 dark:text-primary-400">404</h1>
+    <h2 class="mb-4 text-3xl font-semibold text-body-800 dark:text-body-200">Page Not Found</h2>
+    <p class="mb-8 text-lg text-body-700 dark:text-body-300">
+      The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+    </p>
+    <div class="flex flex-col gap-4 sm:flex-row sm:justify-center">
+      <a
+        href="/"
+        class="bg-linear-to-r rounded-xl from-primary-600 to-primary-700 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-glow"
+      >
+        Go to Homepage
+      </a>
+      <a
+        href="/docs"
+        class="rounded-xl border-2 border-primary-600 px-6 py-3 font-semibold text-primary-600 transition-all duration-300 hover:scale-105 hover:bg-primary-600 hover:text-white dark:border-primary-400 dark:text-primary-400"
+      >
+        View Documentation
+      </a>
+    </div>
+  </div>
 </BaseLayout>
