@@ -18,11 +18,11 @@ export function FooterButton({
     <TrackedAnchor href={href}>
       <button
         className={twMerge(
-          "flex items-center justify-center rounded-2xl border border-neutral-950 px-2 py-1 pr-3 text-sm hover:border-primary-600 hover:text-primary-600 dark:border-neutral-300 dark:hover:border-primary-400 dark:hover:text-primary-400",
+          "flex items-center justify-center rounded-xl border-2 border-body-700 dark:border-body-300 px-4 py-2 text-sm font-medium hover:bg-primary-600 hover:border-primary-600 hover:text-white dark:hover:bg-primary-500 dark:hover:border-primary-500 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md cursor-pointer",
           className
         )}
       >
-        <svg className="h-4 w-4" viewBox={viewBox ?? "0 0 24 24"}>
+        <svg className="h-5 w-5" viewBox={viewBox ?? "0 0 24 24"}>
           <path fill="currentColor" d={iconSvgPath} />
         </svg>
         <span className="ml-2">{text}</span>

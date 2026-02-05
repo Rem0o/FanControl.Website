@@ -1,48 +1,97 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=block");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "tailwindcss";
 @config "../../tailwind.config.cjs";
 
+/**
+ * ═══════════════════════════════════════════════════════════
+ * FANCONTROL WEBSITE - GLOBAL STYLES
+ * ═══════════════════════════════════════════════════════════
+ */
+
+/* ─────────────────────────────────────────────────────────
+   Base Styles
+   ───────────────────────────────────────────────────────── */
+* {
+  @apply transition-colors duration-200;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Poppins", cursive;
-  @apply bg-body-50 dark:bg-body-900;
-  @apply text-body-900 dark:text-body-300;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  @apply bg-gradient-to-br from-body-50 via-body-100 to-body-200;
+  @apply dark:from-body-950 dark:via-body-900 dark:to-body-950;
+  @apply text-body-900 dark:text-body-100;
+  @apply antialiased;
 }
 
-/* width */
+/* ─────────────────────────────────────────────────────────
+   Custom Scrollbar
+   ───────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
-  @apply bg-body-400;
+  @apply bg-body-100 dark:bg-body-900;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-body-500;
-  border-radius: 2px;
+  @apply bg-body-400 dark:bg-gradient-to-b dark:from-primary-500 dark:to-primary-700;
+  @apply hover:bg-body-500 dark:hover:from-primary-400 dark:hover:to-primary-600;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-body-600;
+/* ─────────────────────────────────────────────────────────
+   Glassmorphism Utilities
+   ───────────────────────────────────────────────────────── 
+   
+   Usage:
+   - .glass: Standard glass effect for cards and sections
+   - .glass-strong: Stronger opacity for modals and overlays
+   
+   Both support light/dark mode automatically.
+*/
+.glass {
+  @apply bg-white/70 dark:bg-body-800/70;
+  @apply border border-body-200/50 dark:border-body-700/50;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-body.dark ::-webkit-scrollbar-thumb:hover,
-html.dark ::-webkit-scrollbar-thumb:hover {
-  @apply bg-body-400; /* Use the actual color for bg-body-100 */
+.glass-strong {
+  @apply bg-white/90 dark:bg-body-800/90;
+  @apply border border-body-200/60 dark:border-body-700/60;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
-body.dark, html.dark {
-  /* Track */
-  ::-webkit-scrollbar-track {
-    @apply bg-body-800;
-  }
+/* ─────────────────────────────────────────────────────────
+   Shadow Effects with Glow
+   ───────────────────────────────────────────────────────── 
+   
+   Custom shadows using the primary blue color for a subtle
+   glow effect on interactive elements.
+*/
+.shadow-glow {
+  box-shadow: 
+    0 8px 32px rgba(12, 71, 173, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.1);
+}
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    @apply bg-body-500;
-    border-radius: 2px;
-  }
+.shadow-glow-lg {
+  box-shadow: 
+    0 12px 48px rgba(12, 71, 173, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Accessibility
+   ───────────────────────────────────────────────────────── */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary-500 ring-offset-2 dark:ring-offset-body-900;
 }

@@ -15,49 +15,53 @@ const { title, navTitle, metaDescription } = Astro.props;
 ---
 
 <html lang="en">
-  <!-- dark mode script -->
-  <script>
-    // Function to check if there is a url parameter for dark mode with a value of true or false
-    const isDarkModeUrlParam = (): boolean =>
-      new URLSearchParams(window.location.search).get("dark") === "true";
-    const isLightModeUrlParam = (): boolean =>
-      new URLSearchParams(window.location.search).get("dark") === "false" || new URLSearchParams(window.location.search).get("light") === "true";
+  <head>
+    <!-- Inline dark mode script - must run before body renders to prevent flash -->
+    <script is:inline>
+      (function() {
+        // Function to check if there is a url parameter for dark mode with a value of true or false
+        const isDarkModeUrlParam = () =>
+          new URLSearchParams(window.location.search).get("dark") === "true";
+        const isLightModeUrlParam = () =>
+          new URLSearchParams(window.location.search).get("dark") === "false" || new URLSearchParams(window.location.search).get("light") === "true";
 
-    // Function to check if the user prefers dark mode
-    const isDarkModePreferred = (): boolean =>
-      isDarkModeUrlParam() ||
-      (!isLightModeUrlParam() &&
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    // Function to apply dark mode based on the user's preference
-    
-    const applyDarkMode = () => {
-      if (isDarkModePreferred()) {
-        document.querySelector("html")?.classList.add("dark");
-      } else {
-        document.querySelector("html")?.classList.remove("dark");
-      }
-    };
+        // Function to check if the user prefers dark mode
+        const isDarkModePreferred = () =>
+          isDarkModeUrlParam() ||
+          (!isLightModeUrlParam() &&
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        
+        // Apply dark mode immediately before render
+        if (isDarkModePreferred()) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
 
-    // Call the function when the page loads
-    applyDarkMode();
+    <!-- Google tag (gtag.js) -->
+    <GoogleAnalytics />
+    <!-- SEO -->
+    <SEO title={title} description={metaDescription} />
 
-    // Optional: Add an event listener to detect changes in the preferred color scheme
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", applyDarkMode);
-  </script>
-
-  <!-- Google tag (gtag.js) -->
-  <GoogleAnalytics />
-  <!-- SEO -->
-  <SEO title={title} description={metaDescription} />
-
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
 
   <body>
+    <script is:inline>
+      // Listen for changes in color scheme preference
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          if (e.matches) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        });
+    </script>
     <div class="flex min-h-screen flex-col">
       <NavBar className="fixed top-0 z-30" pageTitle={navTitle} client:load />
       <main class="grow bg-transparent">

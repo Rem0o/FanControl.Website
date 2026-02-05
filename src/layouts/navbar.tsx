@@ -27,20 +27,26 @@ const NavBar = (
     <nav
       {...restOfProps}
       className={twMerge(
-        "flex w-full border-b border-body-300 bg-primary-800 text-body-50 dark:border-body-700 dark:bg-neutral-950 dark:text-body-300 dark:shadow-body-800",
+        "sticky top-0 z-30 flex w-full glass border-b border-body-200/50 text-body-900 shadow-md backdrop-blur-xl transition-all duration-300 dark:border-body-700/50 dark:text-body-100",
         className
       )}
     >
-      <div className="m-1 flex items-center justify-center">
-        <SpinningLogo />
-        <div className="ml-2">
-          <a href={links[0].url}>Fan Control</a> {getPageTitle(pageTitle)}
+      <div className="m-1 ml-3 flex items-center justify-center">
+        <SpinningLogo className="h-10 w-10" />
+        <div className="ml-3 font-semibold">
+          <a href={links[0].url} className="transition-colors hover:text-primary-600 dark:hover:text-primary-400">
+            Fan Control
+          </a> 
+          {pageTitle && <span className="text-body-600 dark:text-body-400"> {getPageTitle(pageTitle)}</span>}
         </div>
       </div>
-      <ul className="ml-auto flex items-center justify-center">
+      <ul className="ml-auto mr-2 flex items-center justify-center">
         {links.map((link) => (
           <li key={link.title}>
-            <a className="p-3 hover:bg-primary-700" href={link.url}>
+            <a 
+              className="rounded-lg px-4 py-3 font-medium transition-all duration-200 hover:bg-primary-600/10 hover:text-primary-600 dark:hover:text-primary-400" 
+              href={link.url}
+            >
               {link.title}
             </a>
           </li>

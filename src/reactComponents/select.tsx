@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 
 const defaultClassName =
-  "w-full border-spacing-1 border-b border-white bg-transparent text-base font-normal text-white focus:bg-white focus:text-gray-700";
+  "w-full border-spacing-1 border-b border-white bg-transparent text-base font-normal text-white focus:outline-none focus:border-primary-400 [&>option]:bg-body-800 [&>option]:text-body-100 [&>option]:py-2 [&>option]:px-3";
 
 interface Props {
   labelClassName?: string;

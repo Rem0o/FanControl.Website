@@ -56,8 +56,7 @@ export default function MixFanCurveCard({
         }
         value={fanCurve.selectedMixFunction.name}
         className="text-accent"
-        labelClassName=""
-        label="Function"
+        labelClassName="" label="Function"
       >
         {mixFunctions.map((f) => {
           return (
@@ -85,21 +84,23 @@ export default function MixFanCurveCard({
         <div
           key={i}
           className={twMerge(
-            "my-2 ml-2 text-sm",
+            "my-2 ml-2 flex items-center justify-between text-sm",
             suffix == x.name || selectedFunction.name == "Average"
               ? "text-accent"
               : ""
           )}
         >
-          <span className="mr-1">○</span> <span>{x.name}</span>
-          <span className=""> ({x.getValue()} %)</span>
+          <div>
+            <span className="mr-1">○</span> <span>{x.name}</span>
+            <span> ({x.getValue()} %)</span>
+          </div>
           <button
             onClick={() =>
               setSelectedFanCurveNames(
                 selectedFanCurveNames.filter((f) => f != x.name)
               )
             }
-            className="float-right rounded border border-white px-1 text-white"
+            className="float-right cursor-pointer rounded border-2 border-transparent px-2 py-0.5 text-xs font-semibold text-accent transition-all duration-300 hover:scale-110 hover:border-accent hover:shadow-md"
           >
             X
           </button>
