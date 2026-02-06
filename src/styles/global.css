@@ -17,6 +17,8 @@
 
 html {
   scroll-behavior: smooth;
+  @apply bg-body-100 dark:bg-body-950;
+  overscroll-behavior: none;
 }
 
 body {
@@ -25,6 +27,7 @@ body {
   @apply dark:from-body-950 dark:via-body-900 dark:to-body-950;
   @apply text-body-900 dark:text-body-100;
   @apply antialiased;
+  overscroll-behavior: none;
 }
 
 /* ─────────────────────────────────────────────────────────
