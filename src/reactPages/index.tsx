@@ -243,8 +243,8 @@ export const IndexPage = () => {
         </div>
         <div className="flex flex-wrap items-center space-x-5 space-y-5 align-text-top">
           {articles.map((article) => {
-            const [imgSrc, href, style] = article;
-            return ArticleReference(imgSrc, href, style);
+            const {imageAssetPath, href: url, imageClassNames} = article;
+            return ArticleReference(imageAssetPath, url, imageClassNames);
           })}
         </div>
       </section>
