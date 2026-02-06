@@ -173,74 +173,135 @@ const DocHeader = ({
 
 export const DocsPage = () => {
   const refs = useRef(new Map<string, HTMLElement>());
-  const [v, setV] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="flex">
+      {/* Hamburger button - visible on small screens when sidebar is closed */}
       <button
-        onClick={() => setV(!v)}
-        className="fixed left-5 top-12 hidden rounded-full bg-body-700 p-2 text-body-50"
+        onClick={() => setMobileMenuOpen(true)}
+        className={twMerge(
+          "fixed left-4 top-16 z-50 flex h-10 w-10 flex-col items-center justify-center rounded-lg bg-body-300 p-2 shadow-lg transition-all hover:bg-body-400 dark:bg-body-800 dark:hover:bg-body-700 lg:hidden",
+          mobileMenuOpen ? "hidden" : ""
+        )}
+        aria-label="Open menu"
       >
-        {"<="}
+        <span className="mb-1 h-0.5 w-6 bg-body-900 dark:bg-body-100"></span>
+        <span className="mb-1 h-0.5 w-6 bg-body-900 dark:bg-body-100"></span>
+        <span className="h-0.5 w-6 bg-body-900 dark:bg-body-100"></span>
       </button>
+
+      {/* Overlay - visible on small screens when menu is open */}
+      <div
+        className={twMerge(
+          "fixed inset-0 z-40 bg-black/50 transition-opacity lg:hidden",
+          mobileMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+        onClick={() => setMobileMenuOpen(false)}
+      ></div>
+
       {/* Left column with elements */}
       <div
         className={twMerge(
-          "sticky top-[48px] h-[96svh] w-fit overflow-y-auto border-r-2 border-body-200 bg-body-200 px-2 dark:border-body-700 dark:bg-body-950",
-          v ? "" : "hidden"
+          "w-fit overflow-y-auto border-r-2 border-body-200 bg-body-200 px-2 dark:border-body-700 dark:bg-body-950",
+          // Desktop behavior - sticky sidebar
+          "lg:sticky lg:top-[48px] lg:h-[96svh]",
+          // Mobile behavior - fixed overlay that slides in
+          "fixed left-0 top-0 z-50 h-screen pt-4 transition-transform",
+          mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
       >
         <div className="sticky mt-2 flex flex-col">
+          {/* Close button inside sidebar - visible on small screens only */}
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="mb-4 flex h-10 w-10 items-center justify-center self-end rounded-lg bg-body-300 p-2 shadow-lg transition-all hover:bg-body-400 dark:bg-body-700 dark:hover:bg-body-600 lg:hidden"
+            aria-label="Close menu"
+          >
+            <span className="absolute h-0.5 w-6 rotate-45 bg-body-900 dark:bg-body-100"></span>
+            <span className="absolute h-0.5 w-6 -rotate-45 bg-body-900 dark:bg-body-100"></span>
+          </button>
+
           <DocSidebarHeader
             text="Control"
-            onClick={() => ScrollToSection(refs, "Control")}
+            onClick={() => {
+              ScrollToSection(refs, "Control");
+              setMobileMenuOpen(false);
+            }}
           />
 
           <ul className="mb-5 mr-5">
             {controlSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s.key))
+              SideBarDocSection(s, () => {
+                ScrollToSection(refs, s.key);
+                setMobileMenuOpen(false);
+              })
             )}
           </ul>
 
           <DocSidebarHeader
             text="GPU"
-            onClick={() => ScrollToSection(refs, "GPU")}
+            onClick={() => {
+              ScrollToSection(refs, "GPU");
+              setMobileMenuOpen(false);
+            }}
           />
 
           <ul className="mb-5 mr-5">
             {gpuSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s.key))
+              SideBarDocSection(s, () => {
+                ScrollToSection(refs, s.key);
+                setMobileMenuOpen(false);
+              })
             )}
           </ul>
 
           <DocSidebarHeader
             text="Fan Curves"
-            onClick={() => ScrollToSection(refs, "Fan Curves")}
+            onClick={() => {
+              ScrollToSection(refs, "Fan Curves");
+              setMobileMenuOpen(false);
+            }}
           />
 
           <ul className="mb-5 mr-5">
             {fanCurveSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s.key))
+              SideBarDocSection(s, () => {
+                ScrollToSection(refs, s.key);
+                setMobileMenuOpen(false);
+              })
             )}
           </ul>
 
           <DocSidebarHeader
             text="Custom Sensors"
-            onClick={() => ScrollToSection(refs, "Custom Sensors")}
+            onClick={() => {
+              ScrollToSection(refs, "Custom Sensors");
+              setMobileMenuOpen(false);
+            }}
           />
           <ul className="mb-5 mr-5">
             {customSensorSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s.key))
+              SideBarDocSection(s, () => {
+                ScrollToSection(refs, s.key);
+                setMobileMenuOpen(false);
+              })
             )}
           </ul>
 
           <DocSidebarHeader
             text="Command Line Arguments"
-            onClick={() => ScrollToSection(refs, "Command Line Arguments")}
+            onClick={() => {
+              ScrollToSection(refs, "Command Line Arguments");
+              setMobileMenuOpen(false);
+            }}
           />
           <ul className="mb-5 mr-5">
             {commandLineArgumentSections.map((s) =>
-              SideBarDocSection(s, () => ScrollToSection(refs, s.key))
+              SideBarDocSection(s, () => {
+                ScrollToSection(refs, s.key);
+                setMobileMenuOpen(false);
+              })
             )}
           </ul>
         </div>

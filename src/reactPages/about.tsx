@@ -22,7 +22,7 @@ export const AboutPage = () => {
               "https://github.com/Rem0o/ADLXWrapper",
               "https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit"
             ].map((x, i) => (
-              <li key={i} className="break-words">
+              <li key={i} className="break-all">
                 <ExternalLink 
                   href={x}
                   className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium underline underline-offset-2 transition-colors"
