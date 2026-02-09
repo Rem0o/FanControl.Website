@@ -52,7 +52,7 @@ export const IndexPage = () => {
           </span>
           <br />
           <span className="text-3xl font-semibold text-body-800 dark:text-body-200 md:text-4xl">
-            Highly focused fan control for Windows
+            Highly focused fan control software for Windows
           </span>
         </h1>
         
