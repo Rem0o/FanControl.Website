@@ -205,7 +205,7 @@ export const DocsPage = () => {
         className={twMerge(
           "w-fit overflow-y-auto border-r-2 border-body-200 bg-body-200 px-2 dark:border-body-700 dark:bg-body-950",
           // Desktop behavior - sticky sidebar
-          "lg:sticky lg:top-[48px] lg:h-[96svh]",
+          "lg:sticky lg:top-[48px] lg:h-[96svh] lg:z-20",
           // Mobile behavior - fixed overlay that slides in
           "fixed left-0 top-0 z-50 h-screen pt-4 transition-transform",
           mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
