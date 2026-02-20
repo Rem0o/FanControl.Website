@@ -26,11 +26,18 @@ const { title, navTitle, metaDescription } = Astro.props;
           new URLSearchParams(window.location.search).get("dark") === "false" || new URLSearchParams(window.location.search).get("light") === "true";
 
         // Function to check if the user prefers dark mode
-        const isDarkModePreferred = () =>
-          isDarkModeUrlParam() ||
-          (!isLightModeUrlParam() &&
-            window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        const isDarkModePreferred = () => {
+          // Priority: URL param > localStorage > system preference
+          if (isDarkModeUrlParam()) return true;
+          if (isLightModeUrlParam()) return false;
+          
+          const storedPreference = localStorage.getItem("darkMode");
+          if (storedPreference !== null) {
+            return storedPreference === "true";
+          }
+          
+          return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        };
         
         // Apply dark mode immediately before render
         if (isDarkModePreferred()) {
@@ -55,10 +62,13 @@ const { title, navTitle, metaDescription } = Astro.props;
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (e) => {
-          if (e.matches) {
-            document.documentElement.classList.add("dark");
-          } else {
-            document.documentElement.classList.remove("dark");
+          // Only apply system preference if user hasn't set a manual preference
+          if (localStorage.getItem("darkMode") === null) {
+            if (e.matches) {
+              document.documentElement.classList.add("dark");
+            } else {
+              document.documentElement.classList.remove("dark");
+            }
           }
         });
     </script>
