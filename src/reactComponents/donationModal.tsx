@@ -3,7 +3,7 @@ import { icons } from "../common/icons";
 import { FooterButton } from "./footerButton";
 import { SpinningLogo } from "./spinningLogo";
 import { Modal } from "./modal";
-import { PaypalDonateButton, SponsorButton } from "./donationButtons";
+import { PayPalDonateButton, StripeDonateButton } from "./donationButtons";
 
 export const DonationModal = (exitModal: Function) => (
   <Modal exitModal={exitModal}>
@@ -25,8 +25,8 @@ function Donation() {
       </div>
 
       <div className="m-2 flex flex-row space-x-4">
-        <PaypalDonateButton />
-        <SponsorButton />
+        <PayPalDonateButton />
+        <StripeDonateButton />
       </div>
     </>
   );

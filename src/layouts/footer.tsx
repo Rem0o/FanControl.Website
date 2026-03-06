@@ -2,7 +2,7 @@ import consts from "../common/consts";
 import { icons } from "../common/icons";
 import { ExternalLink } from "../reactComponents/links";
 import { SpinningLogo } from "../reactComponents/spinningLogo";
-import { PaypalDonateButton, SponsorButton } from "../reactComponents/donationButtons";
+import { PayPalDonateButton, StripeDonateButton } from "../reactComponents/donationButtons";
 
 export const Footer = () => {
   return (
@@ -29,8 +29,8 @@ export const DevInformation = () => {
         {consts.urls.email}
       </ExternalLink>
       <div className="flex items-center justify-center space-x-4 py-4">
-        <PaypalDonateButton />
-        <SponsorButton />
+        <PayPalDonateButton />
+        <StripeDonateButton />
       </div>
     </div>
   );
