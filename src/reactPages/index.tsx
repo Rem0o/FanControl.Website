@@ -58,11 +58,9 @@ export const IndexPage = () => {
         
         <div className="mx-5 space-y-3 text-xl text-body-700 dark:text-body-300 md:text-2xl">
           <p className="flex items-center justify-center gap-2">
-            <span className="text-2xl">✨</span>
             <span className="font-medium">No installation required</span>
           </p>
           <p className="flex items-center justify-center gap-2">
-            <span className="text-2xl">⚡</span>
             <span className="font-medium">Low on resources, high on power</span>
           </p>
         </div>
