@@ -92,9 +92,6 @@ const linear: DocSection = {
             <li>Hysteresis: {parameters.hysteresis}</li>
             <li>Response time: {parameters.responseTime}</li>
             <li>
-              Hysteresis only applies on the way down: {parameters.onThewayDown}
-            </li>
-            <li>
               Ignore hysteresis at minimum and maximum temps:{" "}
               {parameters.ignoreHysteresis}
             </li>
@@ -132,9 +129,6 @@ const graph: DocSection = {
             <li>Temperature source: {parameters.tempSource}</li>
             <li>Hysteresis: {parameters.hysteresis}</li>
             <li>Response time: {parameters.responseTime}</li>
-            <li>
-              Hysteresis only applies on the way down: {parameters.onThewayDown}
-            </li>
             <li>
               Ignore hysteresis at minimum and maximum temps:{" "}
               {parameters.ignoreHysteresis}

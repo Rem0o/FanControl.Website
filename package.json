@@ -12,13 +12,13 @@
     "pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
   "devDependencies": {
-    "@astrojs/partytown": "^2.1.4",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/partytown": "^2.1.5",
+    "@astrojs/react": "^5.0.1",
+    "@astrojs/sitemap": "^3.7.1",
     "@types/gtag.js": "^0.0.20",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "astro": "^5.18.0",
+    "astro": "^6.0.8",
     "astro-robots-txt": "^1.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
