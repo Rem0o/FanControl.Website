@@ -71,6 +71,13 @@ const e: DocSection = {
   }
 };
 
+const sc: DocSection = {
+  key: "-sc --service-client",
+  render: () => {
+    return <>Force the program to run as a service client.</>;
+  }
+};
+
 const controlSections: DocSection[] = [curvesAndManualControl, speedPairing, calibration];
 
 const gpuSections: DocSection[] = [nvidia, amd];
@@ -93,7 +100,7 @@ const customSensorSections: DocSection[] = [
   offsetSensor
 ];
 
-const commandLineArgumentSections: DocSection[] = [c, w, m, r, e];
+const commandLineArgumentSections: DocSection[] = [c, w, m, r, e, sc];
 
 const ScrollToSection = (
   refs: React.RefObject<Map<string, HTMLElement | null>>,
