@@ -42,4 +42,35 @@ const useRefreshState = (): [number, () => void] => {
   return [refreshId, () => setRefreshCount(refreshId + 1)];
 };
 
-export { useInterval, useTimeoutBooleanState, useRefreshState };
+const useCursorGlow = <T extends HTMLElement>() => {
+  const updateCursorPosition = (element: T, clientX: number, clientY: number) => {
+    const rect = element.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    element.style.setProperty("--cursor-x", `${x}px`);
+    element.style.setProperty("--cursor-y", `${y}px`);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<T>) => {
+    updateCursorPosition(event.currentTarget, event.clientX, event.clientY);
+  };
+
+  const handleMouseMove = (event: React.MouseEvent<T>) => {
+    updateCursorPosition(event.currentTarget, event.clientX, event.clientY);
+  };
+
+  const handleMouseLeave = (event: React.MouseEvent<T>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty("--cursor-x", `${rect.width / 2}px`);
+    event.currentTarget.style.setProperty("--cursor-y", `${rect.height / 2}px`);
+  };
+
+  return {
+    onPointerMove: handlePointerMove,
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave
+  };
+};
+
+export { useInterval, useTimeoutBooleanState, useRefreshState, useCursorGlow };

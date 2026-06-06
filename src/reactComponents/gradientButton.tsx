@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import { useCursorGlow } from "../common/hooks";
 
 interface GradientButtonProps {
   children: React.ReactNode;
@@ -19,7 +20,8 @@ export const GradientButton = ({
   className,
   variant = "primary" 
 }: GradientButtonProps) => {
-  const baseClasses = "w-full transform rounded-xl p-3 text-center font-semibold shadow-md transition-all duration-300 hover:scale-105 hover:shadow-glow cursor-pointer";
+  const baseClasses = "cursor-glow-button w-full transform rounded-xl p-3 text-center font-semibold shadow-md transition-all duration-300 hover:scale-105 hover:shadow-glow cursor-pointer";
+  const glowEvents = useCursorGlow<HTMLButtonElement>();
   
   const variantClasses = {
     primary: "bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800",
@@ -31,6 +33,7 @@ export const GradientButton = ({
       className={twMerge(baseClasses, variantClasses[variant], className)}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
+      {...glowEvents}
     >
       {children}
     </button>

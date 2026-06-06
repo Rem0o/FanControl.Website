@@ -58,10 +58,10 @@ export const IndexPage = () => {
         
         <div className="mx-5 space-y-3 text-xl text-body-700 dark:text-body-300 md:text-2xl">
           <p className="flex items-center justify-center gap-2">
-            <span className="font-medium">No installation required</span>
+            <span className="font-medium">Lean. Bloat-free. Deeply customizable.</span>
           </p>
           <p className="flex items-center justify-center gap-2">
-            <span className="font-medium">Low on resources, high on power</span>
+            <span className="font-medium">It's all in the name, really.</span>
           </p>
         </div>
       </div>
@@ -117,9 +117,9 @@ export const IndexPage = () => {
             [icons.temperature, "Temperature Tray Icons"]
           ].map(([icon, text, onClick], i) => (
             <div key={i} className="mx-auto transform transition-all duration-300 hover:scale-105">
-              <Card className="bg-linear-to-br group border-0 from-primary-600 to-primary-700 text-white shadow-glow hover:shadow-glow-lg">
+              <Card className="bg-linear-to-br border-0 from-primary-600 to-primary-700 text-white shadow-glow hover:shadow-glow-lg">
                 <div className="flex items-center justify-center gap-3 p-2">
-                  <div className="transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <div>
                     <Icon icon={icon}/>
                   </div>
                   <div className="text-base font-semibold">{text}</div>
@@ -152,7 +152,7 @@ export const IndexPage = () => {
             icon={icons.parameters}
           ></NiceHeader>
           <p className="leading-relaxed text-body-700 dark:text-body-300">
-            Fan Control has ALL the parameters. Fan calibration, response time,
+            Fan Control has ALL the parameters. Fan calibration for RPM control, RPM avoid zones, response time,
             hysteresis, hysteresis direction, step up, step down... Fine tune to
             your heart's desire. Control your fan's start and stopping logic,
             for smooth 0 RPM operation <i>(when supported)</i>.

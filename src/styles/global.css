@@ -92,6 +92,34 @@ body {
     0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
+/* Cursor-follow spotlight that keeps existing button palette intact */
+.cursor-glow-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cursor-glow-button::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  background: radial-gradient(
+    120px circle at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    rgba(255, 255, 255, 0.38) 0%,
+    rgba(255, 255, 255, 0.16) 28%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transition: opacity 180ms ease;
+  will-change: background, opacity;
+}
+
+.cursor-glow-button:hover::after {
+  opacity: 1;
+}
+
 /* ─────────────────────────────────────────────────────────
    Accessibility
    ───────────────────────────────────────────────────────── */
