@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import { DonationPage } from "../reactPages/donation";
+
+const description = "Support the development and maintenance of Fan Control.";
+---
+
+<BaseLayout title="Support Fan Control" navTitle="Donation" metaDescription={description}>
+  <DonationPage client:load />
+</BaseLayout>

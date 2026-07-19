@@ -1,5 +1,5 @@
 import type { SvgIcon } from "../common/icons";
-import { BigIcon, Icon } from "./icon";
+import { BigIcon } from "./icon";
 
 const NiceHeader = ({ icon, text }: { icon?: SvgIcon; text: string }) => {
   return (

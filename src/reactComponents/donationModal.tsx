@@ -5,16 +5,21 @@ import { PayPalDonateButton, StripeDonateButton } from "./donationButtons";
 
 type DonationModalProps = {
   exitModal: () => void;
-  onDownload: () => void;
+  onDownload?: () => void;
 };
 
 const donationAmounts = [5, 10, 20] as const;
+type DonationAmount = (typeof donationAmounts)[number] | "custom";
 
 export const DonationModal = ({ exitModal, onDownload }: DonationModalProps) => {
   const [secondsRemaining, setSecondsRemaining] = useState(4);
-  const [selectedAmount, setSelectedAmount] = useState<number | "custom">(10);
+  const [selectedAmount, setSelectedAmount] = useState<DonationAmount>(10);
 
   useEffect(() => {
+    if (!onDownload) {
+      return;
+    }
+
     if (secondsRemaining === 0) {
       onDownload();
       return;
@@ -37,17 +42,23 @@ export const DonationModal = ({ exitModal, onDownload }: DonationModalProps) => 
         <SpinningLogo className="m-auto h-8 w-8" spinInitially={true} />
       </div>
 
-      <div className="m-2 text-xl font-semibold">Thanks for downloading Fan Control!</div>
+      {onDownload ? (
+        <>
+          <div className="m-2 text-xl font-semibold">Thanks for downloading Fan Control!</div>
 
-      <div className="mb-4 text-center">
-        {secondsRemaining > 0 ? (
-          <>
-            Download will start in <span className="font-bold">{secondsRemaining}</span>.
-          </>
-        ) : (
-          "Your download is starting..."
-        )}
-      </div>
+          <div className="mb-4 text-center">
+            {secondsRemaining > 0 ? (
+              <>
+                Download will start in <span className="font-bold">{secondsRemaining}</span>.
+              </>
+            ) : (
+              "Your download is starting..."
+            )}
+          </div>
+        </>
+      ) : (
+        <div className="m-2 text-xl font-semibold">Support Fan Control</div>
+      )}
 
       <div className="mb-2 text-center">Support the project with a donation:</div>
       <div className="mb-4 flex flex-wrap justify-center gap-2" role="radiogroup" aria-label="Donation amount">
@@ -58,10 +69,10 @@ export const DonationModal = ({ exitModal, onDownload }: DonationModalProps) => 
             role="radio"
             aria-checked={selectedAmount === donationAmount}
             onClick={() => setSelectedAmount(donationAmount)}
-            className={`rounded-full border-2 px-4 py-2 font-semibold transition-colors ${
+            className={`cursor-pointer rounded-full border-2 px-4 py-2 font-semibold transition-colors ${
               selectedAmount === donationAmount
                 ? "border-primary-600 bg-primary-600 text-white"
-                : "border-body-300 hover:border-primary-500 dark:border-body-600"
+                : "border-body-300 hover:border-primary-500 hover:text-primary-500 dark:border-body-600 dark:hover:border-primary-400"
             }`}
           >
             ${donationAmount}
@@ -72,10 +83,10 @@ export const DonationModal = ({ exitModal, onDownload }: DonationModalProps) => 
           role="radio"
           aria-checked={selectedAmount === "custom"}
           onClick={() => setSelectedAmount("custom")}
-          className={`rounded-full border-2 px-4 py-2 font-semibold transition-colors ${
+          className={`cursor-pointer rounded-full border-2 px-4 py-2 font-semibold transition-colors ${
             selectedAmount === "custom"
               ? "border-primary-600 bg-primary-600 text-white"
-              : "border-body-300 hover:border-primary-500 dark:border-body-600"
+              : "border-body-300 hover:border-primary-500 hover:text-primary-500 dark:border-body-600 dark:hover:border-primary-400"
           }`}
         >
           Custom

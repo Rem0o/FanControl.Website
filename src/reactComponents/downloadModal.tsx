@@ -29,8 +29,7 @@ function ExtensionToAssetType(ext: string): AssetType {
 }
 
 function GetDownloadable(
-  asset: Asset,
-  props: DownloadProps
+  asset: Asset
 ): DownloadableAsset {
   const splitted = asset.name.split(".");
   const [name, extension] = splitted;
@@ -42,7 +41,7 @@ function GetDownloadable(
 
   var splittedName = name.split("_");
   // fc_version_net_major_minor
-  const [fc, version, net, major, minor] = splittedName;
+  const [, version, , major, minor] = splittedName;
 
   const dotnetString = major == "4" ? ".NET Framework" : ".NET";
   const dotnetVersionString =
@@ -57,7 +56,7 @@ function GetDownloadable(
 
 function Download(props: DownloadProps) {
   const downloadableAssets = latestRelease.assets
-    .map((a) => GetDownloadable(a, props))
+    .map((a) => GetDownloadable(a))
     .filter((x) => !x.name.includes("NET 7"));
   const grouped = Object.groupBy(downloadableAssets, (a) => a.type);
 
