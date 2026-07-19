@@ -1,4 +1,3 @@
-import * as React from "react";
 import Card from "../card";
 import type { TemperatureSource } from "./temperatureSource";
 

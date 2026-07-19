@@ -1,4 +1,3 @@
-import type consts from "../../common/consts";
 import { icons } from "../../common/icons";
 import Border from "../border";
 import { NiceSmallerHeader } from "../niceHeader";

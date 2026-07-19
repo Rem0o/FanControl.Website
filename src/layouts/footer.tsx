@@ -1,5 +1,4 @@
 import consts from "../common/consts";
-import { icons } from "../common/icons";
 import { ExternalLink } from "../reactComponents/links";
 import { SpinningLogo } from "../reactComponents/spinningLogo";
 import { PayPalDonateButton, StripeDonateButton } from "../reactComponents/donationButtons";

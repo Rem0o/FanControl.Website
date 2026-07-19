@@ -44,7 +44,7 @@ export const DemoMixFanCurveCard = ({ refreshId: refresh }: DemoMixFanCurveCardP
     setIsWiggling(true);
   }, [refresh]);
 
-  const onInViewChange = (inView: boolean, e: IntersectionObserverEntry) => {
+  const onInViewChange = (inView: boolean) => {
     if (inView) {
       setIsWiggling(true);
     }

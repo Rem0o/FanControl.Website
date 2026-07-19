@@ -116,7 +116,7 @@ export const IndexPage = () => {
             [icons.brush, "UI Themes"],
             [icons.wrench, "Assisted setup"],
             [icons.temperature, "Temperature Tray Icons"]
-          ].map(([icon, text, onClick], i) => (
+          ].map(([icon, text], i) => (
             <div key={i} className="mx-auto transform transition-all duration-300 hover:scale-105">
               <Card className="bg-linear-to-br border-0 from-primary-600 to-primary-700 text-white shadow-glow hover:shadow-glow-lg">
                 <div className="flex items-center justify-center gap-3 p-2">
@@ -253,7 +253,18 @@ export const IndexPage = () => {
           exitModal={() => setShowDonationModal(false)}
           onDownload={() => {
             if (downloadUrl) {
-              window.location.assign(downloadUrl);
+              const navigateToDownload = () => window.location.assign(downloadUrl);
+
+              if (window.gtag) {
+                window.gtag("event", "file_download", {
+                  file_name: downloadUrl.split("/").pop(),
+                  link_url: downloadUrl,
+                  transport_type: "beacon"
+                });
+                navigateToDownload();
+              } else {
+                navigateToDownload();
+              }
             }
           }}
         />

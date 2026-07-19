@@ -13,12 +13,12 @@
   },
   "devDependencies": {
     "@astrojs/partytown": "^2.1.7",
-    "@astrojs/react": "^5.0.5",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/react": "^6.0.1",
+    "@astrojs/sitemap": "^3.7.3",
     "@types/gtag.js": "^0.0.20",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "astro": "^6.3.7",
+    "astro": "^7.1.1",
     "astro-robots-txt": "^1.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
@@ -31,9 +31,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@tailwindcss/vite": "^4.1.15"
-  },
-  "overrides": {
-    "vite": "^7"
   }
 }
