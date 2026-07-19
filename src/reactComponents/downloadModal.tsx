@@ -5,8 +5,8 @@ import { latestRelease, type Asset } from "./services/versionService";
 
 type DownloadProps = {
   version: number;
-  exitModal: Function;
-  onDownload: Function;
+  exitModal: () => void;
+  onDownload: (url: string) => void;
 };
 
 type AssetType = "portable" | "installer" | "unknown";
@@ -96,7 +96,13 @@ function DownloadableAssetAssetGroup(
 function DownloadableAssetLink(asset: DownloadableAsset, props: DownloadProps) {
   return (
     <>
-      <TrackedExternalLink href={asset.url} onClick={() => props.onDownload()}>
+      <TrackedExternalLink
+        href={asset.url}
+        onClick={(event) => {
+          event.preventDefault();
+          props.onDownload(asset.url);
+        }}
+      >
         {asset.name}
       </TrackedExternalLink>
       <br />

@@ -75,7 +75,7 @@ function DonationButton({
   className?: string;
 }) {
   return (
-    <TrackedAnchor href={href}>
+    <TrackedAnchor href={href} target="_blank" rel="noreferrer">
       <button
         className={twMerge(
           "flex items-center justify-center gap-2 rounded-xl border-2 border-body-700 dark:border-body-300 px-4 py-2 text-sm font-medium hover:bg-primary-600 hover:border-primary-600 hover:text-white dark:hover:bg-primary-500 dark:hover:border-primary-500 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md cursor-pointer",
@@ -88,9 +88,9 @@ function DonationButton({
   );
 }
 
-export const PayPalDonateButton = () => (
+export const PayPalDonateButton = ({ amount }: { amount?: number }) => (
   <DonationButton
-    href={consts.urls.donationUrl}
+    href={`${consts.urls.donationUrl}${amount !== undefined ? `&amount=${amount}` : ""}`}
     className="border-2 border-[#00457C] font-semibold text-[#00457C] hover:border-[#00457C] hover:bg-[#00457C] hover:text-white dark:border-[#52b1ff] dark:text-[#52b1ff] dark:hover:border-[#52b1ff] dark:hover:bg-[#52b1ff] dark:hover:text-[#0A2540]"
   >
     <span>Donate with</span>
@@ -98,9 +98,13 @@ export const PayPalDonateButton = () => (
   </DonationButton>
 );
 
-export const StripeDonateButton = () => (
+export const StripeDonateButton = ({ amount }: { amount?: 5 | 10 | 20 }) => (
   <DonationButton
-    href={consts.urls.stripeUrl}
+    href={
+      amount
+        ? consts.urls.stripeDonationUrls[amount]
+        : consts.urls.stripePwywUrl
+    }
     className="border-2 border-[#635BFF] font-semibold text-[#635BFF] hover:border-[#635BFF] hover:bg-[#635BFF] hover:text-white dark:border-[#A0A0FF] dark:text-[#A0A0FF] dark:hover:border-[#A0A0FF] dark:hover:bg-[#A0A0FF] dark:hover:text-[#0A2540]"
   >
     <span>Donate with</span>

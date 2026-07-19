@@ -12,7 +12,12 @@ const urls = {
   pluginListUrl: "https://github.com/Rem0o/FanControl.Releases#plugins",
   donationUrl:
     "https://www.paypal.com/donate/?business=N4JPSTUQHRJM8&no_recurring=0&item_name=Fan%20Control%20software%20creator%20and%20maintainer.%20Donations%20allow%20me%20to%20continue%20working%20on%20this%20project%20while%20keeping%20it%20free%20to%20use.%20Thank%20you%20for%20contributing%21&currency_code=USD",
-  stripeUrl: "https://buy.stripe.com/aFaeV75oSg0wcvhbKL0ZW00",
+  stripePwywUrl: "https://buy.stripe.com/aFaeV75oSg0wcvhbKL0ZW00",
+  stripeDonationUrls: {
+    5: "https://buy.stripe.com/6oUaERdVo7u01QD6qr0ZW01",
+    10: "https://buy.stripe.com/14AbIV4kO7u0gLxbKL0ZW02",
+    20: "https://buy.stripe.com/6oUeV7g3w15C52P7uv0ZW03"
+  },
   email: "remi.mercier.software@gmail.com",
   videoUrl: "https://www.youtube.com/watch?v=uDPKVKBMQU8"
 };

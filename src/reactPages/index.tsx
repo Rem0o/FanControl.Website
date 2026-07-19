@@ -24,6 +24,7 @@ export const IndexPage = () => {
   const demoRef = useRef<HTMLDivElement | null>(null);
   const [showDonationModal, setShowDonationModal] = useState(false);
   const [showDownloadModal, setShowDownloadModal] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
   const tryItOut = (click: boolean) => {
     if (click && demoRef.current) {
@@ -248,7 +249,14 @@ export const IndexPage = () => {
       </section>
 
       {showDonationModal ? (
-        DonationModal(() => setShowDonationModal(false))
+        <DonationModal
+          exitModal={() => setShowDonationModal(false)}
+          onDownload={() => {
+            if (downloadUrl) {
+              window.location.assign(downloadUrl);
+            }
+          }}
+        />
       ) : (
         <></>
       )}
@@ -256,8 +264,9 @@ export const IndexPage = () => {
         DownloadModal({
           version: versionInfo.Number,
           exitModal: () => setShowDownloadModal(false),
-          onDownload: () => {
+          onDownload: (url) => {
             setShowDownloadModal(false);
+            setDownloadUrl(url);
             setShowDonationModal(true);
           }
         })
