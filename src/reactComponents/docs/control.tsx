@@ -6,7 +6,12 @@ import type { DocSection } from "./docSection";
 
 const curvesAndManualControlText = (
   <p>
-    A control (fan) can either be set manually, or through a fan curve. To assign a fan curve to a control, use the "curve" dropdown menu on the control card and select the desired curve. To use manual control instead, select the "Manual control" checkbox from the  <SmallIcon icon={icons.threeDot} className="inline" /> menu of any control card.
+    A control (fan) can either be set manually, or through a fan curve. To
+    assign a fan curve to a control, use the "curve" dropdown menu on the
+    control card and select the desired curve. To use manual control instead,
+    select the "Manual control" checkbox from the{" "}
+    <SmallIcon icon={icons.threeDot} className="inline" /> menu of any control
+    card.
   </p>
 );
 
@@ -46,8 +51,14 @@ const parameters = (
         a stop.
       </li>
       <li>Stop %: Control value below which the control will snap to 0%.</li>
-      <li>Offset %: Offset applied to the assigned fan curve.</li>
-      <li>Minimum %: Hard limit set where the control won't ever go below.</li>
+      <li>
+        Offset %: Offset applied to the assigned fan curve or manual control
+        value.
+      </li>
+      <li>
+        Minimum %: Hard limit set where the control won't ever go below, even in
+        manual mode.
+      </li>
     </ul>
   </Border>
 );
