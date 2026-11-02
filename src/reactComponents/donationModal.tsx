@@ -57,10 +57,12 @@ export const DonationModal = ({ exitModal, onDownload }: DonationModalProps) => 
           </div>
         </>
       ) : (
-        <div className="m-2 text-xl font-semibold">Support Fan Control</div>
+        <div className="m-2 text-xl font-semibold">Enjoying Fan Control?</div>
       )}
 
-      <div className="mb-2 text-center">Support the project with a donation:</div>
+      <div className="mb-2 text-center">
+        Help Rémi keep improving and maintaining Fan Control.
+      </div>
       <div className="mb-4 flex flex-wrap justify-center gap-2" role="radiogroup" aria-label="Donation amount">
         {donationAmounts.map((donationAmount) => (
           <button
