@@ -1,4 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
+
+const subscribeToDarkMode = (onStoreChange: () => void) => {
+  const observer = new MutationObserver(onStoreChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+
+  return () => observer.disconnect();
+};
+
+const getIsDarkMode = () =>
+  document.documentElement.classList.contains("dark");
+
+const getServerIsDarkMode = () => false;
+
+const useIsDarkMode = () =>
+  useSyncExternalStore(
+    subscribeToDarkMode,
+    getIsDarkMode,
+    getServerIsDarkMode
+  );
 
 const useInterval = (delay: number, callback: () => void) => {
   const savedCallback = React.useRef(() => {});
@@ -73,4 +95,10 @@ const useCursorGlow = <T extends HTMLElement>() => {
   };
 };
 
-export { useInterval, useTimeoutBooleanState, useRefreshState, useCursorGlow };
+export {
+  useInterval,
+  useTimeoutBooleanState,
+  useRefreshState,
+  useCursorGlow,
+  useIsDarkMode
+};

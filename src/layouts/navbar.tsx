@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from "react";
-import { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { SpinningLogo } from "../reactComponents/spinningLogo";
 import { Icon } from "../reactComponents/icon";
 import { icons } from "../common/icons";
+import { useIsDarkMode } from "../common/hooks";
 
 const links = [
   { url: "/", title: "Home" },
@@ -24,16 +24,10 @@ const NavBar = (
   props: HTMLAttributes<HTMLElement> & { pageTitle?: string }
 ) => {
   const { pageTitle, className, ...restOfProps } = props;
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check initial dark mode state
-    setIsDark(document.documentElement.classList.contains("dark"));
-  }, []);
+  const isDark = useIsDarkMode();
 
   const toggleDarkMode = () => {
     const newDarkMode = !isDark;
-    setIsDark(newDarkMode);
 
     if (newDarkMode) {
       document.documentElement.classList.add("dark");

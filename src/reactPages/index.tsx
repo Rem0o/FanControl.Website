@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import consts from "../common/consts";
 import { icons } from "../common/icons";
 import { NiceHeader } from "../reactComponents/niceHeader";
-import { useRefreshState } from "../common/hooks";
+import { useIsDarkMode, useRefreshState } from "../common/hooks";
 import { ExternalLink, TrackedExternalLink } from "../reactComponents/links";
 import { SpinningLogo } from "../reactComponents/spinningLogo";
 import { ArticleReference } from "../reactComponents/articles/articlesReference";
@@ -21,6 +21,7 @@ import { Icon } from "../reactComponents/icon";
 
 export const IndexPage = () => {
   const [animationRefreshId, animateDemoCard] = useRefreshState();
+  const isDarkMode = useIsDarkMode();
   const demoRef = useRef<HTMLDivElement | null>(null);
   const [showDonationModal, setShowDonationModal] = useState(false);
   const [showDownloadModal, setShowDownloadModal] = useState(false);
@@ -81,7 +82,7 @@ export const IndexPage = () => {
         <img
           className="rounded-xl"
           width={1037}
-          src="assets/main.png"
+          src={`assets/main_${isDarkMode ? "dark" : "light"}.png`}
           alt="Main interface"
         />
       </Card>
