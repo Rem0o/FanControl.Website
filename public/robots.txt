@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://getfancontrol.com/sitemap-index.xml
